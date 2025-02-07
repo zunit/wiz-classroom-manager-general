@@ -1,4 +1,4 @@
-export default function () {
+function ClassStart() {
   return (
     <>
       <h1>Scratch Class Manager</h1>
@@ -10,3 +10,5 @@ export default function () {
     </>
   );
 }
+
+export default ClassStart;

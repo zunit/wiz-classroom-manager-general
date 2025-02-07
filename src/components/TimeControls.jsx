@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function () {
+function TimeControls() {
   const [timeLeft, setTimeLeft] = React.useState(0);
   const [isTimerRunning, setIsTimerRunning] = React.useState(false);
 
@@ -19,3 +19,5 @@ export default function () {
     </>
   );
 }
+
+export default TimeControls;

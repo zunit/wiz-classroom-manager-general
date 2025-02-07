@@ -1,4 +1,5 @@
-export default function() {
-  return <h1>Class End Component here</h1>
-  
+function ClassEnd() {
+  return <h1>Class is Over!</h1>;
 }
+
+export default ClassEnd;
