@@ -35,6 +35,15 @@
   box-shadow: 0 0 1.5em black;
 }
 
+.time-chunk-card-draggable-wrapper {
+  width: 100%;
+}
+
+.time-chunk-card-draggable-wrapper.dragged {
+  width: 100%;
+  opacity: 0.5;
+}
+
 .time-chunk-drop-target {
   background-color: transparent;
   width: 110%;

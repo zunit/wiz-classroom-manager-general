@@ -7,6 +7,7 @@ import {
 } from "@/context/TimetableContext.js";
 import {
   DndContext,
+  DragOverlay,
   MouseSensor,
   TouchSensor,
   useDraggable,
@@ -16,20 +17,35 @@ import {
 } from "@dnd-kit/core";
 import React from "react";
 
-function TimeChunkCard(props) {
+// Draggable container with dnd-kit functionality
+function TimeChunkCardDraggable(props) {
   const id = props.id;
   const chunkData = props.chunkData;
 
-  const { attributes, listeners, setNodeRef } = useDraggable({ id });
+  const { isDragging, attributes, listeners, setNodeRef } = useDraggable({
+    id,
+  });
 
   return (
     <div
-      className="time-chunk-card-container"
+      className={`time-chunk-card-draggable-wrapper ${
+        isDragging ? "dragged" : ""
+      }`}
       id={id}
       ref={setNodeRef}
       {...attributes}
       {...listeners}
     >
+      <TimeChunkCard chunkData={chunkData} />
+    </div>
+  );
+}
+
+function TimeChunkCard(props) {
+  const chunkData = props.chunkData;
+
+  return (
+    <div className="time-chunk-card-container">
       <h1 className="time-chunk-card-header">{chunkData.activityType}</h1>
       <p>Time: {chunkData.time} minutes</p>
       <p>{chunkData.difficulty}</p>
@@ -65,6 +81,7 @@ function TimeChunkList() {
     new TimeChunk(4, ActivityTypes.CODE_WRITING),
     new TimeChunk(5, ActivityTypes.DESIGN),
   ]);
+  const [activeId, setActiveId] = React.useState(null);
 
   // Function to reorder the list when items are swapped
   function reorder(list, fromIndex, toIndex) {
@@ -93,10 +110,24 @@ function TimeChunkList() {
       const reorderedItems = reorder(chunkList, activeIndex, overIndex - 1);
       setChunkList(reorderedItems);
     }
+
+    setActiveId(null);
+  }
+
+  function handleDragStart(event) {
+    setActiveId(event.active.id);
+  }
+
+  function getChunkDataFromId(id) {
+    console.log(id);
+    return chunkList.find((chunkData) => {
+      return chunkData.id === parseInt(id.replace("time-chunk-", ""));
+    });
   }
 
   return (
     <DndContext
+      onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
       sensors={useSensors(useSensor(MouseSensor), useSensor(TouchSensor))}
     >
@@ -104,7 +135,7 @@ function TimeChunkList() {
         {chunkList.map((chunk, index) => (
           <React.Fragment key={chunk.id}>
             {index === 0 ? <ChunkDropTarget index={0} /> : null}
-            <TimeChunkCard
+            <TimeChunkCardDraggable
               key={chunk.id}
               id={`time-chunk-${chunk.id}`}
               chunkData={chunk}
@@ -113,6 +144,11 @@ function TimeChunkList() {
           </React.Fragment>
         ))}
       </div>
+      <DragOverlay>
+        {activeId ? (
+          <TimeChunkCard chunkData={getChunkDataFromId(activeId)} />
+        ) : null}
+      </DragOverlay>
     </DndContext>
   );
 }
