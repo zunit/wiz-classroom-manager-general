@@ -1,0 +1,33 @@
+#timetable-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid #ffffff40;
+  z-index: 200;
+  background-color: var(--background-color);
+}
+
+#timetable-chunks-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+#button-add-chunk {
+  position: fixed;
+  bottom: 1em;
+  left: calc(175px - 0.5em - 0.75em);
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+  border-radius: 9999px;
+  box-shadow: 0 0 1.5em black;
+}

@@ -1,14 +1,20 @@
 import "./App.css";
 import ClassStart from "./components/activities/ClassStart.jsx";
-import TimeControls from "./components/TimeControls.jsx";
-import Timetable from "./components/Timetable.jsx";
+import Timer from "./components/Timer.jsx";
+import Timetable from "./components/timetable/Timetable.jsx";
 
 function App() {
   return (
     <>
-      <TimeControls />
       <Timetable />
-      <ClassStart />
+      <div className="content-container">
+        <Timer />
+        <div className="activity-container-wrapper">
+          <div className="activity-container">
+            <ClassStart />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

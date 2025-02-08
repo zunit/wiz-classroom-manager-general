@@ -5,7 +5,7 @@ function ClassStart() {
       <div>
         Click the button below to begin the class,
         <br />
-        or edit the timetable settings on the right.
+        or edit the timetable settings on the left.
       </div>
     </>
   );
