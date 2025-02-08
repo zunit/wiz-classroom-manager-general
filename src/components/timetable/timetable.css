@@ -22,7 +22,7 @@
 #button-add-chunk {
   position: fixed;
   bottom: 1em;
-  left: calc(175px - 0.5em - 0.75em);
+  left: calc(175px - 0.5em - 0.5em); /* half the size of (timetable width - font size) - padding */
   font-size: 1.5em;
   display: flex;
   align-items: center;
