@@ -2,8 +2,15 @@
   border-radius: 10px;
   border: 1px solid #ffffff40;
   width: 100%;
+  transition: background-color 0.25s;
+  user-select: none;
+  cursor: pointer;
+}
+
+.time-chunk-card-container:hover {
+  background-color: #ffffff20;
 }
 
 .time-chunk-card-header {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }

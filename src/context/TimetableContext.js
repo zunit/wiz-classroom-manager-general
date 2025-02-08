@@ -5,7 +5,7 @@ export const ActivityTypes = {
   INDIVIDUAL: "INDIVIDUAL",
   CODE_READING: "CODE_READING",
   CODE_WRITING: "CODE_WRITING",
-  DESIGN: "DESGIN",
+  DESIGN: "DESIGN",
   FREESTYLE: "FREESTYLE",
   RANDOM: "RANDOM",
 };
@@ -16,8 +16,11 @@ export const Difficulties = {
   HARD: "HARD",
 };
 
+let idCounter = 0;
+
 export class TimeChunk {
   constructor(time, activityType, difficulty) {
+    this.id = idCounter++;
     this.time = time;
 
     if (activityType in ActivityTypes) {
@@ -43,11 +46,11 @@ export class TimeChunk {
   }
 }
 
-const ChunksContext = createContext([
-  new TimeChunk(15, ActivityTypes.RANDOM, Difficulties.EASY),
-  new TimeChunk(15, ActivityTypes.INDIVIDUAL, Difficulties.EASY),
-  new TimeChunk(15, ActivityTypes.RANDOM, Difficulties.EASY),
-  new TimeChunk(15, ActivityTypes.INDIVIDUAL, Difficulties.EASY),
-]);
+// const ChunksContext = createContext([
+//   new TimeChunk(15, ActivityTypes.RANDOM, Difficulties.EASY),
+//   new TimeChunk(15, ActivityTypes.INDIVIDUAL, Difficulties.EASY),
+//   new TimeChunk(15, ActivityTypes.RANDOM, Difficulties.EASY),
+//   new TimeChunk(15, ActivityTypes.INDIVIDUAL, Difficulties.EASY),
+// ]);
 
-export default ChunksContext;
+// export default ChunksContext;

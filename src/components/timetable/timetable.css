@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  /* gap: 10px; */
   margin-left: 40px;
   margin-right: 40px;
 }
@@ -22,7 +22,9 @@
 #button-add-chunk {
   position: fixed;
   bottom: 1em;
-  left: calc(175px - 0.5em - 0.5em); /* half the size of (timetable width - font size) - padding */
+  left: calc(
+    175px - 0.5em - 0.5em
+  ); /* half the size of (timetable width - font size) - padding */
   font-size: 1.5em;
   display: flex;
   align-items: center;
@@ -30,4 +32,23 @@
   padding: 0.5em;
   border-radius: 9999px;
   box-shadow: 0 0 1.5em black;
+}
+
+.time-chunk-drop-target {
+  background-color: transparent;
+  width: 110%;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-chunk-drop-target-indicator {
+  background-color: transparent;
+  width: 100%;
+  height: 2px;
+}
+
+.time-chunk-drop-target-indicator.dragged-over {
+  background-color: #644ff9;
 }
