@@ -17,6 +17,7 @@
   /* gap: 10px; */
   margin-left: 40px;
   margin-right: 40px;
+  margin-bottom: calc(6em - 20px);
 }
 
 #button-add-chunk {
