@@ -1,4 +1,4 @@
-import "@/components/timetable/time-chunk-card.css";
+import "@/styles/time-chunk-card.css";
 
 function TimeChunkCard(props) {
   const chunkData = props.chunkData;

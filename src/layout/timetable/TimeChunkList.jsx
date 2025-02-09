@@ -1,5 +1,5 @@
-import "@/components/timetable/time-chunk-card.css";
-import "@/components/timetable/timetable.css";
+import "@/styles/time-chunk-card.css";
+import "@/styles/timetable.css";
 import {
   ActivityTypes,
   Difficulties,

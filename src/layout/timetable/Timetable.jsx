@@ -1,6 +1,6 @@
-import TimeChunkCard from "@/components/timetable/TimeChunkCard.jsx";
-import TimeChunkList from "@/components/timetable/TimeChunkList.jsx";
-import "@/components/timetable/timetable.css";
+import TimeChunkCard from "@/layout/timetable/TimeChunkCard.jsx";
+import TimeChunkList from "@/layout/timetable/TimeChunkList.jsx";
+import "@/styles/timetable.css";
 import {
   ActivityTypes,
   Difficulties,

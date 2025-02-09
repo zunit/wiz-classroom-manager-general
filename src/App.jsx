@@ -1,7 +1,7 @@
 import "./App.css";
-import ClassStart from "./components/activities/ClassStart.jsx";
-import Timer from "./components/Timer.jsx";
-import Timetable from "./components/timetable/Timetable.jsx";
+import ClassStart from "@/activities/ClassStart.jsx";
+import Timer from "@/layout/timer/Timer.jsx";
+import Timetable from "@/layout/timetable/Timetable.jsx";
 
 function App() {
   return (

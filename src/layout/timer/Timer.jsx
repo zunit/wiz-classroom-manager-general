@@ -1,5 +1,5 @@
 import React from "react";
-import "@/components/timer.css";
+import "@/styles/timer.css";
 
 function Timer() {
   const [timeLeft, setTimeLeft] = React.useState(0);
