@@ -1,6 +1,6 @@
 import { useDraggable } from "@dnd-kit/core";
-
 import "@/styles/time-chunk-card.css";
+import formatTime from "@/utils/formatTime";
 
 export function TimeChunkCard(props) {
   const chunkData = props.chunkData;
@@ -8,7 +8,7 @@ export function TimeChunkCard(props) {
   return (
     <div className="time-chunk-card-container">
       <h1 className="time-chunk-card-header">{chunkData.activityType}</h1>
-      <p>Time: {chunkData.time} minutes</p>
+      <p>Time: {formatTime(chunkData.time)}</p>
       <p>{chunkData.difficulty}</p>
     </div>
   );

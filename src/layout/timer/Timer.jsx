@@ -1,5 +1,6 @@
 import React from "react";
 import { AppContext } from "@/context/TimetableContext.jsx";
+import formatTime from "@/utils/formatTime";
 
 import "@/styles/timer.css";
 import "@/styles/button.css";
@@ -22,12 +23,6 @@ function Timer() {
     timeLeft,
     setTimeLeft,
   } = React.useContext(AppContext);
-
-  function formatTime(time) {
-    const minutes = String(Math.floor(time / 60)).padStart(2, "0");
-    const seconds = String(time % 60).padStart(2, "0");
-    return `${minutes}:${seconds}`;
-  }
 
   // Decides what the activity button text should be
   function getActivityButtonLabel() {
