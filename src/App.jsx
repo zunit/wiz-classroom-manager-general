@@ -1,4 +1,4 @@
-import { AppProvider } from "@/context/TimetableContext";
+import { AppProvider } from "@/context/AppContext";
 import Timer from "@/layout/timer/Timer.jsx";
 import Timetable from "@/layout/timetable/Timetable.jsx";
 import ActivityComponent from "./activities/ActivityComponent";

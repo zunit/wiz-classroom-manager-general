@@ -1,5 +1,5 @@
 import React from "react";
-import { AppContext } from "@/context/TimetableContext";
+import { AppContext } from "@/context/AppContext";
 import { ActivityTypes } from "@/utils/TimeChunkModel";
 import ClassStartActivity from "./ClassStartActivity";
 import ClassEndActivity from "./ClassEndActivity";

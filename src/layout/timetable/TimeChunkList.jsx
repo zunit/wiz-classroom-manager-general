@@ -8,7 +8,7 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { AppContext } from "@/context/TimetableContext";
+import { AppContext } from "@/context/AppContext";
 import {
   TimeChunkCard,
   TimeChunkCardDraggable,

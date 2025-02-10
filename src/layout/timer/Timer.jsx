@@ -1,5 +1,5 @@
 import React from "react";
-import { AppContext } from "@/context/TimetableContext.jsx";
+import { AppContext } from "@/context/AppContext.jsx";
 import formatTime from "@/utils/formatTime";
 
 import "@/styles/timer.css";
