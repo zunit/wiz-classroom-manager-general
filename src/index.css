@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
   --background-color: #242424;
@@ -9,7 +10,7 @@
   --secondary-color: #444444;
   --secondary-hover-color: #555555;
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
