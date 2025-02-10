@@ -4,51 +4,18 @@ import {
   DragOverlay,
   MouseSensor,
   TouchSensor,
-  useDraggable,
   useDroppable,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
 import { AppContext } from "@/context/TimetableContext";
+import {
+  TimeChunkCard,
+  TimeChunkCardDraggable,
+} from "@/layout/timetable/TimeChunkCard.jsx";
 
 import "@/styles/time-chunk-card.css";
 import "@/styles/timetable.css";
-
-// Draggable container with dnd-kit functionality
-function TimeChunkCardDraggable(props) {
-  const id = props.id;
-  const chunkData = props.chunkData;
-
-  const { isDragging, attributes, listeners, setNodeRef } = useDraggable({
-    id,
-  });
-
-  return (
-    <div
-      className={`time-chunk-card-draggable-wrapper ${
-        isDragging ? "dragged" : ""
-      }`}
-      id={id}
-      ref={setNodeRef}
-      {...attributes}
-      {...listeners}
-    >
-      <TimeChunkCard chunkData={chunkData} />
-    </div>
-  );
-}
-
-function TimeChunkCard(props) {
-  const chunkData = props.chunkData;
-
-  return (
-    <div className="time-chunk-card-container">
-      <h1 className="time-chunk-card-header">{chunkData.activityType}</h1>
-      <p>Time: {chunkData.time} minutes</p>
-      <p>{chunkData.difficulty}</p>
-    </div>
-  );
-}
 
 function ChunkDropTarget(props) {
   const { isOver, setNodeRef } = useDroppable({
