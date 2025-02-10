@@ -21,12 +21,12 @@ function ActivityComponent() {
 
     if (currentChunkIndex > chunks.length - 1) {
       return <ClassEndActivity />;
-    }  
+    }
 
     let activityComponent;
     switch (chunks[currentChunkIndex].activityType) {
       case ActivityTypes.INDIVIDUAL:
-        activityComponent = <IndividualActivity />
+        activityComponent = <IndividualActivity />;
         break;
       case ActivityTypes.DESIGN:
         activityComponent = <DesignActivity />;
@@ -44,7 +44,12 @@ function ActivityComponent() {
         activityComponent = <RandomActivity />;
         break;
       default:
+        console.warn(
+          `Invalid activity type: ${chunks[currentChunkIndex].activityType}`
+        );
+        break;
     }
+    return activityComponent;
   }
 
   return <>{getCurrentActivity()}</>;
