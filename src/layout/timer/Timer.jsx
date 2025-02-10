@@ -2,6 +2,7 @@ import React from "react";
 import { AppContext } from "@/context/TimetableContext.jsx";
 
 import "@/styles/timer.css";
+import "@/styles/button.css";
 
 function Timer() {
   const {
@@ -52,8 +53,8 @@ function Timer() {
       </h1>
       <div id="timer-controls-container">
         <button className="primary">{setActivityButtonLabel()}</button>
-        <button>{setTimerButtonLabel()}</button>
-        <button>Extend Time</button>
+        <button disabled={!isActivityStarted}>{setTimerButtonLabel()}</button>
+        <button disabled={!isActivityStarted}>Extend Time</button>
       </div>
     </div>
   );
