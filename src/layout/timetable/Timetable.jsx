@@ -1,21 +1,9 @@
-import TimeChunkCard from "@/layout/timetable/TimeChunkCard.jsx";
-import TimeChunkList from "@/layout/timetable/TimeChunkList.jsx";
-import "@/styles/timetable.css";
-import {
-  ActivityTypes,
-  Difficulties,
-  TimeChunk,
-} from "@/context/TimetableContext.js";
 import React from "react";
+import TimeChunkList from "@/layout/timetable/TimeChunkList.jsx";
+
+import "@/styles/timetable.css";
 
 function Timetable() {
-  // const [chunks, setChunks] = React.useState([
-  //   new TimeChunk(15, ActivityTypes.RANDOM),
-  //   new TimeChunk(15, ActivityTypes.INDIVIDUAL),
-  //   new TimeChunk(15, ActivityTypes.RANDOM),
-  //   new TimeChunk(15, ActivityTypes.INDIVIDUAL),
-  // ]);
-
   return (
     <div id="timetable-container">
       <p id="timetable-header">Timetable</p>

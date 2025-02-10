@@ -1,10 +1,19 @@
 import React from "react";
+import { AppContext } from "@/context/TimetableContext.jsx";
+
 import "@/styles/timer.css";
 
 function Timer() {
-  const [timeLeft, setTimeLeft] = React.useState(0);
-  const [isTimerStarted, setIsTimerStarted] = React.useState(false);
-  const [isTimerRunning, setIsTimerRunning] = React.useState(false);
+  const {
+    isClassStarted,
+    setIsClassStarted,
+    isActivityStarted,
+    setIsActivityStarted,
+    isActivityPaused,
+    setIsActivityPaused,
+    timeLeft,
+    setTimeLeft,
+  } = React.useContext(AppContext);
 
   function formatTime(time) {
     const minutes = String(Math.floor(time / 60)).padStart(2, "0");
@@ -12,26 +21,39 @@ function Timer() {
     return `${minutes}:${seconds}`;
   }
 
+  function setActivityButtonLabel() {
+    let buttonLabel;
+    if (!isClassStarted) {
+      buttonLabel = "Start Class";
+    } else if (!isActivityStarted) {
+      buttonLabel = "Start Activity";
+    } else {
+      buttonLabel = "End Activity Now";
+    }
+    return buttonLabel;
+  }
+
   function setTimerButtonLabel() {
     let buttonLabel;
-    if (!isTimerStarted) {
+    if (!isActivityStarted) {
       buttonLabel = "Start Timer";
-    } else if (isTimerRunning) {
+    } else if (!isActivityPaused) {
       buttonLabel = "Pause Timer";
     } else {
       buttonLabel = "Resume Timer";
     }
-
     return buttonLabel;
   }
 
   return (
     <div id="timer-container">
-      <h1 id="timer">Time Left: {isTimerStarted ? formatTime(timeLeft) : "--:--"}</h1>
+      <h1 id="timer">
+        Time Left: {isActivityStarted ? formatTime(timeLeft) : "--:--"}
+      </h1>
       <div id="timer-controls-container">
-        <button className="primary">{setTimerButtonLabel()}</button>
+        <button className="primary">{setActivityButtonLabel()}</button>
+        <button>{setTimerButtonLabel()}</button>
         <button>Extend Time</button>
-        <button>End Activity Now</button>
       </div>
     </div>
   );

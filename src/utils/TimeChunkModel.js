@@ -1,5 +1,3 @@
-import { createContext } from "react";
-
 export const ActivityTypes = {
   NULL: "NULL",
   INDIVIDUAL: "INDIVIDUAL",
@@ -17,8 +15,7 @@ export const Difficulties = {
 };
 
 let idCounter = 0;
-
-export class TimeChunk {
+export class TimeChunkModel {
   constructor(time, activityType, difficulty) {
     this.id = idCounter++;
     this.time = time;
@@ -27,30 +24,30 @@ export class TimeChunk {
       this.activityType = activityType;
     } else {
       this.activityType = ActivityTypes.NULL;
-      console.warn(`Given activity type is invalid (was given "${activityType}")`);
+      console.warn(
+        `Given activity type is invalid (was given "${activityType}")`
+      );
     }
 
-    if (this.activityType in [ActivityTypes.CODE_READING, ActivityTypes.CODE_WRITING]) {
+    if (
+      this.activityType in
+      [ActivityTypes.CODE_READING, ActivityTypes.CODE_WRITING]
+    ) {
       if (difficulty in Difficulties) {
         this.difficulty = difficulty;
       } else {
         this.difficulty = Difficulties.EASY;
-        console.warn(`Given activity difficulty is invalid (was given "${activityType}")`);
+        console.warn(
+          `Given activity difficulty is invalid (was given "${activityType}")`
+        );
       }
     } else {
       if (difficulty) {
-        console.warn(`Given activity type ("${activityType}") does not accept a difficulty`);
+        console.warn(
+          `Given activity type ("${activityType}") does not accept a difficulty`
+        );
       }
       this.difficulty = Difficulties.NA;
     }
   }
 }
-
-// const ChunksContext = createContext([
-//   new TimeChunk(15, ActivityTypes.RANDOM, Difficulties.EASY),
-//   new TimeChunk(15, ActivityTypes.INDIVIDUAL, Difficulties.EASY),
-//   new TimeChunk(15, ActivityTypes.RANDOM, Difficulties.EASY),
-//   new TimeChunk(15, ActivityTypes.INDIVIDUAL, Difficulties.EASY),
-// ]);
-
-// export default ChunksContext;

@@ -1,10 +1,4 @@
-import "@/styles/time-chunk-card.css";
-import "@/styles/timetable.css";
-import {
-  ActivityTypes,
-  Difficulties,
-  TimeChunk,
-} from "@/context/TimetableContext.js";
+import React from "react";
 import {
   DndContext,
   DragOverlay,
@@ -15,7 +9,10 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import React from "react";
+import { AppContext } from "@/context/TimetableContext";
+
+import "@/styles/time-chunk-card.css";
+import "@/styles/timetable.css";
 
 // Draggable container with dnd-kit functionality
 function TimeChunkCardDraggable(props) {
@@ -74,13 +71,7 @@ function ChunkDropTarget(props) {
 }
 
 function TimeChunkList() {
-  const [chunkList, setChunkList] = React.useState([
-    new TimeChunk(1, ActivityTypes.RANDOM),
-    new TimeChunk(2, ActivityTypes.INDIVIDUAL),
-    new TimeChunk(3, ActivityTypes.CODE_READING),
-    new TimeChunk(4, ActivityTypes.CODE_WRITING),
-    new TimeChunk(5, ActivityTypes.DESIGN),
-  ]);
+  const { chunks, setChunks } = React.useContext(AppContext);
   const [activeId, setActiveId] = React.useState(null);
 
   // Function to reorder the list when items are swapped
@@ -98,17 +89,17 @@ function TimeChunkList() {
       return;
     }
 
-    const activeIndex = chunkList.findIndex((chunk) => {
+    const activeIndex = chunks.findIndex((chunk) => {
       return chunk.id === parseInt(active.id.replace("time-chunk-", ""));
     });
     const overIndex = parseInt(over.id.replace("droppable-", ""));
 
     if (activeIndex > overIndex) {
-      const reorderedItems = reorder(chunkList, activeIndex, overIndex);
-      setChunkList(reorderedItems);
+      const reorderedItems = reorder(chunks, activeIndex, overIndex);
+      setChunks(reorderedItems);
     } else if (activeIndex < overIndex - 1) {
-      const reorderedItems = reorder(chunkList, activeIndex, overIndex - 1);
-      setChunkList(reorderedItems);
+      const reorderedItems = reorder(chunks, activeIndex, overIndex - 1);
+      setChunks(reorderedItems);
     }
 
     setActiveId(null);
@@ -120,7 +111,7 @@ function TimeChunkList() {
 
   function getChunkDataFromId(id) {
     console.log(id);
-    return chunkList.find((chunkData) => {
+    return chunks.find((chunkData) => {
       return chunkData.id === parseInt(id.replace("time-chunk-", ""));
     });
   }
@@ -132,7 +123,7 @@ function TimeChunkList() {
       sensors={useSensors(useSensor(MouseSensor), useSensor(TouchSensor))}
     >
       <div id="timetable-chunks-container">
-        {chunkList.map((chunk, index) => (
+        {chunks.map((chunk, index) => (
           <React.Fragment key={chunk.id}>
             {index === 0 ? <ChunkDropTarget index={0} /> : null}
             <TimeChunkCardDraggable
