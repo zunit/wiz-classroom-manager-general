@@ -1,9 +1,9 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext.jsx";
 import formatTime from "@/utils/formatTime";
+import Button from "@/components/Button";
 
 import "@/styles/timer.css";
-import "@/styles/button.css";
 
 function Timer() {
   const {
@@ -114,22 +114,22 @@ function Timer() {
           : "--:--"}
       </h1>
       <div id="timer-controls-container">
-        <button
-          className="primary"
+        <Button
+          primary={true}
           disabled={isClassEnded}
           onClick={handleActivityButtonClick}
         >
           {getActivityButtonLabel()}
-        </button>
-        <button
+        </Button>
+        <Button
           disabled={
             !isClassStarted || isClassEnded || (!isClassEnded && timeLeft === 0)
           }
           onClick={handleTimerButtonClick}
         >
           {getTimerButtonLabel()}
-        </button>
-        <button disabled={!isClassStarted || isClassEnded}>Extend Time</button>
+        </Button>
+        <Button disabled={!isClassStarted || isClassEnded}>Extend Time</Button>
       </div>
     </div>
   );
