@@ -1,7 +1,7 @@
+import { AppProvider } from "@/context/TimetableContext";
 import Timer from "@/layout/timer/Timer.jsx";
 import Timetable from "@/layout/timetable/Timetable.jsx";
-import ClassStart from "@/activities/ClassStart.jsx";
-import { AppProvider } from "@/context/TimetableContext";
+import ActivityComponent from "./activities/ActivityComponent";
 
 import "./App.css";
 
@@ -13,7 +13,7 @@ function App() {
         <Timer />
         <div className="activity-container-wrapper">
           <div className="activity-container">
-            <ClassStart />
+            <ActivityComponent />
           </div>
         </div>
       </div>
