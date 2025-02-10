@@ -16,7 +16,7 @@ export function AppProvider(props) {
   const [isActivityStarted, setIsActivityStarted] = React.useState(false);
   const [isActivityPaused, setIsActivityPaused] = React.useState(true);
   const [isActivityEnded, setIsActivityEnded] = React.useState(false);
-  const [timeLeft, setTimeLeft] = React.useState(0);
+  const [timeLeft, setTimeLeft] = React.useState(-1);
 
   const appData = {
     chunks,

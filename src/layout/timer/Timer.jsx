@@ -53,6 +53,9 @@ function Timer() {
   // Timer functionality
   React.useEffect(() => {
     if (!isActivityStarted) {
+      if (timeLeft === 0) {
+        setIsActivityEnded(true);
+      }
       return;
     }
 
