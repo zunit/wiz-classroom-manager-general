@@ -1,9 +1,11 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext.jsx";
 import formatTime from "@/utils/formatTime";
-import Button from "@/components/ui/Button";
+// import Button from "@/components/ui/Button";
+import Button from "@mui/material/Button";
 
 import "@/styles/timer.css";
+import ExtendTimerDialog from "./ExtendTimerDialog";
 
 function Timer() {
   const {
@@ -20,6 +22,9 @@ function Timer() {
   const [isActivityPaused, setIsActivityPaused] = React.useState(true);
   const [isActivityEnded, setIsActivityEnded] = React.useState(false);
   const [timeLeft, setTimeLeft] = React.useState(-1);
+
+  const [isExtendTimerDialogShown, setIsExtendTimerDialogShown] =
+    React.useState(false);
 
   // Decides what the activity button text should be
   function getActivityButtonLabel() {
@@ -102,6 +107,16 @@ function Timer() {
     }
   }
 
+  function openExtendTimerDialog() {
+    setIsExtendTimerDialogShown(true);
+  }
+
+  function closeExtendTimerDialog() {
+    setIsExtendTimerDialogShown(false);
+  }
+
+  function handleExtendButtonClick() {}
+
   return (
     <div id="timer-container">
       <h1 id="timer">
@@ -112,6 +127,7 @@ function Timer() {
       </h1>
       <div id="timer-controls-container">
         <Button
+          variant="contained"
           primary={true}
           disabled={isClassEnded}
           onClick={handleActivityButtonClick}
@@ -119,6 +135,7 @@ function Timer() {
           {getActivityButtonLabel()}
         </Button>
         <Button
+          variant="outlined"
           disabled={
             !isClassStarted || isClassEnded || (!isClassEnded && timeLeft === 0)
           }
@@ -126,8 +143,16 @@ function Timer() {
         >
           {getTimerButtonLabel()}
         </Button>
-        <Button disabled={!isClassStarted || isClassEnded}>Extend Time</Button>
+        <Button
+          variant="outlined"
+          disabled={!isClassStarted || isClassEnded}
+          onClick={openExtendTimerDialog}
+        >
+          Extend Time
+        </Button>
       </div>
+
+      <ExtendTimerDialog isShown={isExtendTimerDialogShown} closeModal={closeExtendTimerDialog} setTimeLeft={setTimeLeft}/>
     </div>
   );
 }

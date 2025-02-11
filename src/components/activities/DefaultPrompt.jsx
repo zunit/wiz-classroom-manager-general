@@ -1,6 +1,7 @@
 import React from "react";
 import DesignPrompts from "@/prompts/design-prompts";
-import Button from "@/components/ui/Button";
+// import Button from "@/components/ui/Button";
+import Button from "@mui/material/Button";
 
 export const PromptType = {
   DESIGN: "DESIGN",
@@ -34,7 +35,7 @@ function DefaultPrompt(props) {
     return (
       <>
         <p>Click the button below to generate a prompt:</p>
-        <Button primary={true} onClick={generatePrompt}>
+        <Button variant="contained" onClick={generatePrompt}>
           Generate Prompt
         </Button>
       </>
@@ -46,7 +47,7 @@ function DefaultPrompt(props) {
       <>
         <p style={{marginBottom: "0.5em"}}>Your prompt is:</p>
         <h1 style={{marginTop: "0", marginBottom: "0"}}>{prompt}</h1>
-        <Button primary={true} style={{marginTop: "1.5em"}} onClick={generatePrompt}>
+        <Button variant="contained" style={{marginTop: "1.5em"}} onClick={generatePrompt}>
           Generate Another Prompt
         </Button>
       </>

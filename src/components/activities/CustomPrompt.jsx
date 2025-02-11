@@ -1,19 +1,21 @@
 import React from "react";
-import TextField from "@/components/ui/TextField";
+// import TextField from "@/components/ui/TextField";
+import TextField from "@mui/material/TextField";
 
 import "@/styles/text-field.css";
 
 function CustomPrompt() {
-  const [text, setText] = React.useState("");
+  // const [text, setText] = React.useState("");
 
   return (
     <div style={{ marginTop: "2em", marginBottom: "2em" }}>
       <p>Enter your custom prompt here:</p>
       <TextField
-        width="400px"
+        id="custom-prompt-field"
         placeholder="Enter prompt"
-        rows="2"
-        value={text}
+        multiline
+        rows={2}
+        // value={text}
         onChange={(event) => setText(event.target.value)}
       />
     </div>

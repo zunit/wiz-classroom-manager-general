@@ -6,7 +6,6 @@
   height: 100vh;
   overflow-y: auto;
   border-right: 1px solid #ffffff40;
-  z-index: 200;
   background-color: var(--background-color);
 }
 
@@ -20,12 +19,12 @@
   margin-bottom: calc(6em - 20px);
 }
 
-#button-add-chunk {
+/* #button-add-chunk {
   position: fixed;
   bottom: 1em;
   left: calc(
     175px - 0.5em - 0.5em
-  ); /* half the size of (timetable width - font size) - padding */
+  );
   font-size: 1.5em;
   display: flex;
   align-items: center;
@@ -33,6 +32,15 @@
   padding: 0.5em;
   border-radius: 9999px;
   box-shadow: 0 0 1.5em black;
+} */
+
+#button-add-chunk {
+  position: fixed;
+  bottom: 1em;
+  left: calc(
+    175px - 0.5em - 0.5em
+  );
+  font-size: 1.5em;
 }
 
 .time-chunk-card-draggable-wrapper {

@@ -1,9 +1,12 @@
 import "@/styles/button.css";
 
 function Button(props) {
-  const { children, primary, ...buttonProps } = props;
+  const { className, children, primary, ...buttonProps } = props;
   return (
-    <button className={primary ? "primary" : null} {...buttonProps}>
+    <button
+      className={`${className}${primary ? " primary" : ""}`}
+      {...buttonProps}
+    >
       {children}
     </button>
   );

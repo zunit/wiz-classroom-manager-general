@@ -1,9 +1,10 @@
 #timer-container {
   position: fixed;
   top: 0;
+  left: 351px;
   /* right: 0; */
   min-width: 600px;
-  width: calc(100vw - 350px);
+  width: calc(100vw - 351px);
   height: 200px;
   border-bottom: 1px solid #ffffff40;
   display: flex;
@@ -11,7 +12,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--background-color);
-  z-index: 100;
+  z-index: 1;
 }
 
 #timer {
