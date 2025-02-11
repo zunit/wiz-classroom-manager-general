@@ -13,10 +13,6 @@ export function AppProvider(props) {
   const [currentChunkIndex, setCurrentChunkIndex] = React.useState(0);
   const [isClassStarted, setIsClassStarted] = React.useState(false);
   const [isClassEnded, setIsClassEnded] = React.useState(false);
-  const [isActivityStarted, setIsActivityStarted] = React.useState(false);
-  const [isActivityPaused, setIsActivityPaused] = React.useState(true);
-  const [isActivityEnded, setIsActivityEnded] = React.useState(false);
-  const [timeLeft, setTimeLeft] = React.useState(-1);
 
   const appData = {
     chunks,
@@ -27,14 +23,6 @@ export function AppProvider(props) {
     setIsClassStarted,
     isClassEnded,
     setIsClassEnded,
-    isActivityStarted,
-    setIsActivityStarted,
-    isActivityPaused,
-    setIsActivityPaused,
-    isActivityEnded,
-    setIsActivityEnded,
-    timeLeft,
-    setTimeLeft,
   };
 
   return (

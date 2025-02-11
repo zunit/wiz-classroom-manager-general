@@ -14,7 +14,7 @@ function CustomPrompt() {
         placeholder="Enter prompt"
         rows="2"
         value={text}
-        onChange={(event) => {console.log("Hello world"); setText(event.target.value)}}
+        onChange={(event) => setText(event.target.value)}
       />
     </div>
   );

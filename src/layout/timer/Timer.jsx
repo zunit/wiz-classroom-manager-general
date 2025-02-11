@@ -14,15 +14,12 @@ function Timer() {
     setIsClassStarted,
     isClassEnded,
     setIsClassEnded,
-    isActivityStarted,
-    setIsActivityStarted,
-    isActivityPaused,
-    setIsActivityPaused,
-    isActivityEnded,
-    setIsActivityEnded,
-    timeLeft,
-    setTimeLeft,
   } = React.useContext(AppContext);
+
+  const [isActivityStarted, setIsActivityStarted] = React.useState(false);
+  const [isActivityPaused, setIsActivityPaused] = React.useState(true);
+  const [isActivityEnded, setIsActivityEnded] = React.useState(false);
+  const [timeLeft, setTimeLeft] = React.useState(-1);
 
   // Decides what the activity button text should be
   function getActivityButtonLabel() {
