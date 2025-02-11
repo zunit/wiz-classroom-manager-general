@@ -1,11 +1,17 @@
 import React from "react";
-import ToggleButton from "@/components/ui/ToggleButton.jsx";
-import ToggleButtonGroup from "@/components/ui/ToggleButtonGroup.jsx";
+// import ToggleButton from "@/components/ui/ToggleButton.jsx";
+// import ToggleButtonGroup from "@/components/ui/ToggleButtonGroup.jsx";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import CustomPrompt from "@/components/activities/CustomPrompt";
 import DefaultPrompt from "@/components/activities/DefaultPrompt";
 
 function DesignActivity() {
   const [promptType, setPromptType] = React.useState("default");
+
+  function handlePromptTypeChange(event, newPromptType) {
+    setPromptType(newPromptType);
+  }
 
   function PromptComponent() {
     let promptComponent;
@@ -31,13 +37,13 @@ function DesignActivity() {
         Design a sprite/backdrop with the given theme within the given time
         limit.
       </p>
-      <ToggleButtonGroup selection={promptType}>
-        <ToggleButton value="default" onClick={() => setPromptType("default")}>
-          Default
-        </ToggleButton>
-        <ToggleButton value="custom" onClick={() => setPromptType("custom")}>
-          Custom
-        </ToggleButton>
+      <ToggleButtonGroup
+        value={promptType}
+        exclusive
+        onChange={handlePromptTypeChange}
+      >
+        <ToggleButton value="default">Default</ToggleButton>
+        <ToggleButton value="custom">Custom</ToggleButton>
       </ToggleButtonGroup>
       <PromptComponent />
       <p>Once you are ready, start the timer at the top.</p>
