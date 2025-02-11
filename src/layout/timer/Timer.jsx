@@ -1,7 +1,7 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext.jsx";
 import formatTime from "@/utils/formatTime";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 
 import "@/styles/timer.css";
 
