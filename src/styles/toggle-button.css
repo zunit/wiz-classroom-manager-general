@@ -1,0 +1,38 @@
+.toggle-button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.toggle-button-group > .toggle-button {
+  border-radius: 0;
+}
+
+.toggle-button-group > .toggle-button:focus {
+  border: none;
+}
+
+.toggle-button-group > .toggle-button:first-of-type {
+  border-top-left-radius: var(--button-border-radius);
+  border-bottom-left-radius: var(--button-border-radius);
+}
+
+.toggle-button-group > .toggle-button:last-of-type {
+  border-top-right-radius: var(--button-border-radius);
+  border-bottom-right-radius: var(--button-border-radius);
+}
+
+.toggle-button-group.vertical {
+  flex-direction: column;
+}
+
+.toggle-button-group.vertical > .toggle-button:first-of-type {
+  border-radius: 0;
+  border-top-left-radius: var(--button-border-radius);
+  border-top-right-radius: var(--button-border-radius);
+}
+
+.toggle-button-group.vertical > .toggle-button:last-of-type {
+  border-radius: 0;
+  border-bottom-left-radius: var(--button-border-radius);
+  border-bottom-right-radius: var(--button-border-radius);
+}
