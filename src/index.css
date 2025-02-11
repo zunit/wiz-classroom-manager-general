@@ -15,7 +15,7 @@
   --line-height: 1.5;
 
   font-family: var(--font-family);
-  line-height: var(--font-size);
+  line-height: var(--line-height);
   font-weight: 400;
 
   color-scheme: light dark;
