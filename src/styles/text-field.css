@@ -1,0 +1,10 @@
+.text-field {
+  background-color: var(--secondary-color);
+  font-family: var(--font-family);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6em 1em;
+  resize: none;
+  line-height: var(--line-height);
+  font-size: var(--font-size);
+}
