@@ -1,5 +1,5 @@
 import React from "react";
-import DesignPrompts from "@/prompts/design-prompts.json";
+import DesignPrompts from "@/prompts/design-prompts";
 import Button from "@/components/ui/Button";
 
 export const PromptType = {
