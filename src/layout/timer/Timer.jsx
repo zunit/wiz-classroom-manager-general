@@ -1,11 +1,16 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext.jsx";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField,
+} from "@mui/material";
 import formatTime from "@/utils/formatTime";
-// import Button from "@/components/ui/Button";
-import Button from "@mui/material/Button";
-
 import "@/styles/timer.css";
-import ExtendTimerDialog from "./ExtendTimerDialog";
 
 function Timer() {
   const {
@@ -23,7 +28,7 @@ function Timer() {
   const [isActivityEnded, setIsActivityEnded] = React.useState(false);
   const [timeLeft, setTimeLeft] = React.useState(-1);
 
-  const [isExtendTimerDialogShown, setIsExtendTimerDialogShown] =
+  const [isExtendTimerDialogOpen, setIsExtendTimerDialogOpen] =
     React.useState(false);
 
   // Decides what the activity button text should be
@@ -108,14 +113,41 @@ function Timer() {
   }
 
   function openExtendTimerDialog() {
-    setIsExtendTimerDialogShown(true);
+    setIsExtendTimerDialogOpen(true);
   }
 
   function closeExtendTimerDialog() {
-    setIsExtendTimerDialogShown(false);
+    setIsExtendTimerDialogOpen(false);
   }
 
-  function handleExtendButtonClick() {}
+  function ExtendTimerDialog() {
+    const [extendTimeBy, setExtendTimeBy] = React.useState("");
+    return (
+      <Dialog
+        id="extend-timer-dialog-container"
+        open={isExtendTimerDialogOpen}
+        onClose={closeExtendTimerDialog}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle>Extend Timer</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Extend timer by:</DialogContentText>
+          <TextField
+            autoFocus
+            required
+            placeholder="Timer extension amount (in seconds)"
+            fullWidth
+            margin="dense"
+          />
+          <DialogActions>
+            <Button onClick={closeExtendTimerDialog}>Cancel</Button>
+            <Button>Confirm</Button>
+          </DialogActions>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   return (
     <div id="timer-container">
@@ -128,7 +160,6 @@ function Timer() {
       <div id="timer-controls-container">
         <Button
           variant="contained"
-          primary={true}
           disabled={isClassEnded}
           onClick={handleActivityButtonClick}
         >
@@ -152,7 +183,7 @@ function Timer() {
         </Button>
       </div>
 
-      <ExtendTimerDialog isShown={isExtendTimerDialogShown} closeModal={closeExtendTimerDialog} setTimeLeft={setTimeLeft}/>
+      <ExtendTimerDialog />
     </div>
   );
 }
