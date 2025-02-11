@@ -2,10 +2,7 @@ import React from "react";
 import ToggleButton from "@/components/ui/ToggleButton.jsx";
 import ToggleButtonGroup from "@/components/ui/ToggleButtonGroup.jsx";
 import CustomPrompt from "@/components/activities/CustomPrompt";
-
-function DefaultDesignPrompt() {
-  return <h1>Default Design Prompt Component</h1>;
-}
+import DefaultPrompt from "@/components/activities/DefaultPrompt";
 
 function DesignActivity() {
   const [promptType, setPromptType] = React.useState("default");
@@ -14,13 +11,13 @@ function DesignActivity() {
     let promptComponent;
     switch (promptType) {
       case "default":
-        promptComponent = <DefaultDesignPrompt />;
+        promptComponent = <DefaultPrompt />;
         break;
       case "custom":
         promptComponent = <CustomPrompt />;
         break;
       default:
-        promptComponent = <DefaultDesignPrompt />;
+        promptComponent = <DefaultPrompt />;
         console.warn(
           `Invalid prompt type for Design component (was given '${promptType}')`
         );
@@ -29,7 +26,7 @@ function DesignActivity() {
   }
   return (
     <>
-      <h1>Design Activity</h1>
+      <h2>Design Activity</h2>
       <p>
         Design a sprite/backdrop with the given theme within the given time
         limit.
