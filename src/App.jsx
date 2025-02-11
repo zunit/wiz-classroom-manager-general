@@ -13,7 +13,7 @@ function App() {
     palette: {
       mode: isDarkMode ? "dark" : "light",
       primary: {
-        main: isDarkMode ? "#8e70fa" : "#6f4ff9",
+        main: isDarkMode ? "#b19afa" : "#6f4ff9",
       },
     },
   });
