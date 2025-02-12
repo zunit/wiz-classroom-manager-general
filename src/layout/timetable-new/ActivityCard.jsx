@@ -7,7 +7,7 @@ function ActivityCard(props) {
   const { index, chunk, onChangeChunkTime, onDelete, ...invalidProps } = props;
   for (let invalidProp in invalidProps) {
     console.warn(
-      `"ActivityCard component does not accept the "${invalidProp}" prop`
+      `ActivityCard component does not accept the "${invalidProp}" prop`
     );
   }
 

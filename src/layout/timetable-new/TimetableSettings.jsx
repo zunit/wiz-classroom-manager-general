@@ -10,7 +10,7 @@ function TimetableSettings(props) {
   const { chunksSetup, setChunksSetup, ...invalidProps } = props;
   for (let invalidProp in invalidProps) {
     console.warn(
-      `"TimetableSettings component does not accept the "${invalidProp}" prop`
+      `TimetableSettings component does not accept the "${invalidProp}" prop`
     );
   }
 
