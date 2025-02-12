@@ -1,0 +1,29 @@
+.activity-card-container {
+  position: relative;
+  border: 1px solid #ffffff40;
+  border-radius: 10px;
+  padding: 1em;
+  width: 50vw;
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.activity-card-header {
+    margin-top: 0;
+    font-size: 2em;
+    margin-bottom: 0.2em;
+}
+
+.activity-card-duration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.activity-card-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* transform: translate(50%, -50%); */
+}

@@ -1,0 +1,17 @@
+#add-activity {
+  margin-bottom: 2em;
+}
+
+#starting-page-footer-hr {
+  margin-bottom: 2em;
+  border: none;
+  border-top: 1px solid #ffffff40;
+}
+
+#starting-page-footer {
+  position: sticky;
+  bottom: 0;
+  padding-bottom: 2em;
+  background-color: var(--background-color);
+  z-index: 10000;
+}
