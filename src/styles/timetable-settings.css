@@ -1,8 +1,12 @@
+.timetable-settings-header {
+  margin-top: 1.5em;
+  margin-bottom: calc(-0.667em);
+}
+
 .timetable-cards {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
   margin-bottom: 2em;
 }
 
