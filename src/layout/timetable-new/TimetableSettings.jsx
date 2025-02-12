@@ -79,7 +79,9 @@ function TimetableSettings(props) {
     }
 
     const activeIndex = chunksSetup.findIndex((chunk) => {
-      return chunk.id === parseInt(active.id.replace("activity-card-draggable-", ""));
+      return (
+        chunk.id === parseInt(active.id.replace("activity-card-draggable-", ""))
+      );
     });
     const overIndex = parseInt(over.id.replace("activity-card-droppable-", ""));
 
@@ -109,7 +111,18 @@ function TimetableSettings(props) {
     <DndContext
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
-      sensors={useSensors(useSensor(MouseSensor), useSensor(TouchSensor))}
+      sensors={useSensors(
+        useSensor(MouseSensor, {
+          activationConstraint: {
+            distance: 0.1,
+          },
+        }),
+        useSensor(TouchSensor, {
+          activationConstraint: {
+            distance: 0.1,
+          },
+        })
+      )}
     >
       <div className="timetable-settings-container">
         <h2 className="timetable-settings-header">Timetable Settings:</h2>
