@@ -1,5 +1,5 @@
 import { Fab, TextField } from "@mui/material";
-import { isValidInteger } from "@/utils/inputValidation";
+import { isPositiveInteger } from "@/utils/inputValidation";
 import ActivityTypes from "@/utils/ActivityTypes";
 import "@/styles/activity-card.css";
 
@@ -69,10 +69,10 @@ function ActivityCard(props) {
               sx: { textAlign: "center" },
             },
           }}
-          error={!isValidInteger(chunk.time)}
+          error={!isPositiveInteger(chunk.time)}
           onChange={(event) => onChangeChunkTime(index, event.target.value)}
         />
-        <span>minutes</span>
+        <span>minute{chunk.time === "1" ? "" : "s"}</span>
       </div>
 
       <div className="activity-card-delete">

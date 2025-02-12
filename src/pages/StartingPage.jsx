@@ -3,7 +3,7 @@ import TimetableSettings from "@/layout/timetable-new/TimetableSettings";
 import { Button, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { TimeChunkModel } from "@/utils/TimeChunkModel";
 import ActivityTypes from "@/utils/ActivityTypes";
-import { isValidInteger } from "@/utils/inputValidation";
+import { isPositiveInteger } from "@/utils/inputValidation";
 import "@/styles/starting-page.css";
 
 function StartingPage() {
@@ -44,7 +44,7 @@ function StartingPage() {
           id="start-class-button"
           variant="contained"
           size="large"
-          disabled={chunksSetup.some((chunk) => !isValidInteger(chunk.time))}
+          disabled={chunksSetup.some((chunk) => !isPositiveInteger(chunk.time))}
         >
           <span className="material-symbols-rounded">start</span>Start Class
         </Button>
