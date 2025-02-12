@@ -1,26 +1,13 @@
 import { Fab, TextField } from "@mui/material";
-import "@/styles/activity-card.css";
+import { isValidInteger } from "@/utils/inputValidation";
 import ActivityTypes from "@/utils/ActivityTypes";
+import "@/styles/activity-card.css";
 
 function ActivityCard(props) {
-  const { chunk, onDelete, ...invalidProps } = props;
+  const { index, chunk, onChangeChunkTime, onDelete, ...invalidProps } = props;
   for (let invalidProp in invalidProps) {
     console.warn(
       `"ActivityCard component does not accept the "${invalidProp}" prop`
-    );
-  }
-
-  const isIndividualActivity = chunk.activityType === ActivityTypes.INDIVIDUAL;
-  const isGroupActivity = [
-    ActivityTypes.DESIGN,
-    ActivityTypes.CODE_READING,
-    ActivityTypes.CODE_WRITING,
-    ActivityTypes.FREESTYLE,
-    ActivityTypes.RANDOM,
-  ].includes(chunk.activityType);
-  if (!isIndividualActivity && !isGroupActivity) {
-    console.warn(
-      `ActivityCard was given invalid activity type (was given ${chunk.activityType})`
     );
   }
 
@@ -64,14 +51,26 @@ function ActivityCard(props) {
     <div className="activity-card-container">
       <h1 className="activity-card-header">{getCardHeader()}</h1>
       <h2 className="activity-card-subheader">
-        {isGroupActivity ? getCardSubheader() : null}
+        {ActivityTypes.isGroupActivity(chunk.activityType)
+          ? getCardSubheader()
+          : null}
       </h2>
       <p>[image]</p>
 
       <div className="activity-card-duration">
+        <span>Duration:</span>
         <TextField
+          value={chunk.time}
           variant="standard"
-          sx={{ width: "50px", textAlign: "center" }}
+          size="small"
+          sx={{ width: "50px" }}
+          slotProps={{
+            htmlInput: {
+              sx: { textAlign: "center" },
+            },
+          }}
+          error={!isValidInteger(chunk.time)}
+          onChange={(event) => onChangeChunkTime(index, event.target.value)}
         />
         <span>minutes</span>
       </div>

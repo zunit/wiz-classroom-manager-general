@@ -34,7 +34,7 @@ export class TimeChunkModel {
         );
       }
     } else {
-      if (difficulty !== Difficulties.NA) {
+      if (difficulty && difficulty !== Difficulties.NA) {
         console.warn(
           `Given activity type ("${activityType}") does not accept a difficulty`
         );
