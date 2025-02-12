@@ -1,6 +1,7 @@
 import { Fab, TextField } from "@mui/material";
 import { isPositiveInteger } from "@/utils/inputValidation";
 import ActivityTypes from "@/utils/ActivityTypes";
+import ActivityIcon from "@/layout/timetable-new/ActivityIcon";
 import "@/styles/activity-card.css";
 
 function ActivityCard(props) {
@@ -55,7 +56,7 @@ function ActivityCard(props) {
           ? getCardSubheader()
           : null}
       </h2>
-      <p>[image]</p>
+      <ActivityIcon activityType={chunk.activityType} />
 
       <div className="activity-card-duration">
         <span>Duration:</span>
