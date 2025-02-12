@@ -10,7 +10,7 @@
 
 #starting-page-footer {
   position: sticky;
-  bottom: 0;
+  bottom: -1px;
   padding-bottom: 2em;
   background-color: var(--background-color);
   z-index: 10000;
