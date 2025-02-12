@@ -1,9 +1,8 @@
 import { useDraggable } from "@dnd-kit/core";
-import formatTime from "@/utils/formatTime";
-import "@/styles/time-chunk-card.css";
-import { ActivityTypes } from "@/utils/TimeChunkModel";
-// import Button from "@/components/ui/Button.jsx";
 import Button from '@mui/material/Button';
+import formatTime from "@/utils/formatTime";
+import ActivityTypes from "@/utils/ActivityTypes";
+import "@/styles/time-chunk-card.css";
 
 export function TimeChunkCard(props) {
   const chunkData = props.chunkData;

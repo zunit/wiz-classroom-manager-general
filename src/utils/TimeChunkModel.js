@@ -1,48 +1,40 @@
-export const ActivityTypes = {
-  NULL: "NULL",
-  INDIVIDUAL: "INDIVIDUAL",
-  CODE_READING: "CODE_READING",
-  CODE_WRITING: "CODE_WRITING",
-  DESIGN: "DESIGN",
-  FREESTYLE: "FREESTYLE",
-  RANDOM: "RANDOM",
-};
+import ActivityTypes from "@/utils/ActivityTypes";
 
 export const Difficulties = {
   NA: "NA",
-  EASY: "EASY",
-  HARD: "HARD",
+  BEGINNER: "BEGINNER",
+  EXPERIENCED: "EXPERIENCED",
 };
 
-let idCounter = 0;
 export class TimeChunkModel {
+  static #idCounter = 0;
+
   constructor(time, activityType, difficulty) {
-    this.id = idCounter++;
+    this.id = TimeChunkModel.#idCounter++;
     this.time = time;
 
-    if (activityType in ActivityTypes) {
+    // Set time chunk activity type
+    if (ActivityTypes.isValidActivityType(activityType)) {
       this.activityType = activityType;
     } else {
-      this.activityType = ActivityTypes.NULL;
       console.warn(
         `Given activity type is invalid (was given "${activityType}")`
       );
+      this.activityType = ActivityTypes.NULL;
     }
 
-    if (
-      this.activityType in
-      [ActivityTypes.CODE_READING, ActivityTypes.CODE_WRITING]
-    ) {
+    // Set time chunk activity difficulty
+    if (ActivityTypes.hasDifficulties(activityType)) {
       if (difficulty in Difficulties) {
         this.difficulty = difficulty;
       } else {
-        this.difficulty = Difficulties.EASY;
+        this.difficulty = Difficulties.EXPERIENCED;
         console.warn(
-          `Given activity difficulty is invalid (was given "${activityType}")`
+          `Given activity difficulty is invalid (was given "${difficulty}")`
         );
       }
     } else {
-      if (difficulty) {
+      if (difficulty !== Difficulties.NA) {
         console.warn(
           `Given activity type ("${activityType}") does not accept a difficulty`
         );

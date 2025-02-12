@@ -1,5 +1,6 @@
 import React from "react";
-import { ActivityTypes, TimeChunkModel } from "@/utils/TimeChunkModel";
+import { TimeChunkModel } from "@/utils/TimeChunkModel";
+import ActivityTypes from "@/utils/ActivityTypes";
 
 export const AppContext = React.createContext();
 
