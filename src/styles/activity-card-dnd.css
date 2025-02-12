@@ -16,5 +16,5 @@
 }
 
 .activity-card-droppable-indicator.dragged-over {
-  background-color: #6f4ff9;
+  background-color: var(--mui-palette-primary-main);
 }

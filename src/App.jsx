@@ -11,6 +11,7 @@ import StartingPage from "@/pages/StartingPage";
 function App() {
   const [isDarkMode, setIsDarkMode] = React.useState(true);
   const theme = createTheme({
+    cssVariables: true,
     palette: {
       mode: isDarkMode ? "dark" : "light",
       primary: {
