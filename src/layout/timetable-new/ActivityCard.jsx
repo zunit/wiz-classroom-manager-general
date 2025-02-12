@@ -67,13 +67,20 @@ function ActivityCard(props) {
         {isGroupActivity ? getCardSubheader() : null}
       </h2>
       <p>[image]</p>
+
       <div className="activity-card-duration">
-        <TextField variant="standard" sx={{ width: "50px", textAlign: "center" }} />
+        <TextField
+          variant="standard"
+          sx={{ width: "50px", textAlign: "center" }}
+        />
         <span>minutes</span>
       </div>
-      <Fab className="activity-card-delete" color="error" size="small" onClick={onDelete}>
-        <span className="material-symbols-rounded">close</span>
-      </Fab>
+
+      <div className="activity-card-delete">
+        <Fab color="error" size="small" onClick={onDelete}>
+          <span className="material-symbols-rounded">close</span>
+        </Fab>
+      </div>
     </div>
   );
 }
