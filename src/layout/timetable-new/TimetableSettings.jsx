@@ -150,7 +150,7 @@ function TimetableSettings(props) {
         </Button>
       </div>
 
-      <DragOverlay>
+      <DragOverlay style={{ cursor: "move" }}>
         {activeId ? (
           <ActivityCard chunk={getChunkDataFromId(activeId)} />
         ) : null}

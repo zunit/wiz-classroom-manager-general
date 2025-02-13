@@ -1,3 +1,7 @@
+.activity-card-draggable-wrapper {
+  cursor: move;
+}
+
 .activity-card-draggable-wrapper.dragged {
   opacity: 0.5;
 }
