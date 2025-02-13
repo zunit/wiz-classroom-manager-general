@@ -3,7 +3,7 @@
 }
 
 .activity-card-droppable {
-  width: 110%;
+  width: calc(400px + 4em);
   height: 2em;
   display: flex;
   align-items: center;
