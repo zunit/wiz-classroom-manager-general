@@ -1,13 +1,15 @@
 import React from "react";
+import { AppContext } from "@/context/AppContext";
 import TimetableSettings from "@/layout/timetable-new/TimetableSettings";
-import { Button, ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { TimeChunkModel } from "@/utils/TimeChunkModel";
+import { Difficulties, TimeChunkModel } from "@/utils/TimeChunkModel";
 import ActivityTypes from "@/utils/ActivityTypes";
+import { Button, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { isPositiveInteger } from "@/utils/inputValidation";
 import "@/styles/starting-page.css";
 
 function StartingPage() {
-  const [difficulty, setDifficulty] = React.useState("experienced");
+  const { chunks, setChunks, setIsClassStarted } = React.useContext(AppContext);
+  const [difficulty, setDifficulty] = React.useState("EXPERIENCED");
   const [chunksSetup, setChunksSetup] = React.useState([
     new TimeChunkModel("10", ActivityTypes.RANDOM),
     new TimeChunkModel("10", ActivityTypes.INDIVIDUAL),
@@ -19,6 +21,23 @@ function StartingPage() {
     setDifficulty(newDifficulty);
   }
 
+  function handleClickStartClass() {
+    let renormalizedChunks = [];
+    for (let chunk of chunksSetup) {
+      renormalizedChunks.push(
+        new TimeChunkModel(
+          Number.parseInt(chunk.time, 10) * 60,
+          chunk.activityType,
+          ActivityTypes.hasDifficulties(chunk.activityType)
+            ? difficulty
+            : Difficulties.NA
+        )
+      );
+    }
+    setChunks(renormalizedChunks);
+    setIsClassStarted(true);
+  }
+
   return (
     <>
       <h1>Class Setup:</h1>
@@ -27,10 +46,10 @@ function StartingPage() {
         exclusive
         onChange={changeDifficulty}
       >
-        <ToggleButton value="beginner" color="success">
+        <ToggleButton value="BEGINNER" color="success">
           Beginner
         </ToggleButton>
-        <ToggleButton value="experienced" color="info">
+        <ToggleButton value="EXPERIENCED" color="info">
           Experienced
         </ToggleButton>
       </ToggleButtonGroup>
@@ -44,7 +63,11 @@ function StartingPage() {
           id="start-class-button"
           variant="contained"
           size="large"
-          disabled={chunksSetup.some((chunk) => !isPositiveInteger(chunk.time))}
+          disabled={
+            chunksSetup.length === 0 ||
+            chunksSetup.some((chunk) => !isPositiveInteger(chunk.time))
+          }
+          onClick={handleClickStartClass}
         >
           <span className="material-symbols-rounded">start</span>Start Class
         </Button>
