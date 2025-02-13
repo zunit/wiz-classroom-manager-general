@@ -7,6 +7,15 @@ class ActivityTypes {
   static FREESTYLE = "FREESTYLE";
   static RANDOM = "RANDOM";
 
+  static #activityNameMap = {
+    [ActivityTypes.INDIVIDUAL]: "Individual Activity",
+    [ActivityTypes.DESIGN]: "Design",
+    [ActivityTypes.CODE_READING]: "What Does This Code Do?",
+    [ActivityTypes.CODE_WRITING]: "Make This Happen!",
+    [ActivityTypes.FREESTYLE]: "Freestyle!",
+    [ActivityTypes.RANDOM]: "Random Group Activity",
+  };
+
   static isValidActivityType(activityType) {
     return [
       ActivityTypes.INDIVIDUAL,
@@ -36,6 +45,27 @@ class ActivityTypes {
     return [ActivityTypes.CODE_READING, ActivityTypes.CODE_WRITING].includes(
       activityType
     );
+  }
+
+  static getValidActivityTypes() {
+    return [
+      ActivityTypes.INDIVIDUAL,
+      ActivityTypes.DESIGN,
+      ActivityTypes.CODE_READING,
+      ActivityTypes.CODE_WRITING,
+      ActivityTypes.FREESTYLE,
+      ActivityTypes.RANDOM,
+    ];
+  }
+
+  static getActivityName(activityType) {
+    let activityName;
+    if (ActivityTypes.isValidActivityType(activityType)) {
+      activityName = ActivityTypes.#activityNameMap[activityType];
+    } else {
+      activityName = `Error: ${activityType}`;
+    }
+    return activityName;
   }
 }
 

@@ -37,24 +37,12 @@ function ActivityCard(props) {
 
   function getCardSubheader() {
     let cardSubheader;
-    switch (chunk.activityType) {
-      case ActivityTypes.DESIGN:
-        cardSubheader = "Design";
-        break;
-      case ActivityTypes.CODE_READING:
-        cardSubheader = "What Does This Code Do?";
-        break;
-      case ActivityTypes.CODE_WRITING:
-        cardSubheader = "Make This Happen!";
-        break;
-      case ActivityTypes.FREESTYLE:
-        cardSubheader = "Freestyle!";
-        break;
-      case ActivityTypes.RANDOM:
-        cardSubheader = "Random";
-        break;
-      default:
-        cardSubheader = `Error: ${chunk.activityType}`;
+    if (chunk.activityType === ActivityTypes.RANDOM) {
+      cardSubheader = "Random";
+    } else if (ActivityTypes.isGroupActivity(chunk.activityType)) {
+      cardSubheader = ActivityTypes.getActivityName(chunk.activityType);
+    } else {
+      cardSubheader = `Error: ${chunk.activityType}`;
     }
     return cardSubheader;
   }
@@ -65,7 +53,7 @@ function ActivityCard(props) {
 
   function handleChangeChunkActivity(newActivityType) {
     handleCloseMenu();
-    onChangeChunkActivity(index, newActivityType)
+    onChangeChunkActivity(index, newActivityType);
   }
 
   return (
@@ -97,10 +85,6 @@ function ActivityCard(props) {
         disableScrollLock
         MenuListProps={{ dense: true }}
         slotProps={{
-          root: {
-            position: "fixed",
-            "z-index": 100000,
-          },
           paper: {
             sx: {
               "& .MuiAvatar-root": {
@@ -112,42 +96,19 @@ function ActivityCard(props) {
         transformOrigin={{ horizontal: "center", vertical: "top" }}
         anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
       >
-        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.INDIVIDUAL)}>
-          <Avatar>
-            <ActivityIcon activityType={ActivityTypes.INDIVIDUAL} />
-          </Avatar>
-          Individual Activity
-        </MenuItem>
-        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.DESIGN)}>
-          <Avatar>
-            <ActivityIcon activityType={ActivityTypes.DESIGN} />
-          </Avatar>
-          Design
-        </MenuItem>
-        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.CODE_READING)}>
-          <Avatar>
-            <ActivityIcon activityType={ActivityTypes.CODE_READING} />
-          </Avatar>
-          What Does This Code Do?
-        </MenuItem>
-        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.CODE_WRITING)}>
-          <Avatar>
-            <ActivityIcon activityType={ActivityTypes.CODE_WRITING} />
-          </Avatar>
-          Make This Happen!
-        </MenuItem>
-        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.FREESTYLE)}>
-          <Avatar>
-            <ActivityIcon activityType={ActivityTypes.FREESTYLE} />
-          </Avatar>
-          Freestyle!
-        </MenuItem>
-        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.RANDOM)}>
-          <Avatar>
-            <ActivityIcon activityType={ActivityTypes.RANDOM} />
-          </Avatar>
-          Random Group Activity
-        </MenuItem>
+        {ActivityTypes.getValidActivityTypes().map((activityType, index) => {
+          return (
+            <MenuItem
+              key={index}
+              onClick={() => handleChangeChunkActivity(activityType)}
+            >
+              <Avatar>
+                <ActivityIcon activityType={activityType} />
+              </Avatar>
+              {ActivityTypes.getActivityName(activityType)}
+            </MenuItem>
+          );
+        })}
       </Menu>
 
       <div className="activity-card-duration">
@@ -168,7 +129,6 @@ function ActivityCard(props) {
         <span>minute{chunk.time === "1" ? "" : "s"}</span>
       </div>
 
-      {/* {isHovered ? ( */}
       <div className={`activity-card-delete${isHovered ? " hovered" : ""}`}>
         <Tooltip title="Delete activity">
           <Fab color="error" size="small" onClick={onDelete}>
@@ -176,7 +136,6 @@ function ActivityCard(props) {
           </Fab>
         </Tooltip>
       </div>
-      {/* ) : null} */}
     </div>
   );
 }
