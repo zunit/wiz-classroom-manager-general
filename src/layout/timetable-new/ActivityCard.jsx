@@ -72,7 +72,10 @@ function ActivityCard(props) {
       <Tooltip title="Change activity">
         <div
           className={`activity-card-change-activity`}
-          onClick={(event) => setMenuAnchorEl(event.currentTarget)}
+          onClick={(event) => {
+            setIsHovered(false);
+            setMenuAnchorEl(event.currentTarget);
+          }}
         >
           <ActivityIcon activityType={chunk.activityType} />
         </div>
@@ -82,8 +85,6 @@ function ActivityCard(props) {
         anchorEl={menuAnchorEl}
         open={Boolean(menuAnchorEl)}
         onClose={handleCloseMenu}
-        disableScrollLock
-        MenuListProps={{ dense: true }}
         slotProps={{
           paper: {
             sx: {
@@ -96,19 +97,21 @@ function ActivityCard(props) {
         transformOrigin={{ horizontal: "center", vertical: "top" }}
         anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
       >
-        {ActivityTypes.getValidActivityTypes().map((activityType, index) => {
-          return (
-            <MenuItem
-              key={index}
-              onClick={() => handleChangeChunkActivity(activityType)}
-            >
-              <Avatar>
-                <ActivityIcon activityType={activityType} />
-              </Avatar>
-              {ActivityTypes.getActivityName(activityType)}
-            </MenuItem>
-          );
-        })}
+        {ActivityTypes.getValidActivityTypes().map(
+          (activityType, activityIndex) => {
+            return (
+              <MenuItem
+                key={activityIndex}
+                onClick={() => handleChangeChunkActivity(activityType)}
+              >
+                <Avatar>
+                  <ActivityIcon activityType={activityType} />
+                </Avatar>
+                {ActivityTypes.getActivityName(activityType)}
+              </MenuItem>
+            );
+          }
+        )}
       </Menu>
 
       <div className="activity-card-duration">

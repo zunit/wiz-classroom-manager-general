@@ -13,5 +13,5 @@
   bottom: -1px;
   padding-bottom: 2em;
   background-color: var(--background-color);
-  z-index: 10000;
+  z-index: 1000;
 }
