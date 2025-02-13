@@ -29,8 +29,6 @@ function TimetableSettings(props) {
     );
   }
 
-  console.log(chunksSetup);
-
   const numOfChunks = React.useRef(chunksSetup.length);
   const [activeId, setActiveId] = React.useState(null);
 
@@ -49,6 +47,15 @@ function TimetableSettings(props) {
       replaceInArray(chunksSetup, index, {
         ...chunksSetup[index],
         time: newTime,
+      })
+    );
+  }
+
+  function handleChangeChunkActivity(index, newActivityType) {
+    setChunksSetup((chunksSetup) =>
+      replaceInArray(chunksSetup, index, {
+        ...chunksSetup[index],
+        activityType: newActivityType,
       })
     );
   }
@@ -101,7 +108,6 @@ function TimetableSettings(props) {
   }
 
   function getChunkDataFromId(id) {
-    // console.log(id);
     return chunksSetup.find((chunk) => {
       return chunk.id === parseInt(id.replace("activity-card-draggable-", ""));
     });
@@ -134,6 +140,7 @@ function TimetableSettings(props) {
                 id={`activity-card-draggable-${chunk.id}`}
                 index={index}
                 chunk={chunk}
+                onChangeChunkActivity={handleChangeChunkActivity}
                 onChangeChunkTime={handleChangeChunkTime}
                 onDelete={() => handleClickDeleteActivity(index)}
               />

@@ -14,11 +14,11 @@
 .activity-card-header {
   margin-top: 0;
   font-size: 2em;
-  margin-bottom: 0.2em;
+  margin-bottom: -0.2em;
 }
 
 .activity-card-subheader {
-  margin-bottom: 0.5em;
+  margin-bottom: 0em;
 }
 
 .activity-card-duration {
@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5em;
-  margin-top: 1em;
+  margin-top: 0em;
 }
 
 .activity-card-delete {
@@ -40,4 +40,16 @@
 
 .activity-card-delete.hovered {
   opacity: 1;
+}
+
+.activity-card-change-activity {
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.activity-card-change-activity:hover {
+  cursor: pointer;
+  background-color: #ffffff10;
 }

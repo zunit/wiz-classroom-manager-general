@@ -55,7 +55,6 @@ function ActivityIcon(props) {
       <img
         className={`activity-icon ${activityToIconPath[activityType].iconClassName}`}
         src={activityToIconPath[activityType].iconPath}
-        styl
         alt="Activity Icon"
       />
     </div>

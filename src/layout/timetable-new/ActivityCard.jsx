@@ -1,12 +1,19 @@
 import React from "react";
-import { Fab, TextField } from "@mui/material";
+import { Avatar, Fab, Menu, MenuItem, TextField, Tooltip } from "@mui/material";
 import { isPositiveInteger } from "@/utils/inputValidation";
 import ActivityTypes from "@/utils/ActivityTypes";
 import ActivityIcon from "@/layout/timetable-new/ActivityIcon";
 import "@/styles/activity-card.css";
 
 function ActivityCard(props) {
-  const { index, chunk, onChangeChunkTime, onDelete, ...invalidProps } = props;
+  const {
+    index,
+    chunk,
+    onChangeChunkActivity,
+    onChangeChunkTime,
+    onDelete,
+    ...invalidProps
+  } = props;
   for (let invalidProp in invalidProps) {
     console.warn(
       `ActivityCard component does not accept the "${invalidProp}" prop`
@@ -14,6 +21,7 @@ function ActivityCard(props) {
   }
 
   const [isHovered, setIsHovered] = React.useState(false);
+  const [menuAnchorEl, setMenuAnchorEl] = React.useState(null);
 
   function getCardHeader() {
     let cardHeader;
@@ -51,6 +59,15 @@ function ActivityCard(props) {
     return cardSubheader;
   }
 
+  function handleCloseMenu() {
+    setMenuAnchorEl(null);
+  }
+
+  function handleChangeChunkActivity(newActivityType) {
+    handleCloseMenu();
+    onChangeChunkActivity(index, newActivityType)
+  }
+
   return (
     <div
       className={`activity-card-container${isHovered ? " hovered" : ""}`}
@@ -63,7 +80,75 @@ function ActivityCard(props) {
           ? getCardSubheader()
           : null}
       </h2>
-      <ActivityIcon activityType={chunk.activityType} />
+
+      <Tooltip title="Change activity">
+        <div
+          className={`activity-card-change-activity`}
+          onClick={(event) => setMenuAnchorEl(event.currentTarget)}
+        >
+          <ActivityIcon activityType={chunk.activityType} />
+        </div>
+      </Tooltip>
+
+      <Menu
+        anchorEl={menuAnchorEl}
+        open={Boolean(menuAnchorEl)}
+        onClose={handleCloseMenu}
+        disableScrollLock
+        MenuListProps={{ dense: true }}
+        slotProps={{
+          root: {
+            position: "fixed",
+            "z-index": 100000,
+          },
+          paper: {
+            sx: {
+              "& .MuiAvatar-root": {
+                mr: 1.5,
+              },
+            },
+          },
+        }}
+        transformOrigin={{ horizontal: "center", vertical: "top" }}
+        anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
+      >
+        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.INDIVIDUAL)}>
+          <Avatar>
+            <ActivityIcon activityType={ActivityTypes.INDIVIDUAL} />
+          </Avatar>
+          Individual Activity
+        </MenuItem>
+        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.DESIGN)}>
+          <Avatar>
+            <ActivityIcon activityType={ActivityTypes.DESIGN} />
+          </Avatar>
+          Design
+        </MenuItem>
+        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.CODE_READING)}>
+          <Avatar>
+            <ActivityIcon activityType={ActivityTypes.CODE_READING} />
+          </Avatar>
+          What Does This Code Do?
+        </MenuItem>
+        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.CODE_WRITING)}>
+          <Avatar>
+            <ActivityIcon activityType={ActivityTypes.CODE_WRITING} />
+          </Avatar>
+          Make This Happen!
+        </MenuItem>
+        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.FREESTYLE)}>
+          <Avatar>
+            <ActivityIcon activityType={ActivityTypes.FREESTYLE} />
+          </Avatar>
+          Freestyle!
+        </MenuItem>
+        <MenuItem onClick={() => handleChangeChunkActivity(ActivityTypes.RANDOM)}>
+          <Avatar>
+            <ActivityIcon activityType={ActivityTypes.RANDOM} />
+          </Avatar>
+          Random Group Activity
+        </MenuItem>
+      </Menu>
 
       <div className="activity-card-duration">
         <span>Duration:</span>
@@ -84,11 +169,13 @@ function ActivityCard(props) {
       </div>
 
       {/* {isHovered ? ( */}
-        <div className={`activity-card-delete${isHovered ? " hovered" : ""}`}>
+      <div className={`activity-card-delete${isHovered ? " hovered" : ""}`}>
+        <Tooltip title="Delete activity">
           <Fab color="error" size="small" onClick={onDelete}>
             <span className="material-symbols-rounded">close</span>
           </Fab>
-        </div>
+        </Tooltip>
+      </div>
       {/* ) : null} */}
     </div>
   );

@@ -39,6 +39,7 @@
 .activity-icon {
   width: 65%;
   height: 65%;
+  object-fit: contain;
 }
 
 .activity-icon.null-icon {
