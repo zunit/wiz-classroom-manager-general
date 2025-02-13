@@ -4,6 +4,11 @@
   border-radius: 10px;
   padding: 1em;
   width: 400px;
+  transition: background-color 0.2s ease;
+}
+
+.activity-card-container.hovered {
+  background-color: #ffffff20;
 }
 
 .activity-card-header {
@@ -29,4 +34,10 @@
   top: 0;
   right: 0;
   transform: translate(50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.activity-card-delete.hovered {
+  opacity: 1;
 }

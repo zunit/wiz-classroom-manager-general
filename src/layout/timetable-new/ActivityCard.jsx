@@ -1,3 +1,4 @@
+import React from "react";
 import { Fab, TextField } from "@mui/material";
 import { isPositiveInteger } from "@/utils/inputValidation";
 import ActivityTypes from "@/utils/ActivityTypes";
@@ -11,6 +12,8 @@ function ActivityCard(props) {
       `ActivityCard component does not accept the "${invalidProp}" prop`
     );
   }
+
+  const [isHovered, setIsHovered] = React.useState(false);
 
   function getCardHeader() {
     let cardHeader;
@@ -49,7 +52,11 @@ function ActivityCard(props) {
   }
 
   return (
-    <div className="activity-card-container">
+    <div
+      className={`activity-card-container${isHovered ? " hovered" : ""}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <h1 className="activity-card-header">{getCardHeader()}</h1>
       <h2 className="activity-card-subheader">
         {ActivityTypes.isGroupActivity(chunk.activityType)
@@ -76,11 +83,13 @@ function ActivityCard(props) {
         <span>minute{chunk.time === "1" ? "" : "s"}</span>
       </div>
 
-      <div className="activity-card-delete">
-        <Fab color="error" size="small" onClick={onDelete}>
-          <span className="material-symbols-rounded">close</span>
-        </Fab>
-      </div>
+      {/* {isHovered ? ( */}
+        <div className={`activity-card-delete${isHovered ? " hovered" : ""}`}>
+          <Fab color="error" size="small" onClick={onDelete}>
+            <span className="material-symbols-rounded">close</span>
+          </Fab>
+        </div>
+      {/* ) : null} */}
     </div>
   );
 }
