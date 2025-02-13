@@ -15,6 +15,11 @@ import ActivityCard from "./ActivityCard";
 import ActivityCardDraggable from "./ActivityCardDraggable";
 import ActivityCardDroppable from "./ActivityCardDroppable";
 import "@/styles/timetable-settings.css";
+import {
+  removeFromArray,
+  reorderArray,
+  replaceInArray,
+} from "@/utils/arrayStateUtils";
 
 function TimetableSettings(props) {
   const { chunksSetup, setChunksSetup, ...invalidProps } = props;
@@ -24,7 +29,10 @@ function TimetableSettings(props) {
     );
   }
 
+  console.log(chunksSetup);
+
   const numOfChunks = React.useRef(chunksSetup.length);
+  const [activeId, setActiveId] = React.useState(null);
 
   React.useEffect(() => {
     if (chunksSetup.length > numOfChunks.current) {
@@ -37,11 +45,12 @@ function TimetableSettings(props) {
   }, [chunksSetup]);
 
   function handleChangeChunkTime(index, newTime) {
-    setChunksSetup([
-      ...chunksSetup.slice(0, index),
-      { ...chunksSetup[index], time: newTime },
-      ...chunksSetup.slice(index + 1),
-    ]);
+    setChunksSetup((chunksSetup) =>
+      replaceInArray(chunksSetup, index, {
+        ...chunksSetup[index],
+        time: newTime,
+      })
+    );
   }
 
   function handleClickAddActivity() {
@@ -55,20 +64,7 @@ function TimetableSettings(props) {
   }
 
   function handleClickDeleteActivity(index) {
-    setChunksSetup([
-      ...chunksSetup.slice(0, index),
-      ...chunksSetup.slice(index + 1),
-    ]);
-  }
-
-  const [activeId, setActiveId] = React.useState(null);
-
-  // Function to reorder the list when items are swapped
-  function reorder(list, fromIndex, toIndex) {
-    const updatedList = [...list];
-    const [movedItem] = updatedList.splice(fromIndex, 1);
-    updatedList.splice(toIndex, 0, movedItem);
-    return updatedList;
+    setChunksSetup((chunksSetup) => removeFromArray(chunksSetup, index));
   }
 
   // Drag event handler
@@ -86,10 +82,14 @@ function TimetableSettings(props) {
     const overIndex = parseInt(over.id.replace("activity-card-droppable-", ""));
 
     if (activeIndex > overIndex) {
-      const reorderedItems = reorder(chunksSetup, activeIndex, overIndex);
+      const reorderedItems = reorderArray(chunksSetup, activeIndex, overIndex);
       setChunksSetup(reorderedItems);
     } else if (activeIndex < overIndex - 1) {
-      const reorderedItems = reorder(chunksSetup, activeIndex, overIndex - 1);
+      const reorderedItems = reorderArray(
+        chunksSetup,
+        activeIndex,
+        overIndex - 1
+      );
       setChunksSetup(reorderedItems);
     }
 
@@ -101,7 +101,7 @@ function TimetableSettings(props) {
   }
 
   function getChunkDataFromId(id) {
-    console.log(id);
+    // console.log(id);
     return chunksSetup.find((chunk) => {
       return chunk.id === parseInt(id.replace("activity-card-draggable-", ""));
     });
