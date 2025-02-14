@@ -3,11 +3,14 @@
   position: fixed;
   left: -360px;
   top: 0;
-  width: calc(360px + 2rem);
+  width: 360px;
   height: 100vh;
   background-color: var(--background-color);
-  transition: left 0.3s ease;
   border-right: 1px solid #ffffff40;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  transition: left 0.3s ease;
+  overflow-y: scroll;
 }
 
 #timetable-drawer-container.open {
@@ -33,7 +36,6 @@
   left: calc(360px + 2rem);
 }
 
-
 #timetable-drawer-toggle-border {
   z-index: 99;
   position: fixed;
@@ -51,7 +53,6 @@
   left: calc(360px + 2rem);
 }
 
-
 #timetable-drawer-toggle {
   z-index: 101;
   background-color: var(--background-color);
@@ -68,4 +69,8 @@
 
 #timetable-drawer-toggle-chevron.open {
   transform: rotate(-180deg);
+}
+
+#timetable-drawer-bottom-spacer {
+  height: 3rem;
 }

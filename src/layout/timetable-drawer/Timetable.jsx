@@ -1,7 +1,7 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext";
 import ActivityCard from "./ActivityCard";
-import "@/styles/timetable-new.css"
+import "@/styles/timetable-new.css";
 
 function Timetable() {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
@@ -17,11 +17,19 @@ function Timetable() {
   }
 
   return (
-    <div id="timetable">
-      <h1>Timetable</h1>
-      {chunks.map((chunk, index) => {
-        return <ActivityCard chunk={chunk} progress={getProgressOfChunk(index)} />;
-      })}
+    <div id="timetable-drawer-content-container">
+      <h2 id="timetable-drawer-header">Timetable</h2>
+
+      <div id="timetable-drawer-card-list-container">
+        {chunks.map((chunk, index) => {
+          return (
+            <ActivityCard chunk={chunk} progress={getProgressOfChunk(index)} />
+          );
+        })}
+      </div>
+
+      {/* For styling only */}
+      <div id="timetable-drawer-bottom-spacer"></div>
     </div>
   );
 }

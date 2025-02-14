@@ -1,0 +1,36 @@
+.activity-card-container {
+  border: 1px solid #ffffff40;
+  border-radius: 10px;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.activity-card-header {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.75rem;
+}
+
+.activity-card-subheader {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.25rem;
+}
+
+.activity-card-container > .activity-icon-container {
+    width: 80px;
+    height: 80px;
+}
+
+.activity-card-container.current {
+  background-color: #ffffff20;
+}
+
+.activity-card-container.finished > * {
+  opacity: 0.5;
+}
