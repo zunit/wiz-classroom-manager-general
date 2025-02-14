@@ -36,7 +36,7 @@ function ActivityCard(props) {
         <h2 className="activity-card-subheader">{getCardSubheader()}</h2>
       ) : null}
       <ActivityIcon activityType={chunk.activityType} />
-      Duration: {Number(chunk.time) / 60} minutes
+      <div>Duration: {Number(chunk.time) / 60} minutes</div>
     </div>
   );
 }
