@@ -1,4 +1,4 @@
-.activity-card-container {
+.activity-card-editable-container {
   position: relative;
   border: 1px solid #ffffff40;
   border-radius: 10px;
@@ -7,21 +7,21 @@
   transition: background-color 0.2s ease;
 }
 
-.activity-card-container.hovered {
+.activity-card-editable-container.hovered {
   background-color: #ffffff20;
 }
 
-.activity-card-header {
+.activity-card-editable-header {
   margin-top: 0;
   font-size: 2em;
   margin-bottom: -0.2em;
 }
 
-.activity-card-subheader {
+.activity-card-editable-subheader {
   margin-bottom: 0em;
 }
 
-.activity-card-duration {
+.activity-card-editable-duration {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +29,7 @@
   margin-top: 0em;
 }
 
-.activity-card-delete {
+.activity-card-editable-delete {
   position: absolute;
   top: 0;
   right: 0;
@@ -38,18 +38,18 @@
   transition: opacity 0.2s ease;
 }
 
-.activity-card-delete.hovered {
+.activity-card-editable-delete.hovered {
   opacity: 1;
 }
 
-.activity-card-change-activity {
+.activity-card-editable-change-activity {
   border-radius: 10px;
   transition: background-color 0.2s ease;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-.activity-card-change-activity:hover {
+.activity-card-editable-change-activity:hover {
   cursor: pointer;
   background-color: #ffffff10;
 }

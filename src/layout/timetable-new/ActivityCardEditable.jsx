@@ -3,7 +3,7 @@ import { Avatar, Fab, Menu, MenuItem, TextField, Tooltip } from "@mui/material";
 import { isPositiveInteger } from "@/utils/inputValidation";
 import ActivityTypes from "@/utils/ActivityTypes";
 import ActivityIcon from "@/layout/timetable-new/ActivityIcon";
-import "@/styles/activity-card-edit.css";
+import "@/styles/activity-card-editable.css";
 
 function ActivityCard(props) {
   const {
@@ -58,12 +58,12 @@ function ActivityCard(props) {
 
   return (
     <div
-      className={`activity-card-container${isHovered ? " hovered" : ""}`}
+      className={`activity-card-editable-container${isHovered ? " hovered" : ""}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <h1 className="activity-card-header">{getCardHeader()}</h1>
-      <h2 className="activity-card-subheader">
+      <h1 className="activity-card-editable-header">{getCardHeader()}</h1>
+      <h2 className="activity-card-editable-subheader">
         {ActivityTypes.isGroupActivity(chunk.activityType)
           ? getCardSubheader()
           : null}
@@ -71,7 +71,7 @@ function ActivityCard(props) {
 
       <Tooltip title="Change activity">
         <div
-          className={`activity-card-change-activity`}
+          className={`activity-card-editable-change-activity`}
           onClick={(event) => {
             setIsHovered(false);
             setMenuAnchorEl(event.currentTarget);
@@ -114,7 +114,7 @@ function ActivityCard(props) {
         )}
       </Menu>
 
-      <div className="activity-card-duration">
+      <div className="activity-card-editable-duration">
         <span>Duration:</span>
         <TextField
           value={chunk.time}
@@ -132,7 +132,7 @@ function ActivityCard(props) {
         <span>minute{chunk.time === "1" ? "" : "s"}</span>
       </div>
 
-      <div className={`activity-card-delete${isHovered ? " hovered" : ""}`}>
+      <div className={`activity-card-editable-delete${isHovered ? " hovered" : ""}`}>
         <Tooltip title="Delete activity">
           <Fab color="error" size="small" onClick={onDelete}>
             <span className="material-symbols-rounded">close</span>

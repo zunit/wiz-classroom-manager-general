@@ -11,7 +11,7 @@ import {
 import { Button } from "@mui/material";
 import { TimeChunkModel } from "@/utils/TimeChunkModel";
 import ActivityTypes from "@/utils/ActivityTypes";
-import ActivityCard from "./ActivityCard";
+import ActivityCard from "./ActivityCardEditable";
 import ActivityCardDraggable from "./ActivityCardDraggable";
 import ActivityCardDroppable from "./ActivityCardDroppable";
 import "@/styles/timetable-settings.css";

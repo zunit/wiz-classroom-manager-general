@@ -1,5 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
-import ActivityCard from "@/layout/timetable-new/ActivityCard";
+import ActivityCard from "@/layout/timetable-new/ActivityCardEditable";
 import "@/styles/activity-card-dnd.css";
 
 // Draggable container with dnd-kit functionality
