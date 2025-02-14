@@ -3,7 +3,7 @@ import { Avatar, Fab, Menu, MenuItem, TextField, Tooltip } from "@mui/material";
 import { isPositiveInteger } from "@/utils/inputValidation";
 import ActivityTypes from "@/utils/ActivityTypes";
 import ActivityIcon from "@/layout/timetable-new/ActivityIcon";
-import "@/styles/activity-card.css";
+import "@/styles/activity-card-edit.css";
 
 function ActivityCard(props) {
   const {
