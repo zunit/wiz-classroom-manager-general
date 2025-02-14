@@ -1,6 +1,6 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext";
-import TimetableSettings from "@/layout/timetable-new/TimetableSettings";
+import TimetableSettings from "@/layout/timetable-settings/TimetableSettings";
 import { Difficulties, TimeChunkModel } from "@/utils/TimeChunkModel";
 import ActivityTypes from "@/utils/ActivityTypes";
 import { Button, ToggleButton, ToggleButtonGroup } from "@mui/material";

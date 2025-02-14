@@ -1,7 +1,7 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext";
 import ActivityCard from "./ActivityCard";
-import "@/styles/timetable-new.css";
+import "@/styles/timetable.css";
 
 function Timetable() {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);

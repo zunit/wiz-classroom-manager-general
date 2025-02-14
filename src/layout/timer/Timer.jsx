@@ -2,7 +2,7 @@ import React from "react";
 import { AppContext } from "@/context/AppContext";
 import formatTime from "@/utils/formatTime";
 import { Fab, Tooltip } from "@mui/material";
-import "@/styles/timer-new.css";
+import "@/styles/timer.css";
 
 function Timer() {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);

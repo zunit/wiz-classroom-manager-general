@@ -1,5 +1,5 @@
 import ActivityTypes from "@/utils/ActivityTypes";
-import ActivityIcon from "@/layout/timetable-new/ActivityIcon";
+import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import "@/styles/activity-card.css";
 
 function ActivityCard(props) {

@@ -1,6 +1,6 @@
 import React from "react";
 import TimetableDrawer from "@/layout/timetable-drawer/TimetableDrawer";
-import Timer from "@/layout/timer-new/Timer";
+import Timer from "@/layout/timer/Timer";
 import ActivityComponent from "@/activities/ActivityComponent";
 import "@/styles/activity-page.css"
 
