@@ -1,0 +1,37 @@
+#activity-preview-container {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 280px;
+  background-color: var(--background-color);
+  border: 1px solid #ffffff40;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#activity-preview-container.hide {
+  transform: translateX(calc(100% + 4rem));
+}
+
+#activity-preview-header {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+#activity-preview-activity-title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+#activity-preview-icon > .activity-icon-container {
+  width: 60px;
+  height: 60px;
+}
+
+#activity-preview-start-next {
+  margin-top: 0.5rem;
+}

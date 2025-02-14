@@ -2,6 +2,7 @@ import React from "react";
 import TimetableDrawer from "@/layout/timetable-drawer/TimetableDrawer";
 import Timer from "@/layout/timer/Timer";
 import ActivityComponent from "@/activities/ActivityComponent";
+import ActivityPreview from "@/layout/activity-preview/ActivityPreview";
 import "@/styles/activity-page.css"
 
 function ActivityPage() {
@@ -10,6 +11,7 @@ function ActivityPage() {
   return (
     <>
       <TimetableDrawer open={isDrawerOpen} setOpen={setIsDrawerOpen} />
+
       <div
         id="activity-page-container"
         className={isDrawerOpen ? "open" : ""}
@@ -17,6 +19,8 @@ function ActivityPage() {
         <Timer />
         <ActivityComponent />
       </div>
+      
+      <ActivityPreview isDrawerOpen={isDrawerOpen} />
     </>
   );
 }
