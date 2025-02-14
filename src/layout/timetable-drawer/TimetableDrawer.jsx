@@ -1,5 +1,5 @@
-import { Fab } from "@mui/material";
 import Timetable from "@/layout/timetable-drawer/Timetable";
+import { Fab, Tooltip } from "@mui/material";
 import "@/styles/timetable-drawer.css";
 
 function TimetableDrawer(props) {
@@ -17,18 +17,20 @@ function TimetableDrawer(props) {
           id="timetable-drawer-toggle-padding"
           className={open ? "open" : ""}
         >
-          <Fab
-            id="timetable-drawer-toggle"
-            className={open ? "open" : ""}
-            onClick={handleToggleDrawer}
-          >
-            <span
-              id="timetable-drawer-toggle-chevron"
-              className={`material-symbols-rounded${open ? " open" : ""}`}
+          <Tooltip title={open ? "Hide timetable" : "Show timetable"}>
+            <Fab
+              id="timetable-drawer-toggle"
+              className={open ? "open" : ""}
+              onClick={handleToggleDrawer}
             >
-              chevron_right
-            </span>
-          </Fab>
+              <span
+                id="timetable-drawer-toggle-chevron"
+                className={`material-symbols-rounded${open ? " open" : ""}`}
+              >
+                chevron_right
+              </span>
+            </Fab>
+          </Tooltip>
         </div>
       </div>
 
