@@ -1,8 +1,8 @@
-#timer-container {
+/* #timer-container {
   position: fixed;
   top: 0;
   left: 351px;
-  /* right: 0; */
+  right: 0;
   min-width: 600px;
   width: calc(100vw - 351px);
   height: 200px;
@@ -22,4 +22,4 @@
 #timer-controls-container {
   display: flex;
   gap: 10px;
-}
+} */

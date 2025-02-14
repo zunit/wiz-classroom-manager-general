@@ -1,0 +1,48 @@
+import { Drawer, Fab, useTheme } from "@mui/material";
+import Timetable from "@/layout/timetable-drawer/Timetable";
+import "@/styles/timetable-drawer.css";
+
+function TimetableDrawer(props) {
+  const { open, setOpen } = props;
+
+  const theme = useTheme();
+
+  function handleToggleDrawer() {
+    setOpen((open) => !open);
+  }
+
+  const drawerWidth = 360;
+
+  return (
+    <>
+      <div id="timetable-drawer-container" className={open ? "open" : ""}>
+        <Timetable />
+        <div
+          id="timetable-drawer-toggle-padding"
+          className={open ? "open" : ""}
+        >
+          <Fab
+            id="timetable-drawer-toggle"
+            className={open ? "open" : ""}
+            onClick={handleToggleDrawer}
+          >
+            <span
+              id="timetable-drawer-toggle-chevron"
+              className={`material-symbols-rounded${open ? " open" : ""}`}
+            >
+              chevron_right
+            </span>
+          </Fab>
+        </div>
+      </div>
+
+      {/* For styling only */}
+      <div
+        id="timetable-drawer-toggle-border"
+        className={open ? "open" : ""}
+      ></div>
+    </>
+  );
+}
+
+export default TimetableDrawer;

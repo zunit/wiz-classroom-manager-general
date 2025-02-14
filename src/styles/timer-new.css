@@ -1,0 +1,32 @@
+#timer-container {
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  left: 0;
+  min-width: 300px;
+  width: 100%;
+  justify-self: center;
+  background-color: var(--background-color);
+  padding-top: 1.5rem;
+  overflow-x: scroll;
+}
+
+#timer-display {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+#timer-controls-container {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-self: center;
+  height: auto;
+}
+
+#timer-bottom-border {
+  width: calc(100% - 10rem);
+  justify-self: center;
+  border-bottom: 1px solid #ffffff40;
+  margin-top: 1.5rem;
+}

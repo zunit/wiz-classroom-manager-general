@@ -1,0 +1,13 @@
+#activity-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100vw - 2rem);
+  height: 100vh;
+  overflow-y: auto;
+  transition: width 0.3s ease;
+}
+
+#activity-container.open {
+  width: calc(100vw - 360px - 2rem);
+}
