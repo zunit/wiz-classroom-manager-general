@@ -1,4 +1,4 @@
-#activity-container {
+#activity-page-container {
   position: fixed;
   top: 0;
   right: 0;
@@ -8,6 +8,6 @@
   transition: width 0.3s ease;
 }
 
-#activity-container.open {
+#activity-page-container.open {
   width: calc(100vw - 360px - 2rem);
 }
