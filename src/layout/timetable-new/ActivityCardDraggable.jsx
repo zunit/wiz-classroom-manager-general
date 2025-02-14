@@ -1,5 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
-import ActivityCard from "@/layout/timetable-new/ActivityCardEditable";
+import ActivityCardEditable from "@/layout/timetable-new/ActivityCardEditable";
 import "@/styles/activity-card-dnd.css";
 
 // Draggable container with dnd-kit functionality
@@ -33,7 +33,7 @@ function ActivityCardDraggable(props) {
       {...attributes}
       {...listeners}
     >
-      <ActivityCard
+      <ActivityCardEditable
         index={index}
         chunk={chunk}
         onChangeChunkTime={onChangeChunkTime}

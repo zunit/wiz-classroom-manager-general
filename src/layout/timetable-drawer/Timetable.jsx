@@ -1,11 +1,10 @@
-import { AppContext } from "@/context/AppContext";
 import React from "react";
+import { AppContext } from "@/context/AppContext";
 import ActivityCard from "./ActivityCard";
 import "@/styles/timetable-new.css"
 
 function Timetable() {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
-  console.log(chunks);
 
   function getProgressOfChunk(index) {
     if (index < currentChunkIndex) {

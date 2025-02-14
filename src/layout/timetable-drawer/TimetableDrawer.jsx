@@ -1,17 +1,13 @@
-import { Drawer, Fab, useTheme } from "@mui/material";
+import { Fab } from "@mui/material";
 import Timetable from "@/layout/timetable-drawer/Timetable";
 import "@/styles/timetable-drawer.css";
 
 function TimetableDrawer(props) {
   const { open, setOpen } = props;
 
-  const theme = useTheme();
-
   function handleToggleDrawer() {
     setOpen((open) => !open);
   }
-
-  const drawerWidth = 360;
 
   return (
     <>
