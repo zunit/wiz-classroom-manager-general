@@ -1,3 +1,15 @@
+@keyframes current-activity-background-pulse {
+  0% {
+    background-color: #ffffff18;
+  }
+  50% {
+    background-color: #ffffff30;
+  }
+  100% {
+    background-color: #ffffff18;
+  }
+}
+
 .activity-card-container {
   border: 1px solid #ffffff40;
   border-radius: 10px;
@@ -23,12 +35,12 @@
 }
 
 .activity-card-container > .activity-icon-container {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 .activity-card-container.current {
-  background-color: #ffffff20;
+  animation: current-activity-background-pulse 1.5s ease-in-out infinite;
 }
 
 .activity-card-container.finished > * {
