@@ -1,11 +1,8 @@
 import React from "react";
+import { ThemeProvider, createTheme } from "@mui/material";
 import { AppContext } from "@/context/AppContext";
 import StartingPage from "@/pages/StartingPage";
 import ActivityPage from "@/pages/ActivityPage";
-// import Timetable from "@/layout/timetable/Timetable.jsx";
-// import Timer from "@/layout/timer/Timer.jsx";
-// import ActivityComponent from "@/activities/ActivityComponent";
-import { ThemeProvider, createTheme } from "@mui/material";
 import "./App.css";
 
 function App() {
@@ -23,16 +20,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {!isClassStarted ? (
-        <StartingPage />
-      ) : (
-        // <>
-        //   <Timetable />
-        //   <ActivityComponent />
-        //   <Timer />
-        // </>
-        <ActivityPage />
-      )}
+      {!isClassStarted ? <StartingPage /> : <ActivityPage />}
     </ThemeProvider>
   );
 }
