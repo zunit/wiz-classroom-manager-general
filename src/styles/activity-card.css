@@ -45,8 +45,8 @@
 .activity-card-change-activity {
   border-radius: 10px;
   transition: background-color 0.2s ease;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .activity-card-change-activity:hover {
