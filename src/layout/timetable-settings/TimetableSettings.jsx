@@ -64,7 +64,7 @@ function TimetableSettings(props) {
     if (chunksSetup.length % 2 == 0) {
       newChunk = new TimeChunkModel("10", ActivityTypes.RANDOM);
     } else {
-      newChunk = new TimeChunkModel("10", ActivityTypes.INDIVIDUAL);
+      newChunk = new TimeChunkModel("20", ActivityTypes.INDIVIDUAL);
     }
     setChunksSetup([...chunksSetup, newChunk]);
   }

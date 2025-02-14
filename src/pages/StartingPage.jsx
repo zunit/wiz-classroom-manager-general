@@ -12,9 +12,9 @@ function StartingPage() {
   const [difficulty, setDifficulty] = React.useState("EXPERIENCED");
   const [chunksSetup, setChunksSetup] = React.useState([
     new TimeChunkModel("10", ActivityTypes.RANDOM),
-    new TimeChunkModel("10", ActivityTypes.INDIVIDUAL),
+    new TimeChunkModel("20", ActivityTypes.INDIVIDUAL),
     new TimeChunkModel("10", ActivityTypes.RANDOM),
-    new TimeChunkModel("10", ActivityTypes.INDIVIDUAL),
+    new TimeChunkModel("20", ActivityTypes.INDIVIDUAL),
   ]);
 
   function changeDifficulty(event, newDifficulty) {
