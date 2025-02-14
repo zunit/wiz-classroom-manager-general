@@ -1,13 +1,14 @@
 #activity-page-container {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 2rem;
   width: calc(100vw - 2rem);
   height: 100vh;
   overflow-y: auto;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
 #activity-page-container.open {
+  left: calc(360px + 2rem);
   width: calc(100vw - 360px - 2rem);
 }
