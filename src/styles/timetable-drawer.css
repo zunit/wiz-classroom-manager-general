@@ -11,6 +11,9 @@
   padding-right: 1rem;
   transition: left 0.3s ease;
   overflow-y: scroll;
+
+  /* Moves scrollbar to the left to not interfere with the drawer toggle */
+  direction: rtl;
 }
 
 #timetable-drawer-container.open {
