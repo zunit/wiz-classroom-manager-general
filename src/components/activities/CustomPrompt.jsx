@@ -1,11 +1,8 @@
 import React from "react";
-// import TextField from "@/components/ui/TextField";
 import TextField from "@mui/material/TextField";
 
-import "@/styles/text-field.css";
-
 function CustomPrompt() {
-  // const [text, setText] = React.useState("");
+  const [text, setText] = React.useState("");
 
   return (
     <div style={{ marginTop: "2em", marginBottom: "2em" }}>
@@ -15,7 +12,7 @@ function CustomPrompt() {
         placeholder="Enter prompt"
         multiline
         rows={2}
-        // value={text}
+        value={text}
         onChange={(event) => setText(event.target.value)}
       />
     </div>
