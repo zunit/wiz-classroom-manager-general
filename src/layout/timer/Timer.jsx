@@ -42,6 +42,13 @@ function Timer() {
     return () => clearInterval(interval);
   }, [isTimerRunning, timeLeft]);
 
+  // Reset timer when activity changes
+  React.useEffect(() => {
+    setTimeLeft(chunks[currentChunkIndex].time);
+    setIsTimerRunning(false);
+    setIsActivityEnded(false);
+  }, [currentChunkIndex]);
+
   return (
     <>
       <div id="timer-container">
@@ -79,6 +86,8 @@ function Timer() {
             </Fab>
           </Tooltip>
         </div>
+
+        {/* For styling only */}
         <div id="timer-bottom-border"></div>
       </div>
     </>
