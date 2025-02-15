@@ -58,17 +58,15 @@ function ActivityCard(props) {
 
   return (
     <div
-      className={`activity-card-editable-container${isHovered ? " hovered" : ""}`}
+      className={`activity-card-editable-container${
+        isHovered ? " hovered" : ""
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <h1 className="activity-card-editable-header">{getCardHeader()}</h1>
-      <h2 className="activity-card-editable-subheader">
-        {ActivityTypes.isGroupActivity(chunk.activityType)
-          ? getCardSubheader()
-          : null}
-      </h2>
-
+      <div className="activity-card-editable-index">
+        <p>{index + 1}</p>
+      </div>
       <Tooltip title="Change activity">
         <div
           className={`activity-card-editable-change-activity`}
@@ -114,25 +112,37 @@ function ActivityCard(props) {
         )}
       </Menu>
 
-      <div className="activity-card-editable-duration">
-        <span>Duration:</span>
-        <TextField
-          value={chunk.time}
-          variant="standard"
-          size="small"
-          sx={{ width: "50px" }}
-          slotProps={{
-            htmlInput: {
-              sx: { textAlign: "center" },
-            },
-          }}
-          error={!isPositiveInteger(chunk.time)}
-          onChange={(event) => onChangeChunkTime(index, event.target.value)}
-        />
-        <span>minute{chunk.time === "1" ? "" : "s"}</span>
+      <div className="activity-card-editable-description">
+        <h1 className="activity-card-editable-header">{getCardHeader()}</h1>
+        <h2 className="activity-card-editable-subheader">
+          {ActivityTypes.isGroupActivity(chunk.activityType)
+            ? getCardSubheader()
+            : null}
+        </h2>
+        <div className="activity-card-editable-duration">
+          <span>Duration:</span>
+          <TextField
+            value={chunk.time}
+            variant="standard"
+            size="small"
+            sx={{ width: "50px" }}
+            slotProps={{
+              htmlInput: {
+                sx: { textAlign: "center" },
+              },
+            }}
+            error={!isPositiveInteger(chunk.time)}
+            onChange={(event) => onChangeChunkTime(index, event.target.value)}
+          />
+          <span>minute{chunk.time === "1" ? "" : "s"}</span>
+        </div>
       </div>
 
-      <div className={`activity-card-editable-delete${isHovered ? " hovered" : ""}`}>
+      <div
+        className={`activity-card-editable-delete${
+          isHovered ? " hovered" : ""
+        }`}
+      >
         <Tooltip title="Delete activity">
           <Fab color="error" size="small" onClick={onDelete}>
             <span className="material-symbols-rounded">close</span>
