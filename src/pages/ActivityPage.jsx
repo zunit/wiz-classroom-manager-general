@@ -64,6 +64,7 @@ function ActivityPage() {
    * Triggered by the ActivityEndDialog component.
    */
   function handleTimerExtension() {
+    setIsActivityStarted(false);
     setIsActivityEnded(false);
     setTimerExtensionTrigger(
       (timerExtensionTrigger) => timerExtensionTrigger + 1
