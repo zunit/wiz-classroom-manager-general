@@ -4,16 +4,24 @@ import formatTime from "@/utils/formatTime";
 import { Fab, Tooltip } from "@mui/material";
 import "@/styles/timer.css";
 
-function Timer() {
+function Timer(props) {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
+
+  const {
+    isActivityStarted,
+    setIsActivityStarted,
+    isActivityEnded,
+    setIsActivityEnded,
+    timerExtensionTrigger,
+  } = props;
 
   const [timeLeft, setTimeLeft] = React.useState(
     chunks[currentChunkIndex].time
   );
   const [isTimerRunning, setIsTimerRunning] = React.useState(false);
-  const [isActivityEnded, setIsActivityEnded] = React.useState(false);
 
   function handleClickTimerToggle() {
+    setIsActivityStarted(true);
     setIsTimerRunning((isTimerRunning) => !isTimerRunning);
   }
 
@@ -27,6 +35,10 @@ function Timer() {
 
   // Timer functionality
   React.useEffect(() => {
+    if (!isActivityStarted) {
+      return;
+    }
+
     let interval;
     if (isTimerRunning && timeLeft > 0) {
       interval = setInterval(() => {
@@ -46,8 +58,12 @@ function Timer() {
   React.useEffect(() => {
     setTimeLeft(chunks[currentChunkIndex].time);
     setIsTimerRunning(false);
-    setIsActivityEnded(false);
   }, [currentChunkIndex]);
+
+  // Timer extension triggered by the ActivityEndDialog component
+  React.useEffect(() => {
+    setTimeLeft(60);
+  }, [timerExtensionTrigger])
 
   return (
     <>
