@@ -121,6 +121,7 @@ function Confetti(props) {
 
     return () => {
       clearInterval(intervalId);
+      myConfetti.reset();
     };
   }, [runs, frequency, isConfettiActive]);
 

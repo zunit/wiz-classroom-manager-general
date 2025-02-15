@@ -6,6 +6,7 @@ import ActivityComponent from "@/activities/ActivityComponent";
 import ActivityPreview from "@/layout/activity-preview/ActivityPreview";
 import ActivityPreviewDialog from "@/layout/activity-preview/ActivityPreviewDialog";
 import ActivityEndDialog from "@/layout/activity-page/ActivityEndDialog";
+import Confetti from "@/components/confetti/Confetti";
 import "@/styles/activity-page.css";
 
 function ActivityPage() {
@@ -129,6 +130,7 @@ function ActivityPage() {
         onConfirm={handleStartNextActivity}
         onExtendTimer={handleTimerExtension}
       />
+      {isActivityEnded ? <Confetti particleCount={100} runs={1} /> : null}
     </>
   );
 }
