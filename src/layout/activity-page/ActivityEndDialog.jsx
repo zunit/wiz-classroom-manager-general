@@ -9,9 +9,9 @@ import {
 } from "@mui/material";
 
 function ActivityEndDialog(props) {
-  const { open, onClose } = props;
+  const { open, onConfirm, onExtendTimer } = props;
   return (
-    <Dialog maxWidth="xs" fullWidth open={open} onClose={onClose}>
+    <Dialog open={open} maxWidth="xs" fullWidth>
       <DialogTitle>You've finished the activity!</DialogTitle>
       <DialogContent>
         <DialogContentText>
@@ -19,17 +19,11 @@ function ActivityEndDialog(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button
-          variant="contained"
-          onClick={(event) => onClose(event, "goToNextActivity")}
-        >
+        <Button variant="contained" onClick={onConfirm}>
           <span className="material-symbols-rounded">check</span>Yes
         </Button>
         <Tooltip title="Extend the timer of the current activity by another minute">
-          <Button
-            variant="outlined"
-            onClick={(event) => onClose(event, "extendTime")}
-          >
+          <Button variant="outlined" onClick={onExtendTimer}>
             <span className="material-symbols-rounded">timer</span>Wait!
           </Button>
         </Tooltip>

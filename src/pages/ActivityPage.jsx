@@ -22,30 +22,28 @@ function ActivityPage() {
    */
   const [timerExtensionTrigger, setTimerExtensionTrigger] = React.useState(0);
 
+  // Resets some states when moving to a different activity
   React.useEffect(() => {
     setIsActivityStarted(false);
     setIsActivityEnded(false);
   }, [currentChunkIndex]);
 
   /**
-   * Handles the onClose event of the ActivityEndDialog component.
-   * 
-   * @param {Event} event Currently not used.
-   * @param {String} reason The reason for closing the dialog. Used to determine what to do next.
+   * Starts the next activity. Triggered by the ActivityEndDialog component.
    */
-  function handleCloseActivityEndDialog(event, reason) {
-    if (["escapeKeyDown", "backdropClick"].includes(reason)) {
-      return;
-    } else if (reason === "extendTime") {
-      setIsActivityEnded(false);
-      setTimerExtensionTrigger((timerExtensionTrigger) => timerExtensionTrigger + 1);
-    } else if (reason === "goToNextActivity") {
-      setCurrentChunkIndex((currentChunkIndex) => currentChunkIndex + 1);
-    } else {
-      console.warn(
-        `Given unknown reason for closing the activity end dialog (was given "${reason}")`
-      );
-    }
+  function handleStartNextActivity() {
+    setCurrentChunkIndex((currentChunkIndex) => currentChunkIndex + 1);
+  }
+
+  /**
+   * Extends the timer of the current activity by an extra minute.
+   * Triggered by the ActivityEndDialog component.
+   */
+  function handleTimerExtension() {
+    setIsActivityEnded(false);
+    setTimerExtensionTrigger(
+      (timerExtensionTrigger) => timerExtensionTrigger + 1
+    );
   }
 
   return (
@@ -68,7 +66,8 @@ function ActivityPage() {
       <ActivityPreview isDrawerOpen={isDrawerOpen} />
       <ActivityEndDialog
         open={isActivityEnded}
-        onClose={handleCloseActivityEndDialog}
+        onConfirm={handleStartNextActivity}
+        onExtendTimer={handleTimerExtension}
       />
     </>
   );
