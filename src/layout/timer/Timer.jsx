@@ -1,7 +1,7 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext";
-import formatTime from "@/utils/formatTime";
 import { Fab, Tooltip } from "@mui/material";
+import formatTime from "@/utils/formatTime";
 import "@/styles/timer.css";
 
 function Timer(props) {
@@ -9,9 +9,9 @@ function Timer(props) {
 
   const {
     isActivityStarted,
-    setIsActivityStarted,
     isActivityEnded,
-    setIsActivityEnded,
+    onTimerStart,
+    onTimerEnd,
     timerExtensionTrigger,
   } = props;
 
@@ -21,7 +21,9 @@ function Timer(props) {
   const [isTimerRunning, setIsTimerRunning] = React.useState(false);
 
   function handleClickTimerToggle() {
-    setIsActivityStarted(true);
+    if (!isActivityStarted) {
+      onTimerStart();
+    }
     setIsTimerRunning((isTimerRunning) => !isTimerRunning);
   }
 
@@ -35,6 +37,7 @@ function Timer(props) {
 
   // Timer functionality
   React.useEffect(() => {
+    // Prevent timer from starting when the component first mounts
     if (!isActivityStarted) {
       return;
     }
@@ -46,7 +49,7 @@ function Timer(props) {
       }, 1000);
     } else {
       if (timeLeft === 0) {
-        setIsActivityEnded(true);
+        onTimerEnd();
       }
       clearInterval(interval);
       setIsTimerRunning(false);
@@ -67,7 +70,7 @@ function Timer(props) {
       return;
     }
     setTimeLeft(60);
-  }, [timerExtensionTrigger])
+  }, [timerExtensionTrigger]);
 
   return (
     <>
