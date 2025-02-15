@@ -69,7 +69,7 @@ function StartingPage() {
           }
           onClick={handleClickStartClass}
         >
-          <span className="material-symbols-rounded">start</span>Start Class
+          <span className="material-symbols-rounded">login</span>Start Class
         </Button>
       </footer>
     </>

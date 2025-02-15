@@ -23,7 +23,11 @@ function Timetable() {
       <div id="timetable-drawer-card-list-container">
         {chunks.map((chunk, index) => {
           return (
-            <ActivityCard chunk={chunk} progress={getProgressOfChunk(index)} />
+            <ActivityCard
+              key={index}
+              chunk={chunk}
+              progress={getProgressOfChunk(index)}
+            />
           );
         })}
       </div>
