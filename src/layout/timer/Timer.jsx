@@ -62,6 +62,10 @@ function Timer(props) {
 
   // Timer extension triggered by the ActivityEndDialog component
   React.useEffect(() => {
+    // Prevent this from triggering when the component first mounts
+    if (timerExtensionTrigger === 0) {
+      return;
+    }
     setTimeLeft(60);
   }, [timerExtensionTrigger])
 
