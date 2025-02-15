@@ -10,7 +10,7 @@ function ActivityIcon(props) {
   }
 
   let activityTypeNormalized;
-  if (!ActivityTypes.isValidActivityType(activityType)) {
+  if (!ActivityTypes.isValidActivityType(activityType) && activityType !== "END") {
     console.warn(
       `ActivityIcon component received invalid activity type (was given ${activityType})`
     );
@@ -45,6 +45,10 @@ function ActivityIcon(props) {
     [ActivityTypes.RANDOM]: {
       iconPath: "/dice.png",
       iconClassName: "random-icon",
+    },
+    "END": {
+      iconPath: "/checkered-flag.png",
+      iconClassName: "end-icon",
     },
   };
 

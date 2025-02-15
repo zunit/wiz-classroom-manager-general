@@ -36,6 +36,10 @@
   background-color: #f29b7e;
 }
 
+.activity-icon-container.end-icon {
+  background-color: #c483a0;
+}
+
 .activity-icon {
   width: 65%;
   height: 65%;
