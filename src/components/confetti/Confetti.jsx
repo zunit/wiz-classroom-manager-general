@@ -27,17 +27,17 @@ function Confetti(props) {
     const dpr = window.devicePixelRatio || 1; // Get device pixel ratio
     const width = 2400;
     const height = 1350;
-
+    
+    // Apply scaling to the context to prevent pixelation
+    ctx.scale(dpr, dpr);
+    
+    // Scale the canvas for higher resolution displays
+    canvas.width = width;
+    canvas.height = height;
+    
     // Set canvas width and height in CSS
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
-
-    // Scale the canvas for higher resolution displays
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-
-    // Apply scaling to the context to prevent pixelation
-    ctx.scale(dpr, dpr);
   }
 
   /**
