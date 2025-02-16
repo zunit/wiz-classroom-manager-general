@@ -3,8 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --background-color: #242424;
-  --foreground-color: rgba(255, 255, 255, 0.87);
+  /* --background-color: #242424; */
+  /* --foreground-color: rgba(255, 255, 255, 0.87); */
+  --background-color: var(--mui-palette-background-default);
+  --hover-color: var(--mui-palette-action-hover);
+
+  --border-color: var(--mui-palette-border-default);
+
+  --foreground-color: var(--mui-palette-text-primary);
 
   --primary-color: #6f4ff9;
   --primary-hover-color: #8c72fa;

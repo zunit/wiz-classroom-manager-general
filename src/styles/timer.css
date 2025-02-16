@@ -27,6 +27,6 @@
 #timer-bottom-border {
   width: calc(100% - 10rem);
   justify-self: center;
-  border-bottom: 1px solid #ffffff40;
+  border-bottom: 1px solid var(--border-color);
   margin-top: 1.5rem;
 }

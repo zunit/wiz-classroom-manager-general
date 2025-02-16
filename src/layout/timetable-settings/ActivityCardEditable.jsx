@@ -58,9 +58,7 @@ function ActivityCard(props) {
 
   return (
     <div
-      className={`activity-card-editable-container${
-        isHovered ? " hovered" : ""
-      }`}
+      className="activity-card-editable-container"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

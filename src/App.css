@@ -1,7 +1,13 @@
 #root {
-  /* max-width: 1280px; */
   margin: 0 auto; 
-  /* padding-left: 2rem; */
-  /* padding-right: 2rem; */
   text-align: center;
+}
+
+#toggle-theme {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background-color: var(--mui-palette-background-inverse);
+  color: var(--mui-palette-text-inverse);
 }

@@ -5,7 +5,7 @@
 #starting-page-footer-hr {
   margin-bottom: 2rem;
   border: none;
-  border-top: 1px solid #ffffff40;
+  border-top: 1px solid var(--border-color);
 }
 
 #starting-page-footer {
