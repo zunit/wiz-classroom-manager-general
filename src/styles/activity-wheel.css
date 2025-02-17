@@ -1,0 +1,7 @@
+.activity-wheel-container {
+  width: 450px;
+  height: 450px;
+  margin: 2rem;
+  border-radius: 9999px;
+  justify-self: center;
+}

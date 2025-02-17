@@ -16,37 +16,6 @@ class ActivityTypes {
     [ActivityTypes.RANDOM]: "Random Group Activity",
   };
 
-  static isValidActivityType(activityType) {
-    return [
-      ActivityTypes.INDIVIDUAL,
-      ActivityTypes.DESIGN,
-      ActivityTypes.CODE_READING,
-      ActivityTypes.CODE_WRITING,
-      ActivityTypes.FREESTYLE,
-      ActivityTypes.RANDOM,
-    ].includes(activityType);
-  }
-
-  static isIndividualActivity(activityType) {
-    return activityType === ActivityTypes.INDIVIDUAL;
-  }
-
-  static isGroupActivity(activityType) {
-    return [
-      ActivityTypes.DESIGN,
-      ActivityTypes.CODE_READING,
-      ActivityTypes.CODE_WRITING,
-      ActivityTypes.FREESTYLE,
-      ActivityTypes.RANDOM,
-    ].includes(activityType);
-  }
-
-  static hasDifficulties(activityType) {
-    return [ActivityTypes.CODE_READING, ActivityTypes.CODE_WRITING].includes(
-      activityType
-    );
-  }
-
   static getValidActivityTypes() {
     return [
       ActivityTypes.INDIVIDUAL,
@@ -56,6 +25,34 @@ class ActivityTypes {
       ActivityTypes.FREESTYLE,
       ActivityTypes.RANDOM,
     ];
+  }
+  
+  static getGroupActivityTypes() {
+    return [
+      ActivityTypes.DESIGN,
+      ActivityTypes.CODE_READING,
+      ActivityTypes.CODE_WRITING,
+      ActivityTypes.FREESTYLE,
+      ActivityTypes.RANDOM,
+    ]
+  }
+
+  static isValidActivityType(activityType) {
+    return ActivityTypes.getValidActivityTypes().includes(activityType);
+  }
+
+  static isIndividualActivity(activityType) {
+    return activityType === ActivityTypes.INDIVIDUAL;
+  }
+
+  static isGroupActivity(activityType) {
+    return ActivityTypes.getGroupActivityTypes().includes(activityType);
+  }
+
+  static hasDifficulties(activityType) {
+    return [ActivityTypes.CODE_READING, ActivityTypes.CODE_WRITING].includes(
+      activityType
+    );
   }
 
   static getActivityName(activityType) {
