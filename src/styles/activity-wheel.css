@@ -1,7 +1,28 @@
 .activity-wheel-container {
+  position: relative;
   width: 450px;
   height: 450px;
   margin: 2rem;
   border-radius: 9999px;
   justify-self: center;
+}
+
+.activity-wheel {
+  width: 100%;
+  height: 100%;
+}
+
+.activity-wheel-pointer {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 8rem;
+  object-fit: contain;
+  transform: translate(70%, -48%) scaleX(0.75) scale(0.7);
+  z-index: 1;
+  padding: 0;
+}
+
+.activity-wheel-pointer > svg > path {
+  fill: var(--mui-palette-error-main);
 }
