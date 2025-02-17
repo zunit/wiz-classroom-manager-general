@@ -40,7 +40,7 @@ function StartingPage() {
 
   return (
     <>
-      <h1>Class Setup:</h1>
+      <h1>Class Setup</h1>
       <ToggleButtonGroup
         value={difficulty}
         exclusive

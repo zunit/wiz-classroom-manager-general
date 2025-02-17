@@ -1,6 +1,6 @@
 .timetable-settings-header {
   margin-top: 1.5rem;
-  margin-bottom: calc(-1rem);
+  margin-bottom: -1rem;
 }
 
 .timetable-cards {
@@ -9,6 +9,7 @@
   align-items: center;
 }
 
-.MuiButton-root {
-  gap: 0.3rem;
+#add-activity {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
