@@ -46,7 +46,7 @@ function ActivityComponent() {
     return activityComponent;
   }
 
-  return <>{getCurrentActivity()}</>;
+  return <div id="activity-component-container">{getCurrentActivity()}</div>;
 }
 
 export default ActivityComponent;

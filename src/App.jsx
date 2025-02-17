@@ -1,9 +1,9 @@
 import React from "react";
-import { Fab, ThemeProvider, Tooltip, createTheme } from "@mui/material";
 import { AppContext } from "@/context/AppContext";
 import StartingPage from "@/pages/StartingPage";
 import ActivityPage from "@/pages/ActivityPage";
 import EndingPage from "@/pages/EndingPage";
+import { Fab, ThemeProvider, Tooltip, createTheme } from "@mui/material";
 import "./App.css";
 
 function App() {

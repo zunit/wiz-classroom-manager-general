@@ -8,7 +8,7 @@ import { isPositiveInteger } from "@/utils/inputValidation";
 import "@/styles/starting-page.css";
 
 function StartingPage() {
-  const { chunks, setChunks, setIsClassStarted } = React.useContext(AppContext);
+  const { setChunks, setIsClassStarted } = React.useContext(AppContext);
   const [difficulty, setDifficulty] = React.useState("EXPERIENCED");
   const [chunksSetup, setChunksSetup] = React.useState([
     new TimeChunkModel("10", ActivityTypes.RANDOM),

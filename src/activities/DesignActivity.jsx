@@ -1,10 +1,7 @@
 import React from "react";
-// import ToggleButton from "@/components/ui/ToggleButton.jsx";
-// import ToggleButtonGroup from "@/components/ui/ToggleButtonGroup.jsx";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import CustomPrompt from "@/components/activities/CustomPrompt";
 import DefaultPrompt from "@/components/activities/DefaultPrompt";
+import CustomPrompt from "@/components/activities/CustomPrompt";
+import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 
 function DesignActivity() {
   const [promptType, setPromptType] = React.useState("default");
@@ -30,6 +27,7 @@ function DesignActivity() {
     }
     return promptComponent;
   }
+
   return (
     <>
       <h2>Design Activity</h2>
