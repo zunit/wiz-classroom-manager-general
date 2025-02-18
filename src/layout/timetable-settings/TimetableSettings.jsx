@@ -7,17 +7,13 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { Button } from "@mui/material";
 import { TimeChunkModel } from "@/utils/TimeChunkModel";
 import ActivityTypes from "@/utils/ActivityTypes";
 import ActivityCardEditable from "./ActivityCardEditable";
 import ActivityCardDraggable from "./ActivityCardDraggable";
 import ActivityCardDroppable from "./ActivityCardDroppable";
-import {
-  removeFromArray,
-  reorderArray,
-  replaceInArray,
-} from "@/utils/arrayStateUtils";
+import { removeFromArray, replaceInArray, reorderArray } from "@/utils/arrayUtils";
+import { Button } from "@mui/material";
 import "@/styles/timetable-settings.css";
 
 function TimetableSettings(props) {
@@ -115,7 +111,7 @@ function TimetableSettings(props) {
   function getChunkIndexFromId(id) {
     return chunksSetup.findIndex((chunk) => {
       return chunk.id === parseInt(id.replace("activity-card-draggable-", ""));
-    })
+    });
   }
 
   return (
@@ -164,7 +160,10 @@ function TimetableSettings(props) {
 
       <DragOverlay style={{ cursor: "move" }}>
         {activeId ? (
-          <ActivityCardEditable index={getChunkIndexFromId(activeId)} chunk={getChunkDataFromId(activeId)} />
+          <ActivityCardEditable
+            index={getChunkIndexFromId(activeId)}
+            chunk={getChunkDataFromId(activeId)}
+          />
         ) : null}
       </DragOverlay>
     </DndContext>
