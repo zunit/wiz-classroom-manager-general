@@ -1,34 +1,22 @@
 import React from "react";
-import DefaultPrompt from "@/components/activities/DefaultPrompt";
-import CustomPrompt from "@/components/activities/CustomPrompt";
+import ActivityPrompt from "@/activities/ActivityPrompt";
 import ActivityTypes from "@/utils/ActivityTypes";
 import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 
 function DesignActivity() {
-  const [promptType, setPromptType] = React.useState("default");
+  const [promptMode, setPromptMode] = React.useState("random");
 
-  function handlePromptTypeChange(event, newPromptType) {
-    setPromptType(newPromptType);
+  const [randomPrompt, setRandomPrompt] = React.useState(null);
+  const [customPrompt, setCustomPrompt] = React.useState("");
+
+  function handleChangePromptMode(event, newPromptMode) {
+    setPromptMode(newPromptMode);
   }
 
-  function PromptComponent() {
-    let promptComponent;
-    switch (promptType) {
-      case "default":
-        promptComponent = <DefaultPrompt />;
-        break;
-      case "custom":
-        promptComponent = <CustomPrompt />;
-        break;
-      default:
-        promptComponent = <DefaultPrompt />;
-        console.warn(
-          `Invalid prompt type for Design component (was given '${promptType}')`
-        );
-    }
-    return promptComponent;
-  }
+  const handleChangePrompt = React.useCallback((event) => {
+    setCustomPrompt(event.target.value);
+  }, []);
 
   return (
     <>
@@ -40,15 +28,33 @@ function DesignActivity() {
         Design a sprite/backdrop with the given theme within the given time
         limit.
       </p>
+
       <ToggleButtonGroup
-        value={promptType}
+        value={promptMode}
         exclusive
-        onChange={handlePromptTypeChange}
+        onChange={handleChangePromptMode}
       >
-        <ToggleButton value="default">Default</ToggleButton>
-        <ToggleButton value="custom">Custom</ToggleButton>
+        <Tooltip title="Let the computer choose a random prompt">
+          <ToggleButton value="random" color="primary">
+            Random
+          </ToggleButton>
+        </Tooltip>
+        <Tooltip title="Let the teacher type their own prompt">
+          <ToggleButton value="custom" color="primary">
+            Custom
+          </ToggleButton>
+        </Tooltip>
       </ToggleButtonGroup>
-      <PromptComponent />
+
+      <ActivityPrompt
+        activityType={ActivityTypes.DESIGN}
+        promptMode={promptMode}
+        randomPrompt={randomPrompt}
+        setRandomPrompt={setRandomPrompt}
+        customPrompt={customPrompt}
+        handleChangePrompt={handleChangePrompt}
+      />
+
       <p>Once you are ready, start the timer at the top.</p>
     </>
   );
