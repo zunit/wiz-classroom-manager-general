@@ -17,48 +17,48 @@ function ActivityIcon(props) {
     activityTypeNormalized = ActivityTypes.NULL;
   }
 
-  const activityToIconPath = {
+  const activityToIconData = {
     [ActivityTypes.NULL]: {
-      iconPath: "/activity-icons/warning.png",
+      iconPath: "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/activity-icons/warning.png",
       iconClassName: "null-icon",
     },
     [ActivityTypes.INDIVIDUAL]: {
-      iconPath: "/activity-icons/person.png",
+      iconPath: "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/activity-icons/person.png",
       iconClassName: "individual-icon",
     },
     [ActivityTypes.DESIGN]: {
-      iconPath: "/activity-icons/draw.png",
+      iconPath: "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/activity-icons/draw.png",
       iconClassName: "design-icon",
     },
     [ActivityTypes.CODE_READING]: {
-      iconPath: "/activity-icons/library.png",
+      iconPath: "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/activity-icons/library.png",
       iconClassName: "code-reading-icon",
     },
     [ActivityTypes.CODE_WRITING]: {
-      iconPath: "/activity-icons/edit-code.png",
+      iconPath: "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/activity-icons/edit-code.png",
       iconClassName: "code-writing-icon",
     },
     [ActivityTypes.FREESTYLE]: {
-      iconPath: "/activity-icons/freestyle.png",
+      iconPath: "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/activity-icons/freestyle.png",
       iconClassName: "freestyle-icon",
     },
     [ActivityTypes.RANDOM]: {
-      iconPath: "/activity-icons/dice.png",
+      iconPath: "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/activity-icons/dice.png",
       iconClassName: "random-icon",
     },
     "END": {
-      iconPath: "/activity-icons/checkered-flag.png",
+      iconPath: "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/activity-icons/checkered-flag.png",
       iconClassName: "end-icon",
     },
   };
 
   return (
     <div
-      className={`activity-icon-container ${activityToIconPath[activityType].iconClassName}`}
+      className={`activity-icon-container ${activityToIconData[activityType].iconClassName}`}
     >
       <img
-        className={`activity-icon ${activityToIconPath[activityType].iconClassName}`}
-        src={activityToIconPath[activityType].iconPath}
+        className={`activity-icon ${activityToIconData[activityType].iconClassName}`}
+        src={activityToIconData[activityType].iconPath}
         alt="Activity Icon"
       />
     </div>

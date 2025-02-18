@@ -23,7 +23,7 @@ const experiencedCodeBlocks = [
 
 export function generateCodeReadingBeginnerPrompt() {
   const promptData = getRandomElement(beginnerCodeBlocks);
-  const imgPath = `/code-reading/beginner/${promptData.imgName}.png`;
+  const imgPath = `https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/code-reading/beginner/${promptData.imgName}.png`;
   const imgStyle = { ...globalImgStyle, ...promptData.style };
 
   return (
@@ -35,7 +35,7 @@ export function generateCodeReadingBeginnerPrompt() {
 
 export function generateCodeReadingExperiencedPrompt() {
   const promptData = getRandomElement(experiencedCodeBlocks);
-  const imgPath = `/code-reading/experienced/${promptData.imgName}.png`;
+  const imgPath = `https://wizroboticsintro.s3.us-east-2.amazonaws.com/Curriculum/WizSTEMInstitute/TeacherTraining/Scratch/Unit4/ScratchJackbox/code-reading/experienced/${promptData.imgName}.png`;
   const imgStyle = { ...globalImgStyle, ...promptData.style };
 
   return (
