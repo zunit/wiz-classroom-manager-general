@@ -4,6 +4,10 @@ import ActivityTypes from "@/utils/ActivityTypes";
 import { Difficulties } from "@/utils/TimeChunkModel";
 import { generateDesignPrompt } from "@/prompts/design-prompts";
 import {
+  generateCodeReadingBeginnerPrompt,
+  generateCodeReadingExperiencedPrompt,
+} from "@/prompts/code-reading-prompts";
+import {
   generateCodeWritingBeginnerPrompt,
   generateCodeWritingExperiencedPrompt,
 } from "@/prompts/code-writing-prompts";
@@ -28,9 +32,9 @@ function ActivityRandomPrompt(props) {
 
     if (activityType === ActivityTypes.CODE_READING) {
       if (activity.difficulty === Difficulties.BEGINNER) {
-        return <h1>generateCodeReadingBeginnerPrompt() function missing</h1>;
+        return generateCodeReadingBeginnerPrompt();
       }
-      return <h1>generateCodeReadingExperiencedPrompt() function missing</h1>;
+      return generateCodeReadingExperiencedPrompt();
     }
 
     if (activityType === ActivityTypes.CODE_WRITING) {
@@ -48,11 +52,13 @@ function ActivityRandomPrompt(props) {
   return (
     <div
       style={{
-        width: "700px",
+        width: "calc(700px - 2rem)",
         justifySelf: "center",
         border: "1px solid var(--border-color)",
         borderRadius: "8px",
         marginTop: "1rem",
+        paddingLeft: "1rem",
+        paddingRight: "1rem",
       }}
     >
       {randomPrompt === null ? (
