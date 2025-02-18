@@ -19,35 +19,35 @@ function ActivityIcon(props) {
 
   const activityToIconPath = {
     [ActivityTypes.NULL]: {
-      iconPath: "/warning.png",
+      iconPath: "/activity-icons/warning.png",
       iconClassName: "null-icon",
     },
     [ActivityTypes.INDIVIDUAL]: {
-      iconPath: "/person.png",
+      iconPath: "/activity-icons/person.png",
       iconClassName: "individual-icon",
     },
     [ActivityTypes.DESIGN]: {
-      iconPath: "/draw.png",
+      iconPath: "/activity-icons/draw.png",
       iconClassName: "design-icon",
     },
     [ActivityTypes.CODE_READING]: {
-      iconPath: "/library.png",
+      iconPath: "/activity-icons/library.png",
       iconClassName: "code-reading-icon",
     },
     [ActivityTypes.CODE_WRITING]: {
-      iconPath: "/edit-code.png",
+      iconPath: "/activity-icons/edit-code.png",
       iconClassName: "code-writing-icon",
     },
     [ActivityTypes.FREESTYLE]: {
-      iconPath: "/freestyle.png",
+      iconPath: "/activity-icons/freestyle.png",
       iconClassName: "freestyle-icon",
     },
     [ActivityTypes.RANDOM]: {
-      iconPath: "/dice.png",
+      iconPath: "/activity-icons/dice.png",
       iconClassName: "random-icon",
     },
     "END": {
-      iconPath: "/checkered-flag.png",
+      iconPath: "/activity-icons/checkered-flag.png",
       iconClassName: "end-icon",
     },
   };
