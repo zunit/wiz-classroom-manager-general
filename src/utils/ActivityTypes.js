@@ -37,24 +37,49 @@ class ActivityTypes {
     ];
   }
 
+  /**
+   * Returns whether an object represents a valid activity type.
+   * @param {any} activityType The object.
+   * @returns {boolean} Whether the given object represents a valid activity type.
+   */
   static isValidActivityType(activityType) {
     return ActivityTypes.getValidActivityTypes().includes(activityType);
   }
 
+  /**
+   * Returns whether a given activity type represents an individual activity.
+   * @param {any} activityType The activity type.
+   * @returns {boolean} Whether the activity type represents an individual activity.
+   */
   static isIndividualActivity(activityType) {
     return activityType === ActivityTypes.INDIVIDUAL;
   }
 
+  /**
+   * Returns whether a given activity type represents a group activity.
+   * @param {any} activityType The activity type.
+   * @returns {boolean} Whether the activity type represents a group activity.
+   */
   static isGroupActivity(activityType) {
     return ActivityTypes.getGroupActivityTypes().includes(activityType);
   }
 
+  /**
+   * Returns whether a given activity type has a difficulty associated with it.
+   * @param {any} activityType The activity type.
+   * @returns {boolean} Whether the activity type has a difficulty associated with it.
+   */
   static hasDifficulties(activityType) {
     return [ActivityTypes.CODE_READING, ActivityTypes.CODE_WRITING].includes(
       activityType
     );
   }
 
+  /**
+   * Returns the name of a given activity type.
+   * @param {any} activityType The activity type.
+   * @returns {string} The name of the activity type.
+   */
   static getActivityName(activityType) {
     let activityName;
     if (ActivityTypes.isValidActivityType(activityType)) {
