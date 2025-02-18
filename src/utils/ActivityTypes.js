@@ -26,7 +26,7 @@ class ActivityTypes {
       ActivityTypes.RANDOM,
     ];
   }
-  
+
   static getGroupActivityTypes() {
     return [
       ActivityTypes.DESIGN,
@@ -34,7 +34,7 @@ class ActivityTypes {
       ActivityTypes.CODE_WRITING,
       ActivityTypes.FREESTYLE,
       ActivityTypes.RANDOM,
-    ]
+    ];
   }
 
   static isValidActivityType(activityType) {

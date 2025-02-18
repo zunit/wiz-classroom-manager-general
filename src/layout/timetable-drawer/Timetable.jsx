@@ -1,6 +1,6 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext";
-import ActivityCard from "./ActivityCard";
+import ActivityCard from "@/layout/timetable-drawer/ActivityCard";
 import "@/styles/timetable.css";
 
 function Timetable() {

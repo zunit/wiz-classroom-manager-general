@@ -1,8 +1,8 @@
 import React from "react";
-import { Avatar, Fab, Menu, MenuItem, TextField, Tooltip } from "@mui/material";
-import { isPositiveInteger } from "@/utils/inputValidation";
 import ActivityTypes from "@/utils/ActivityTypes";
 import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
+import { isPositiveInteger } from "@/utils/inputValidation";
+import { Avatar, Fab, Menu, MenuItem, TextField, Tooltip } from "@mui/material";
 import "@/styles/activity-card-editable.css";
 
 function ActivityCard(props) {

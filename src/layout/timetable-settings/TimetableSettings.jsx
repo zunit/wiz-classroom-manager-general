@@ -9,9 +9,9 @@ import {
 } from "@dnd-kit/core";
 import { TimeChunkModel } from "@/utils/TimeChunkModel";
 import ActivityTypes from "@/utils/ActivityTypes";
-import ActivityCardEditable from "./ActivityCardEditable";
-import ActivityCardDraggable from "./ActivityCardDraggable";
-import ActivityCardDroppable from "./ActivityCardDroppable";
+import ActivityCardEditable from "@/layout/timetable-settings/ActivityCardEditable";
+import ActivityCardDraggable from "@/layout/timetable-settings/ActivityCardDraggable";
+import ActivityCardDroppable from "@/layout/timetable-settings/ActivityCardDroppable";
 import { removeFromArray, replaceInArray, reorderArray } from "@/utils/arrayUtils";
 import { Button } from "@mui/material";
 import "@/styles/timetable-settings.css";
