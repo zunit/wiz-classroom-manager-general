@@ -1,8 +1,8 @@
 import React from "react";
 import ActivityTypes from "@/utils/ActivityTypes";
+import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import { Button } from "@mui/material";
 import "@/styles/activity-wheel.css";
-import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 
 function ActivityWheel(props) {
   const { onSpinFinish } = props;

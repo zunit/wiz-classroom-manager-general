@@ -1,22 +1,17 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext";
 import ActivityTypes from "@/utils/ActivityTypes";
-import ClassEndActivity from "./ClassEndActivity";
-import IndividualActivity from "./IndividualActivity";
-import RandomActivity from "./RandomActivity";
-import DesignActivity from "./DesignActivity";
-import CodeReadingActivity from "./CodeReadingActivity";
-import CodeWritingActivity from "./CodeWritingActivity";
-import FreestyleActivity from "./FreestyleActivity";
+import IndividualActivity from "@/activities/individual/IndividualActivity";
+import RandomActivity from "@/activities/random/RandomActivity";
+import DesignActivity from "@/activities/design/DesignActivity";
+import CodeReadingActivity from "@/activities/code-reading/CodeReadingActivity";
+import CodeWritingActivity from "@/activities/code-writing/CodeWritingActivity";
+import FreestyleActivity from "@/activities/freestyle/FreestyleActivity";
 
 function ActivityComponent() {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
 
   function getCurrentActivity() {
-    if (currentChunkIndex > chunks.length - 1) {
-      return <ClassEndActivity />;
-    }
-
     let activityComponent;
     switch (chunks[currentChunkIndex].activityType) {
       case ActivityTypes.INDIVIDUAL:

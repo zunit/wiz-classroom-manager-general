@@ -1,5 +1,5 @@
-import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import ActivityTypes from "@/utils/ActivityTypes";
+import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import {
   Button,
   Dialog,

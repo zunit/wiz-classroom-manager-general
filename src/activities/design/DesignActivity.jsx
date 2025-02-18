@@ -1,6 +1,8 @@
 import React from "react";
 import DefaultPrompt from "@/components/activities/DefaultPrompt";
 import CustomPrompt from "@/components/activities/CustomPrompt";
+import ActivityTypes from "@/utils/ActivityTypes";
+import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 
 function DesignActivity() {
@@ -30,7 +32,10 @@ function DesignActivity() {
 
   return (
     <>
-      <h2>Design Activity</h2>
+      <h1>Design Activity</h1>
+      <div style={{ marginBottom: "2rem" }}>
+        <ActivityIcon activityType={ActivityTypes.DESIGN} />
+      </div>
       <p>
         Design a sprite/backdrop with the given theme within the given time
         limit.

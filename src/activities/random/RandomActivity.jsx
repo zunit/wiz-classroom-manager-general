@@ -1,11 +1,12 @@
 import React from "react";
-import ActivityWheel from "./ActivityWheel";
-import DesignActivity from "./DesignActivity";
+import ActivityWheel from "@/activities/random/ActivityWheel";
 import ActivityTypes from "@/utils/ActivityTypes";
-import CodeReadingActivity from "./CodeReadingActivity";
-import CodeWritingActivity from "./CodeWritingActivity";
-import FreestyleActivity from "./FreestyleActivity";
-import ActivityWheelDialog from "./ActivityWheelDialog";
+import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
+import DesignActivity from "@/activities/design/DesignActivity";
+import CodeReadingActivity from "@/activities/code-reading/CodeReadingActivity";
+import CodeWritingActivity from "@/activities/code-writing/CodeWritingActivity";
+import FreestyleActivity from "@/activities/freestyle/FreestyleActivity";
+import ActivityWheelDialog from "@/activities/random/ActivityWheelDialog";
 
 function RandomActivity() {
   const [activity, setActivity] = React.useState(ActivityTypes.NULL);
@@ -57,6 +58,9 @@ function RandomActivity() {
   return isWheelMode ? (
     <>
       <h1>Random Group Activity</h1>
+      <div style={{ marginBottom: "2rem" }}>
+        <ActivityIcon activityType={ActivityTypes.RANDOM} />
+      </div>
       <p>Spin the wheel to determine which activity we will be doing!</p>
       <ActivityWheel onSpinFinish={handleSpinResult} />
       <ActivityWheelDialog
