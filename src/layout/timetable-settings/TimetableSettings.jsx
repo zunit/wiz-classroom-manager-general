@@ -112,6 +112,12 @@ function TimetableSettings(props) {
     });
   }
 
+  function getChunkIndexFromId(id) {
+    return chunksSetup.findIndex((chunk) => {
+      return chunk.id === parseInt(id.replace("activity-card-draggable-", ""));
+    })
+  }
+
   return (
     <DndContext
       onDragStart={handleDragStart}
@@ -158,7 +164,7 @@ function TimetableSettings(props) {
 
       <DragOverlay style={{ cursor: "move" }}>
         {activeId ? (
-          <ActivityCardEditable chunk={getChunkDataFromId(activeId)} />
+          <ActivityCardEditable index={getChunkIndexFromId(activeId)} chunk={getChunkDataFromId(activeId)} />
         ) : null}
       </DragOverlay>
     </DndContext>
