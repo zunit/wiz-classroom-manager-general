@@ -94,12 +94,10 @@ function TimetableSettings(props) {
       return;
     }
 
-    const activeIndex = chunksSetup.findIndex((chunk) => {
-      return chunk.id === parseInt(active.id.replace("activity-card-", ""));
-    });
-    const overIndex = chunksSetup.findIndex((chunk) => {
-      return chunk.id === parseInt(over.id.replace("activity-card-", ""));
-    });
+    const activeIndex = chunksSetup.findIndex(
+      (chunk) => chunk.domId === active.id
+    );
+    const overIndex = chunksSetup.findIndex((chunk) => chunk.domId === over.id);
 
     setChunksSetup((chunksSetup) =>
       arrayMove(chunksSetup, activeIndex, overIndex)
@@ -113,15 +111,11 @@ function TimetableSettings(props) {
   }
 
   function getChunkDataFromId(id) {
-    return chunksSetup.find((chunk) => {
-      return chunk.id === parseInt(id.replace("activity-card-", ""));
-    });
+    return chunksSetup.find((chunk) => chunk.domId === id);
   }
 
   function getChunkIndexFromId(id) {
-    return chunksSetup.findIndex((chunk) => {
-      return chunk.id === parseInt(id.replace("activity-card-", ""));
-    });
+    return chunksSetup.findIndex((chunk) => chunk.domId === id);
   }
 
   return (
@@ -136,13 +130,13 @@ function TimetableSettings(props) {
           onDragEnd={handleDragEnd}
         >
           <SortableContext
-            items={chunksSetup.map((chunk) => `activity-card-${chunk.id}`)}
+            items={chunksSetup.map((chunk) => chunk.domId)}
             strategy={rectSortingStrategy}
           >
             {chunksSetup.map((chunk, index) => (
               <ActivityCardSortable
                 key={chunk.id}
-                id={chunk.id}
+                id={chunk.domId}
                 index={index}
                 chunk={chunk}
                 onChangeChunkActivity={handleChangeChunkActivity}

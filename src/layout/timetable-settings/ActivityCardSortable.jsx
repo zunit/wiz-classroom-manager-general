@@ -27,7 +27,7 @@ function ActivityCardSortable(props) {
     setNodeRef,
     transform,
     transition,
-  } = useSortable({ id: `activity-card-${id}` });
+  } = useSortable({ id });
 
   const style = {
     cursor: "grab",
@@ -38,7 +38,7 @@ function ActivityCardSortable(props) {
 
   return (
     <div
-      id={`activity-card-${id}`}
+      id={id}
       ref={setNodeRef}
       style={style}
       {...attributes}
