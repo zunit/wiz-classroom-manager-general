@@ -5,6 +5,8 @@ import "@/styles/activity-card.css";
 function ActivityCard(props) {
   const { chunk, progress } = props;
 
+  const chunkTime = Number(chunk.time) / 60;
+
   function getCardHeader() {
     let cardHeader;
     if (ActivityTypes.isIndividualActivity(chunk.activityType)) {
@@ -36,7 +38,9 @@ function ActivityCard(props) {
         <h2 className="activity-card-subheader">{getCardSubheader()}</h2>
       ) : null}
       <ActivityIcon activityType={chunk.activityType} />
-      <div>Duration: {Number(chunk.time) / 60} minutes</div>
+      <div>
+        Duration: {chunkTime} {chunkTime === 1 ? "minute" : "minutes"}
+      </div>
     </div>
   );
 }
