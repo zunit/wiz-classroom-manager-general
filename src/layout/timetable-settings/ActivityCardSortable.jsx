@@ -29,10 +29,6 @@ function ActivityCardSortable(props) {
     transition,
   } = useSortable({ id: `activity-card-${id}` });
 
-  if (transform !== null) {
-    console.log(transform)
-  }
-
   const style = {
     cursor: "grab",
     opacity: isDragging ? 0.4 : undefined,
