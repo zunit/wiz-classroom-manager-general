@@ -3,7 +3,7 @@
   border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 1em;
-  width: 460px;
+  width: 450px;
   height: calc(150px - 2rem);
   transition: background-color 0.2s ease;
   display: flex;
@@ -21,7 +21,7 @@
 }
 
 .activity-card-editable-index {
-  width: 30px;
+  width: 1rem;
 }
 
 .activity-card-editable-change-activity {
