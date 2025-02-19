@@ -37,13 +37,7 @@ function ActivityCardSortable(props) {
   };
 
   return (
-    <div
-      id={id}
-      ref={setNodeRef}
-      style={style}
-      {...attributes}
-      {...listeners}
-    >
+    <div id={id} ref={setNodeRef} style={style} {...attributes} {...listeners}>
       <ActivityCardEditable
         index={index}
         chunk={chunk}

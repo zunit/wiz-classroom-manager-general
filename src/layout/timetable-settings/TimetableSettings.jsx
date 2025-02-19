@@ -156,12 +156,17 @@ function TimetableSettings(props) {
                 },
               }),
             }}
-            style={{ cursor: "grabbing" }}
+            style={{
+              cursor: "grabbing",
+              borderRadius: "10px",
+              boxShadow: "0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3)",
+            }}
           >
             {activeId ? (
               <ActivityCardEditable
                 index={getChunkIndexFromId(activeId)}
                 chunk={getChunkDataFromId(activeId)}
+                disableHover={true}
               />
             ) : null}
           </DragOverlay>

@@ -13,6 +13,7 @@ function ActivityCardEditable(props) {
     onChangeChunkTime,
     onDelete,
     style,
+    disableHover,
     ...invalidProps
   } = props;
   for (let invalidProp in invalidProps) {
@@ -59,16 +60,18 @@ function ActivityCardEditable(props) {
 
   return (
     <div
-      className="activity-card-editable-container"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className={`activity-card-editable-container${
+        isHovered ? " hovered" : ""
+      }`}
+      onMouseEnter={disableHover ? undefined : () => setIsHovered(true)}
+      onMouseLeave={disableHover ? undefined : () => setIsHovered(false)}
     >
       <div className="activity-card-editable-index">
         <p>{index + 1}</p>
       </div>
       <Tooltip title="Change activity">
         <div
-          className={`activity-card-editable-change-activity`}
+          className="activity-card-editable-change-activity"
           onClick={(event) => {
             setIsHovered(false);
             setMenuAnchorEl(event.currentTarget);
