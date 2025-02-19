@@ -18,9 +18,11 @@ function ActivityWheelDialog(props) {
       <DialogContent>
         <DialogContentText>
           You got the "{ActivityTypes.getActivityName(activity)}" activity!
+        </DialogContentText>
           <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
             <ActivityIcon activityType={activity} />
           </div>
+        <DialogContentText>
           Ready to dive in, or do you want to spin again?
         </DialogContentText>
       </DialogContent>
