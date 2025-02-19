@@ -1,7 +1,6 @@
 import React from "react";
 import ActivityPrompt from "@/activities/ActivityPrompt";
 import ActivityTypes from "@/utils/ActivityTypes";
-import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 
 function FreestyleActivity() {
@@ -20,10 +19,6 @@ function FreestyleActivity() {
 
   return (
     <>
-      <h1>Freestyle!</h1>
-      <div style={{ marginBottom: "2rem" }}>
-        <ActivityIcon activityType={ActivityTypes.FREESTYLE} />
-      </div>
       <p>It's time to get creative!</p>
       <p>
         For this activity, you will be creating whatever you like that is

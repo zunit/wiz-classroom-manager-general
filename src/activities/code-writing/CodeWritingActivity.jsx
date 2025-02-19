@@ -1,7 +1,6 @@
 import React from "react";
 import ActivityPrompt from "@/activities/ActivityPrompt";
 import ActivityTypes from "@/utils/ActivityTypes";
-import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 
 function CodeWritingActivity() {
@@ -20,10 +19,6 @@ function CodeWritingActivity() {
 
   return (
     <>
-      <h1>Make This Happen!</h1>
-      <div style={{ marginBottom: "2rem" }}>
-        <ActivityIcon activityType={ActivityTypes.CODE_WRITING} />
-      </div>
       <p>
         You will be given a prompt, and your goal is to make it happen using
         code!

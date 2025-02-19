@@ -1,6 +1,7 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext";
 import ActivityTypes from "@/utils/ActivityTypes";
+import ActivityHeader from "@/activities/ActivityHeader";
 import IndividualActivity from "@/activities/individual/IndividualActivity";
 import RandomActivity from "@/activities/random/RandomActivity";
 import DesignActivity from "@/activities/design/DesignActivity";
@@ -41,7 +42,12 @@ function ActivityComponent() {
     return activityComponent;
   }
 
-  return <div id="activity-component-container">{getCurrentActivity()}</div>;
+  return (
+    <div id="activity-container">
+      <ActivityHeader activityType={chunks[currentChunkIndex].activityType} />
+      {getCurrentActivity()}
+    </div>
+  );
 }
 
 export default ActivityComponent;
