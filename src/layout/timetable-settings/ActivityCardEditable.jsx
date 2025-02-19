@@ -5,13 +5,14 @@ import { isPositiveInteger } from "@/utils/inputValidation";
 import { Avatar, Fab, Menu, MenuItem, TextField, Tooltip } from "@mui/material";
 import "@/styles/activity-card-editable.css";
 
-function ActivityCard(props) {
+function ActivityCardEditable(props) {
   const {
     index,
     chunk,
     onChangeChunkActivity,
     onChangeChunkTime,
     onDelete,
+    style,
     ...invalidProps
   } = props;
   for (let invalidProp in invalidProps) {
@@ -151,4 +152,4 @@ function ActivityCard(props) {
   );
 }
 
-export default ActivityCard;
+export default ActivityCardEditable;

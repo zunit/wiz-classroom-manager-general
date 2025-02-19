@@ -1,12 +1,12 @@
 .timetable-settings-header {
   margin-top: 1.5rem;
-  margin-bottom: -1rem;
 }
 
 .timetable-cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 #add-activity {

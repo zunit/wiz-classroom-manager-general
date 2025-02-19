@@ -1,5 +1,11 @@
 import React from "react";
+import { TimeChunkModel } from "@/utils/TimeChunkModel";
+import ActivityTypes from "@/utils/ActivityTypes";
+import ActivityCardEditable from "@/layout/timetable-settings/ActivityCardEditable";
+import ActivityCardSortable from "@/layout/timetable-settings/ActivityCardSortable";
+import { removeFromArray, replaceInArray } from "@/utils/arrayUtils";
 import {
+  closestCenter,
   DndContext,
   DragOverlay,
   MouseSensor,
@@ -7,12 +13,11 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { TimeChunkModel } from "@/utils/TimeChunkModel";
-import ActivityTypes from "@/utils/ActivityTypes";
-import ActivityCardEditable from "@/layout/timetable-settings/ActivityCardEditable";
-import ActivityCardDraggable from "@/layout/timetable-settings/ActivityCardDraggable";
-import ActivityCardDroppable from "@/layout/timetable-settings/ActivityCardDroppable";
-import { removeFromArray, replaceInArray, reorderArray } from "@/utils/arrayUtils";
+import {
+  arrayMove,
+  SortableContext,
+  rectSortingStrategy,
+} from "@dnd-kit/sortable";
 import { Button } from "@mui/material";
 import "@/styles/timetable-settings.css";
 
@@ -27,6 +32,18 @@ function TimetableSettings(props) {
   const numOfChunks = React.useRef(chunksSetup.length);
   const [activeId, setActiveId] = React.useState(null);
 
+  const sensorOptions = {
+    activationConstraint: {
+      distance: 1,
+    },
+  };
+
+  const sensors = useSensors(
+    useSensor(MouseSensor, sensorOptions),
+    useSensor(TouchSensor, sensorOptions)
+  );
+
+  // Automatically scroll down if an activity is added
   React.useEffect(() => {
     if (chunksSetup.length > numOfChunks.current) {
       window.scrollTo({
@@ -77,23 +94,15 @@ function TimetableSettings(props) {
     }
 
     const activeIndex = chunksSetup.findIndex((chunk) => {
-      return (
-        chunk.id === parseInt(active.id.replace("activity-card-draggable-", ""))
-      );
+      return chunk.id === parseInt(active.id.replace("activity-card-", ""));
     });
-    const overIndex = parseInt(over.id.replace("activity-card-droppable-", ""));
+    const overIndex = chunksSetup.findIndex((chunk) => {
+      return chunk.id === parseInt(over.id.replace("activity-card-", ""));
+    });
 
-    if (activeIndex > overIndex) {
-      const reorderedItems = reorderArray(chunksSetup, activeIndex, overIndex);
-      setChunksSetup(reorderedItems);
-    } else if (activeIndex < overIndex - 1) {
-      const reorderedItems = reorderArray(
-        chunksSetup,
-        activeIndex,
-        overIndex - 1
-      );
-      setChunksSetup(reorderedItems);
-    }
+    setChunksSetup((chunksSetup) =>
+      arrayMove(chunksSetup, activeIndex, overIndex)
+    );
 
     setActiveId(null);
   }
@@ -104,69 +113,60 @@ function TimetableSettings(props) {
 
   function getChunkDataFromId(id) {
     return chunksSetup.find((chunk) => {
-      return chunk.id === parseInt(id.replace("activity-card-draggable-", ""));
+      return chunk.id === parseInt(id.replace("activity-card-", ""));
     });
   }
 
   function getChunkIndexFromId(id) {
     return chunksSetup.findIndex((chunk) => {
-      return chunk.id === parseInt(id.replace("activity-card-draggable-", ""));
+      return chunk.id === parseInt(id.replace("activity-card-", ""));
     });
   }
 
   return (
-    <DndContext
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      sensors={useSensors(
-        useSensor(MouseSensor, {
-          activationConstraint: {
-            distance: 0.1,
-          },
-        }),
-        useSensor(TouchSensor, {
-          activationConstraint: {
-            distance: 0.1,
-          },
-        })
-      )}
-    >
-      <div className="timetable-settings-container">
-        <h2 className="timetable-settings-header">Timetable Settings:</h2>
-        <div className="timetable-cards">
-          {chunksSetup.map((chunk, index) => (
-            <React.Fragment key={chunk.id}>
-              {index === 0 ? <ActivityCardDroppable index={0} /> : null}
-              <ActivityCardDraggable
-                id={`activity-card-draggable-${chunk.id}`}
+    <div className="timetable-settings-container">
+      <h2 className="timetable-settings-header">Timetable Settings:</h2>
+
+      <div className="timetable-cards">
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext items={chunksSetup} strategy={rectSortingStrategy}>
+            {chunksSetup.map((chunk, index) => (
+              <ActivityCardSortable
+                key={chunk.id}
+                id={chunk.id}
                 index={index}
                 chunk={chunk}
                 onChangeChunkActivity={handleChangeChunkActivity}
                 onChangeChunkTime={handleChangeChunkTime}
                 onDelete={() => handleClickDeleteActivity(index)}
               />
-              <ActivityCardDroppable index={index + 1} />
-            </React.Fragment>
-          ))}
-        </div>
-        <Button
-          id="add-activity"
-          variant="outlined"
-          onClick={handleClickAddActivity}
-        >
-          <span className="material-symbols-rounded">add</span>Add Activity
-        </Button>
+            ))}
+          </SortableContext>
+
+          <DragOverlay style={{ cursor: "grabbing" }}>
+            {activeId ? (
+              <ActivityCardEditable
+                index={getChunkIndexFromId(activeId)}
+                chunk={getChunkDataFromId(activeId)}
+              />
+            ) : null}
+          </DragOverlay>
+        </DndContext>
       </div>
 
-      <DragOverlay style={{ cursor: "move" }}>
-        {activeId ? (
-          <ActivityCardEditable
-            index={getChunkIndexFromId(activeId)}
-            chunk={getChunkDataFromId(activeId)}
-          />
-        ) : null}
-      </DragOverlay>
-    </DndContext>
+      <Button
+        id="add-activity"
+        variant="outlined"
+        onClick={handleClickAddActivity}
+      >
+        <span className="material-symbols-rounded">add</span>Add Activity
+      </Button>
+    </div>
   );
 }
 

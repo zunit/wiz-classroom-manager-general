@@ -1,9 +1,10 @@
-import { useDraggable } from "@dnd-kit/core";
 import ActivityCardEditable from "@/layout/timetable-settings/ActivityCardEditable";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import "@/styles/activity-card-dnd.css";
 
 // Draggable container with dnd-kit functionality
-function ActivityCardDraggable(props) {
+function ActivityCardSortable(props) {
   const {
     id,
     index,
@@ -19,17 +20,31 @@ function ActivityCardDraggable(props) {
     );
   }
 
-  const { isDragging, attributes, listeners, setNodeRef } = useDraggable({
-    id,
-  });
+  const {
+    isDragging,
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({ id: `activity-card-${id}` });
+
+  if (transform !== null) {
+    console.log(transform)
+  }
+
+  const style = {
+    cursor: "grab",
+    opacity: isDragging ? 0.4 : undefined,
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
 
   return (
     <div
-      className={`activity-card-draggable-wrapper ${
-        isDragging ? "dragged" : ""
-      }`}
-      id={id}
+      id={`activity-card-${id}`}
       ref={setNodeRef}
+      style={style}
       {...attributes}
       {...listeners}
     >
@@ -44,4 +59,4 @@ function ActivityCardDraggable(props) {
   );
 }
 
-export default ActivityCardDraggable;
+export default ActivityCardSortable;
