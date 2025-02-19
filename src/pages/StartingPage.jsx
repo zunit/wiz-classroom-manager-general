@@ -10,12 +10,26 @@ import "@/styles/starting-page.css";
 function StartingPage() {
   const { setChunks, setIsClassStarted } = React.useContext(AppContext);
   const [difficulty, setDifficulty] = React.useState("EXPERIENCED");
-  const [chunksSetup, setChunksSetup] = React.useState([
-    new TimeChunkModel("10", ActivityTypes.RANDOM),
-    new TimeChunkModel("20", ActivityTypes.INDIVIDUAL),
-    new TimeChunkModel("10", ActivityTypes.RANDOM),
-    new TimeChunkModel("20", ActivityTypes.INDIVIDUAL),
-  ]);
+
+  const debug = false;
+
+  let defaultChunkActivityTypes = debug
+    ? ActivityTypes.getValidActivityTypes()
+    : [
+        ActivityTypes.RANDOM,
+        ActivityTypes.INDIVIDUAL,
+        ActivityTypes.RANDOM,
+        ActivityTypes.INDIVIDUAL,
+      ];
+
+  let defaultChunksSetup = defaultChunkActivityTypes.map((activityType) => {
+    let time = activityType === ActivityTypes.INDIVIDUAL ? "20" : "10";
+    let activityDifficulty = ActivityTypes.hasDifficulties(activityType)
+      ? difficulty
+      : null;
+    return new TimeChunkModel(time, activityType, activityDifficulty);
+  });
+  const [chunksSetup, setChunksSetup] = React.useState(defaultChunksSetup);
 
   function changeDifficulty(event, newDifficulty) {
     setDifficulty(newDifficulty);
