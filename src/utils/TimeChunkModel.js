@@ -9,12 +9,9 @@ export const Difficulties = {
 export class TimeChunkModel {
   static #idCounter = 0;
 
-  #id;
-  #domId;
-
   constructor(time, activityType, difficulty) {
-    this.#id = TimeChunkModel.#idCounter++;
-    this.#domId = `activity-card-${this.#id}`;
+    this.id = TimeChunkModel.#idCounter++;
+    this.domId = `activity-card-${this.id}`;
 
     this.time = time;
 
@@ -46,13 +43,5 @@ export class TimeChunkModel {
       }
       this.difficulty = Difficulties.NA;
     }
-  }
-
-  get id() {
-    return this.#id;
-  }
-
-  get domId() {
-    return this.#domId;
   }
 }
