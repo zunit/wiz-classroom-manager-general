@@ -6,6 +6,7 @@ import ActivityCardSortable from "@/layout/timetable-settings/ActivityCardSortab
 import { removeFromArray, replaceInArray } from "@/utils/arrayUtils";
 import {
   closestCenter,
+  defaultDropAnimationSideEffects,
   DndContext,
   DragOverlay,
   MouseSensor,
@@ -134,7 +135,10 @@ function TimetableSettings(props) {
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
-          <SortableContext items={chunksSetup} strategy={rectSortingStrategy}>
+          <SortableContext
+            items={chunksSetup.map((chunk) => `activity-card-${chunk.id}`)}
+            strategy={rectSortingStrategy}
+          >
             {chunksSetup.map((chunk, index) => (
               <ActivityCardSortable
                 key={chunk.id}
@@ -148,7 +152,18 @@ function TimetableSettings(props) {
             ))}
           </SortableContext>
 
-          <DragOverlay style={{ cursor: "grabbing" }}>
+          <DragOverlay
+            dropAnimation={{
+              sideEffects: defaultDropAnimationSideEffects({
+                styles: {
+                  active: {
+                    opacity: "0.4",
+                  },
+                },
+              }),
+            }}
+            style={{ cursor: "grabbing" }}
+          >
             {activeId ? (
               <ActivityCardEditable
                 index={getChunkIndexFromId(activeId)}
