@@ -1,72 +1,49 @@
 import React from "react";
 import ActivityWheel from "@/activities/random/ActivityWheel";
-import ActivityTypes from "@/utils/ActivityTypes";
-import DesignActivity from "@/activities/design/DesignActivity";
-import CodeReadingActivity from "@/activities/code-reading/CodeReadingActivity";
-import CodeWritingActivity from "@/activities/code-writing/CodeWritingActivity";
-import FreestyleActivity from "@/activities/freestyle/FreestyleActivity";
 import ActivityWheelDialog from "@/activities/random/ActivityWheelDialog";
 
-function RandomActivity() {
-  const [activity, setActivity] = React.useState(ActivityTypes.NULL);
-  const [isWheelMode, setIsWheelMode] = React.useState(true);
+function RandomActivity(props) {
+  const [generatedActivity, setGeneratedActivity] = React.useState(null);
   const [isWheelDialogOpen, setIsWheelDialogOpen] = React.useState(false);
 
+  const { setCurrentActivity } = props;
+
   function handleSpinResult(activityType) {
-    setActivity(activityType);
+    setGeneratedActivity(activityType);
   }
 
+  // Open wheel dialog automatically when the wheel stops spinning
   React.useEffect(() => {
-    if (activity === ActivityTypes.NULL) {
+    if (generatedActivity === null) {
       return;
     }
     setIsWheelDialogOpen(true);
-  }, [activity]);
+  }, [generatedActivity]);
 
   function handleCloseWheelDialog() {
     setIsWheelDialogOpen(false);
 
     setTimeout(() => {
-      setActivity(ActivityTypes.NULL);
+      setGeneratedActivity(null);
     }, 1000);
   }
 
-  function goToActivity() {
+  function handleWheelConfirm() {
     setIsWheelDialogOpen(false);
-    setIsWheelMode(false);
+    setCurrentActivity(generatedActivity);
   }
 
-  function getActivity() {
-    switch (activity) {
-      case ActivityTypes.DESIGN:
-        return <DesignActivity />;
-      case ActivityTypes.CODE_READING:
-        return <CodeReadingActivity />;
-      case ActivityTypes.CODE_WRITING:
-        return <CodeWritingActivity />;
-      case ActivityTypes.FREESTYLE:
-        return <FreestyleActivity />;
-      default:
-        console.warn(
-          `Activity type in random group activity was set to "${activity}"`
-        );
-        return <></>;
-    }
-  }
-
-  return isWheelMode ? (
+  return (
     <>
       <p>Spin the wheel to determine which activity we will be doing!</p>
       <ActivityWheel onSpinFinish={handleSpinResult} />
       <ActivityWheelDialog
         open={isWheelDialogOpen}
-        activity={activity}
+        activity={generatedActivity}
         onClose={handleCloseWheelDialog}
-        onConfirm={goToActivity}
+        onConfirm={handleWheelConfirm}
       />
     </>
-  ) : (
-    getActivity()
   );
 }
 

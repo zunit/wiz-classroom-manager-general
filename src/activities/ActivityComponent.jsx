@@ -12,9 +12,13 @@ import FreestyleActivity from "@/activities/freestyle/FreestyleActivity";
 function ActivityComponent() {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
 
+  const [currentActivity, setCurrentActivity] = React.useState(
+    chunks[currentChunkIndex].activityType
+  );
+
   function getCurrentActivity() {
     let activityComponent;
-    switch (chunks[currentChunkIndex].activityType) {
+    switch (currentActivity) {
       case ActivityTypes.INDIVIDUAL:
         activityComponent = <IndividualActivity />;
         break;
@@ -31,12 +35,12 @@ function ActivityComponent() {
         activityComponent = <FreestyleActivity />;
         break;
       case ActivityTypes.RANDOM:
-        activityComponent = <RandomActivity />;
+        activityComponent = (
+          <RandomActivity setCurrentActivity={setCurrentActivity} />
+        );
         break;
       default:
-        console.warn(
-          `Invalid activity type: ${chunks[currentChunkIndex].activityType}`
-        );
+        console.warn(`Invalid activity type: ${currentActivity}`);
         break;
     }
     return activityComponent;
@@ -44,7 +48,7 @@ function ActivityComponent() {
 
   return (
     <div id="activity-container">
-      <ActivityHeader activityType={chunks[currentChunkIndex].activityType} />
+      <ActivityHeader activityType={currentActivity} />
       {getCurrentActivity()}
     </div>
   );
