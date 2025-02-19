@@ -16,6 +16,13 @@ function ActivityComponent() {
     chunks[currentChunkIndex].activityType
   );
 
+  React.useEffect(() => {
+    if (currentChunkIndex === 0) {
+      return;
+    }
+    setCurrentActivity(chunks[currentChunkIndex].activityType);
+  }, [currentChunkIndex]);
+
   function getCurrentActivity() {
     let activityComponent;
     switch (currentActivity) {
