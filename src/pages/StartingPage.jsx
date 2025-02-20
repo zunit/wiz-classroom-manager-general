@@ -55,6 +55,7 @@ function StartingPage() {
   return (
     <>
       <h1>Class Setup</h1>
+
       <ToggleButtonGroup
         value={difficulty}
         exclusive
@@ -67,10 +68,12 @@ function StartingPage() {
           Experienced
         </ToggleButton>
       </ToggleButtonGroup>
+
       <TimetableSettings
         chunksSetup={chunksSetup}
         setChunksSetup={setChunksSetup}
       />
+
       <footer id="starting-page-footer">
         <hr id="starting-page-footer-hr" />
         <Button

@@ -120,9 +120,15 @@ function TimetableSettings(props) {
 
   return (
     <div className="timetable-settings-container">
-      <h2 className="timetable-settings-header">Timetable Settings:</h2>
-
-      <div className="timetable-cards">
+      <div
+        className={`timetable-cards${
+          chunksSetup.length === 1
+            ? " single-card"
+            : chunksSetup.length === 0
+            ? " empty"
+            : ""
+        }`}
+      >
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
@@ -166,7 +172,7 @@ function TimetableSettings(props) {
               <ActivityCardEditable
                 index={getChunkIndexFromId(activeId)}
                 chunk={getChunkDataFromId(activeId)}
-                disableHover={true}
+                disableHover
               />
             ) : null}
           </DragOverlay>
