@@ -8,6 +8,7 @@
   justify-self: center;
   background-color: var(--background-color);
   padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   overflow-x: scroll;
 }
 
@@ -24,9 +25,12 @@
   height: auto;
 }
 
-#timer-bottom-border {
+#timer-container::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: calc(100% - 10rem);
-  justify-self: center;
-  border-bottom: 1px solid var(--border-color);
-  margin-top: 1.5rem;
+  content: "";
+  border-top: 1px solid var(--border-color);
 }

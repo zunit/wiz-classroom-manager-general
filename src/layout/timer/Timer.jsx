@@ -76,6 +76,7 @@ function Timer(props) {
     <>
       <div id="timer-container">
         <h1 id="timer-display">Time Left: {formatTime(timeLeft)}</h1>
+        
         <div id="timer-controls-container">
           <Tooltip title="Decrease timer by 1 minute">
             <Fab
@@ -109,9 +110,6 @@ function Timer(props) {
             </Fab>
           </Tooltip>
         </div>
-
-        {/* For styling only */}
-        <div id="timer-bottom-border"></div>
       </div>
     </>
   );
