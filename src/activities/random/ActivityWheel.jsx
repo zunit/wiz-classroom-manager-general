@@ -110,7 +110,7 @@ function ActivityWheel(props) {
   function WheelSliceIcons() {
     return activities.map((activityType, index) => (
       <div key={index} style={getIconStyles(index)}>
-        <ActivityIcon activityType={activityType} />
+        <ActivityIcon activityType={activityType} size={radius / 2} />
       </div>
     ));
   }

@@ -27,11 +27,6 @@
   margin: 0;
 }
 
-#activity-preview-icon > .activity-icon-container {
-  width: 60px;
-  height: 60px;
-}
-
 #activity-preview-start-next {
   margin-top: 0.5rem;
 }

@@ -37,7 +37,7 @@ function ActivityCard(props) {
       {ActivityTypes.isGroupActivity(chunk.activityType) ? (
         <h2 className="activity-card-subheader">{getCardSubheader()}</h2>
       ) : null}
-      <ActivityIcon activityType={chunk.activityType} />
+      <ActivityIcon activityType={chunk.activityType} size={80} />
       <div>
         Duration: {chunkTime} {chunkTime === 1 ? "minute" : "minutes"}
       </div>

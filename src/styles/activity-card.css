@@ -35,11 +35,6 @@
   font-size: 1.25rem;
 }
 
-.activity-card-container > .activity-icon-container {
-  width: 80px;
-  height: 80px;
-}
-
 .activity-card-container.current {
   animation: current-activity-background-pulse 1.5s ease-in-out infinite;
 }

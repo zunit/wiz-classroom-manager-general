@@ -59,7 +59,7 @@ function ActivityPreview(props) {
         {previewContent.activityTitle}
       </h2>
       <div id="activity-preview-icon">
-        <ActivityIcon activityType={previewContent.activityIcon} />
+        <ActivityIcon activityType={previewContent.activityIcon} size={60} />
       </div>
       <Button
         id="activity-preview-start-next"

@@ -6,7 +6,7 @@ function ActivityHeader(props) {
 
   return (
     <div className="activity-header">
-      <ActivityIcon activityType={activityType} />
+      <ActivityIcon activityType={activityType} size={70} />
       <h1>{ActivityTypes.getActivityName(activityType)}</h1>
     </div>
   );
