@@ -1,16 +1,21 @@
 #starting-page-footer {
   position: sticky;
   width: 100vw;
+  min-width: 1250px;
   justify-self: center;
   bottom: -1px;
+  padding-top: 2rem;
   padding-bottom: 2rem;
   background-color: var(--background-color);
   z-index: 1000;
 }
 
-#starting-page-footer-hr {
+#starting-page-footer::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 85%;
-  margin-bottom: 2rem;
-  border: none;
+  content: "";
   border-top: 1px solid var(--border-color);
 }

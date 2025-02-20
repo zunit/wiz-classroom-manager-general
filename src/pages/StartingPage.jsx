@@ -75,7 +75,6 @@ function StartingPage() {
       />
 
       <footer id="starting-page-footer">
-        <hr id="starting-page-footer-hr" />
         <Button
           id="start-class-button"
           variant="contained"
