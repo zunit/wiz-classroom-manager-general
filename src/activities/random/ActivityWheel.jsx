@@ -146,7 +146,9 @@ function ActivityWheel(props) {
 
   return (
     <>
-      <div className="activity-wheel-container">
+      <div
+        className="activity-wheel-container"
+      >
         <div
           className="activity-wheel"
           style={{
@@ -157,15 +159,14 @@ function ActivityWheel(props) {
           <WheelSlices />
           <WheelSliceIcons />
         </div>
-        <div className="activity-wheel-pointer">
-          <svg
-            viewBox="-11 -26 85 52"
-            preserveAspectRatio="xMidYMid meet"
-            xmlns="http://www.w3/org/2000/svg"
-          >
-            <path d="M 63 23 l -63 -18 C -13 1 -13 -1 0 -5 l 63 -18 C 75 -27 75 -25 71 -17 l -6 12 C 63 -1 63 1 65 5 l 6 12 C 75 25 75 27 63 23" />
-          </svg>
-        </div>
+        <svg
+          className="activity-wheel-pointer"
+          viewBox="-9.8 -25.1 83.3 50.2"
+          xmlns="http://www.w3/org/2000/svg"
+          style={{width: radius * 0.5}}
+        >
+          <path d="M 63 23 l -63 -18 C -13 1 -13 -1 0 -5 l 63 -18 C 75 -27 75 -25 71 -17 l -6 12 C 63 -1 63 1 65 5 l 6 12 C 75 25 75 27 63 23" />
+        </svg>
       </div>
       <Button
         variant="contained"

@@ -59,6 +59,10 @@ h1 {
   line-height: 1.1;
 }
 
+svg {
+  display: block;
+}
+
 .MuiButton-root {
   gap: 0.3rem;
 }
