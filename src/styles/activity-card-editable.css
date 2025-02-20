@@ -14,7 +14,7 @@
 }
 
 .activity-card-editable-container.hovered {
-  background-color: #f1f1f1;
+  background-color: var(--mui-palette-action-hover);
 }
 
 .activity-card-editable-container:has(
