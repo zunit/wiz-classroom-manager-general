@@ -9,6 +9,7 @@ export const AppTheme = createTheme({
       palette: {
         background: {
           default: "#ffffff",
+          code: "#00000020",
           inverse: "#242424",
         },
         text: {
@@ -37,6 +38,7 @@ export const AppTheme = createTheme({
       palette: {
         background: {
           default: "#242424",
+          code: "#000000c0",
           inverse: "#ffffff",
         },
         text: {

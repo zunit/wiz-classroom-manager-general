@@ -5,11 +5,12 @@
   /* --background-color: #242424; */
   /* --foreground-color: rgba(255, 255, 255, 0.87); */
   --background-color: var(--mui-palette-background-default);
-  --hover-color: var(--mui-palette-action-hover);
-
-  --border-color: var(--mui-palette-border-default);
+  --code-background-color: var(--mui-palette-background-code);
 
   --foreground-color: var(--mui-palette-text-primary);
+
+  --border-color: var(--mui-palette-border-default);
+  --hover-color: var(--mui-palette-action-hover);
 
   --primary-color: #6f4ff9;
   --primary-hover-color: #8c72fa;
@@ -63,8 +64,25 @@ svg {
   display: block;
 }
 
+video {
+  border-radius: 0.5rem;
+  width: 600px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
 .MuiButton-root {
   gap: 0.3rem;
+}
+
+code {
+  padding: 0.2rem 0.4rem;
+  background-color: var(--mui-palette-background-code);
+  border-radius: 0.25rem;
+  white-space: nowrap;
 }
 
 @media (prefers-color-scheme: light) {
