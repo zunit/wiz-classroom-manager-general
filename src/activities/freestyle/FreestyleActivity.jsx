@@ -19,15 +19,14 @@ function FreestyleActivity() {
 
   return (
     <>
-      <p>It's time to get creative!</p>
+      <h2>It's time to get creative!</h2>
       <p>
-        For this activity, you will be creating whatever you like that is
-        related to the given theme.
+        For this activity, you will be a game that is related to the given
+        theme.
       </p>
       <p>
-        For example, you can make a sprite, a backdrop, or even a full game!
+        An example of a theme could be "a magical cat in an enchanted forest".
       </p>
-      <p>An example of a theme could be "a magical cat in an enchanted forest".</p>
 
       <ToggleButtonGroup
         value={promptMode}

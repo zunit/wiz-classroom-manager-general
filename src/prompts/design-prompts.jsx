@@ -40,5 +40,5 @@ export function generateDesignPromptText() {
 }
 
 export function generateDesignPrompt() {
-  return <h2>{generateDesignPromptText()}</h2>
+  return <h1>{generateDesignPromptText()}</h1>
 }
