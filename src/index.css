@@ -2,8 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  /* --background-color: #242424; */
-  /* --foreground-color: rgba(255, 255, 255, 0.87); */
   --background-color: var(--mui-palette-background-default);
   --code-background-color: var(--mui-palette-background-code);
 
@@ -74,10 +72,6 @@ hr {
   border-top: 1px solid var(--border-color);
 }
 
-.MuiButton-root {
-  gap: 0.3rem;
-}
-
 code {
   padding: 0.2rem 0.4rem;
   background-color: var(--mui-palette-background-code);
@@ -85,14 +79,6 @@ code {
   white-space: nowrap;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background-color: #ffffff;
-    --foreground-color: #213547;
-    --secondary-color: #dddddd;
-    --secondary-hover-color: #cccccc;
-  }
-  a:hover {
-    color: #747bff;
-  }
+.MuiButton-root {
+  gap: 0.3rem;
 }

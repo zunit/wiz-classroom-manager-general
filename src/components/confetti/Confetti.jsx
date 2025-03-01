@@ -51,11 +51,9 @@ function Confetti(props) {
   // Resizing the canvas to the window size automatically
   React.useEffect(() => {
     resizeCanvas();
-    // window.addEventListener("resize", resizeCanvas);
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      // window.removeEventListener("resize", resizeCanvas);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);

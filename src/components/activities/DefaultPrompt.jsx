@@ -1,6 +1,5 @@
 import React from "react";
 import DesignPrompts from "@/prompts/design-prompts";
-// import Button from "@/components/ui/Button";
 import Button from "@mui/material/Button";
 
 export const PromptType = {
