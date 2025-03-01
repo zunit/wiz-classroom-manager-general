@@ -1,10 +1,13 @@
 import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
-import { awsRootDir } from "@/utils/pathUtils";
+import { awsRootDir, joinPath } from "@/utils/pathUtils";
+import { Difficulties } from "@/utils/TimeChunkModel";
 
-const codeWritingDir = `${awsRootDir}/code-writing`;
+function getCodeWritingAsset(assetName) {
+  return joinPath(awsRootDir, "code-writing", assetName);
+}
 
-function demonstrationVariables(...varNames) {
+function demoVarDisclaimer(...varNames) {
   function grammarifyVarList(index) {
     if (index === varNames.length - 2) {
       return ", and ";
@@ -34,7 +37,7 @@ function demonstrationVariables(...varNames) {
 const beginnerPrompts = [
   <>
     <h2>Animate the "Unicorn Running" sprite as shown below:</h2>
-    <video src={`${codeWritingDir}/unicorn-running.mov`} controls></video>
+    <video src={getCodeWritingAsset("unicorn-running.mov")} controls></video>
     <p>
       <b>Note:</b>
     </p>
@@ -47,17 +50,17 @@ const beginnerPrompts = [
       <b>Bonus challenge: </b>
     </p>
     <p>Make the unicorn face towards and follow the mouse pointer.</p>
-    <video src={`${codeWritingDir}/unicorn-following.mov`} controls></video>
+    <video src={getCodeWritingAsset("unicorn-following.mov")} controls></video>
   </>,
   <>
     <h2>Make a sprite bounce around like a DVD screensaver.</h2>
     <p>The sprite should be moving diagonally and bounce off of walls.</p>
-    <video src={`${codeWritingDir}/dvd-screensaver.mov`} controls></video>
+    <video src={getCodeWritingAsset("dvd-screensaver.mov")} controls></video>
   </>,
   <>
     <h2>Code the "Dot" sprite to be moved around using arrow keys.</h2>
-    <video src={`${codeWritingDir}/arrow-movement.mov`} controls></video>
-    {demonstrationVariables(
+    <video src={getCodeWritingAsset("arrow-movement.mov")} controls></video>
+    {demoVarDisclaimer(
       "up pressed",
       "down pressed",
       "left pressed",
@@ -71,12 +74,12 @@ const beginnerPrompts = [
       Animate Dot to walk when it is moving, and make Dot face left and right
       when moving in those directions.
     </p>
-    <video src={`${codeWritingDir}/arrow-movement-animated.mov`} controls></video>
+    <video src={getCodeWritingAsset("arrow-movement-animated.mov")} controls></video>
   </>,
   <>
     <h2>Make a player sprite that jumps up when the space bar is pressed.</h2>
-    <video src={`${codeWritingDir}/space-to-fly.mov`} controls></video>
-    {demonstrationVariables("space pressed")}
+    <video src={getCodeWritingAsset("space-to-fly.mov")} controls></video>
+    {demoVarDisclaimer("space pressed")}
     <hr />
     <p>
       <b>Bonus challenge: </b>
@@ -87,15 +90,15 @@ const beginnerPrompts = [
       height so that if the button is held for too long, the sprite no longer
       flies up.
     </p>
-    <video src={`${codeWritingDir}/space-to-fly-max-hold.mov`} controls></video>
+    <video src={getCodeWritingAsset("space-to-fly-max-hold.mov")} controls></video>
   </>,
   <>
     <h2>
       Make a player sprite that fires a laser in the direction of the mouse when
       the left mouse button is pressed.
     </h2>
-    <video src={`${codeWritingDir}/laser-shooting-auto.mov`} controls></video>
-    {demonstrationVariables("mouse pressed")}
+    <video src={getCodeWritingAsset("laser-shooting-auto.mov")} controls></video>
+    {demoVarDisclaimer("mouse pressed")}
     <hr />
     <p>
       <b>Bonus challenge: </b>
@@ -103,23 +106,23 @@ const beginnerPrompts = [
     <p>
       See if you can make the laser fire only <b>once per click</b>.
     </p>
-    <video src={`${codeWritingDir}/laser-shooting.mov`} controls></video>
+    <video src={getCodeWritingAsset("laser-shooting.mov")} controls></video>
   </>,
 ];
 
 const experiencedPrompts = [
   <>
     <h2>Make a balloon popping game as shown below.</h2>
-    <video src={`${codeWritingDir}/balloon-popping.mov`} controls></video>
+    <video src={getCodeWritingAsset("balloon-popping.mov")} controls></video>
     <p>Spawn balloons at random locations.</p>
     <p>When clicked, the balloon should disappear and add to the score.</p>
-    {demonstrationVariables("mouse pressed")}
+    {demoVarDisclaimer("mouse pressed")}
     <hr />
     <p>
       <b>Bonus challenge: </b>
     </p>
     <p>Let's try to make the game more fun!</p>
-    <video src={`${codeWritingDir}/balloon-popping-2.mov`} controls></video>
+    <video src={getCodeWritingAsset("balloon-popping-2.mov")} controls></video>
     <p>Randomize the time it takes for the next balloon to spawn.</p>
     <p>
       Make the balloons turn different colours over time, and score a different
@@ -132,12 +135,12 @@ const experiencedPrompts = [
       Create a script that allows a sprite to sprint in the direction they are
       moving when pressing the space key.
     </p>
-    <video src={`${codeWritingDir}/sprint.mov`} controls></video>
+    <video src={getCodeWritingAsset("sprint.mov")} controls></video>
     <p>
       Note: You will need to create the code for making the player sprite move
       with arrow keys first.
     </p>
-    {demonstrationVariables(
+    {demoVarDisclaimer(
       "up pressed",
       "down pressed",
       "left pressed",
@@ -149,7 +152,7 @@ const experiencedPrompts = [
       <b>Bonus challenge: </b>
     </p>
     <p>Instead than sprinting, let's make a dash feature!</p>
-    <video src={`${codeWritingDir}/dash.mov`} controls></video>
+    <video src={getCodeWritingAsset("dash.mov")} controls></video>
     <p>
       For sprinting, as long as the space bar is pressed, the player will move
       faster. However, for dashing, no matter how long the spacebar is held, the
@@ -165,16 +168,16 @@ const experiencedPrompts = [
       Create a script that will let a sprite be dragged and dropped WITHOUT
       using the "set drag mode" block.
     </h2>
-    <video src={`${codeWritingDir}/manual-dnd.mov`} controls></video>
+    <video src={getCodeWritingAsset("manual-dnd.mov")} controls></video>
     <p>
       Make sure you click the "Full Screen Control" button on the top right to
       test if your code works.
     </p>
-    {demonstrationVariables("mouse pressed")}
+    {demoVarDisclaimer("mouse pressed")}
   </>,
   <>
     <h2>Use code blocks to create a watermelon that can be sliced.</h2>
-    <video src={`${codeWritingDir}/slice-watermelon.mov`} controls></video>
+    <video src={getCodeWritingAsset("slice-watermelon.mov")} controls></video>
     <p>
       When the watermelon is clicked on directly, the watermelon should NOT be
       sliced.
@@ -183,14 +186,13 @@ const experiencedPrompts = [
       Make sure you click the "Full Screen Control" button on the top right to
       test if your code works.
     </p>
-    {demonstrationVariables("mouse pressed")}
+    {demoVarDisclaimer("mouse pressed")}
   </>,
 ];
 
-export function generateCodeWritingBeginnerPrompt() {
-  return getRandomElement(beginnerPrompts);
-}
-
-export function generateCodeWritingExperiencedPrompt() {
+export function generateCodeWritingPrompt(difficulty) {
+  if (difficulty === Difficulties.BEGINNER) {
+    return getRandomElement(beginnerPrompts);
+  }
   return getRandomElement(experiencedPrompts);
 }

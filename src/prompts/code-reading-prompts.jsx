@@ -1,5 +1,6 @@
 import { getRandomElement } from "@/utils/arrayUtils";
-import { awsRootDir } from "@/utils/pathUtils";
+import { awsRootDir, joinPath } from "@/utils/pathUtils";
+import { Difficulties } from "@/utils/TimeChunkModel";
 
 const divStyle = {
   width: "calc(500px)",
@@ -88,25 +89,20 @@ const experiencedCodeBlocks = [
   },
 ];
 
-const codeReadingBeginnerPath = `${awsRootDir}/code-reading/beginner`;
-const codeReadingExperiencedPath = `${awsRootDir}/code-reading/experienced`;
+export function generateCodeReadingPrompt(difficulty) {
+  const promptDataArray =
+    difficulty === Difficulties.BEGINNER
+      ? beginnerCodeBlocks
+      : experiencedCodeBlocks;
+  const promptData = getRandomElement(promptDataArray);
 
-export function generateCodeReadingBeginnerPrompt() {
-  const promptData = getRandomElement(beginnerCodeBlocks);
-  const imgPath = `${codeReadingBeginnerPath}/${promptData.imgName}.png`;
-  const imgStyle = { ...globalImgStyle, ...promptData.style };
-
-  return (
-    <div style={divStyle}>
-      {promptData.description}
-      <img src={imgPath} style={imgStyle} />
-    </div>
+  const imgPath = joinPath(
+    awsRootDir,
+    "code-reading",
+    difficulty.toLowerCase(),
+    `${promptData.imgName}.png`
   );
-}
 
-export function generateCodeReadingExperiencedPrompt() {
-  const promptData = getRandomElement(experiencedCodeBlocks);
-  const imgPath = `${codeReadingExperiencedPath}/${promptData.imgName}.png`;
   const imgStyle = { ...globalImgStyle, ...promptData.style };
 
   return (

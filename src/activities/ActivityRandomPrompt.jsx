@@ -1,16 +1,9 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext";
 import ActivityTypes from "@/utils/ActivityTypes";
-import { Difficulties } from "@/utils/TimeChunkModel";
 import { generateDesignPrompt } from "@/prompts/design-prompts";
-import {
-  generateCodeReadingBeginnerPrompt,
-  generateCodeReadingExperiencedPrompt,
-} from "@/prompts/code-reading-prompts";
-import {
-  generateCodeWritingBeginnerPrompt,
-  generateCodeWritingExperiencedPrompt,
-} from "@/prompts/code-writing-prompts";
+import { generateCodeReadingPrompt } from "@/prompts/code-reading-prompts";
+import { generateCodeWritingPrompt } from "@/prompts/code-writing-prompts";
 import { generateFreestylePrompt } from "@/prompts/freestyle-prompts";
 import { Button } from "@mui/material";
 
@@ -31,17 +24,11 @@ function ActivityRandomPrompt(props) {
     }
 
     if (activityType === ActivityTypes.CODE_READING) {
-      if (activity.difficulty === Difficulties.BEGINNER) {
-        return generateCodeReadingBeginnerPrompt();
-      }
-      return generateCodeReadingExperiencedPrompt();
+      return generateCodeReadingPrompt(activity.difficulty);
     }
 
     if (activityType === ActivityTypes.CODE_WRITING) {
-      if (activity.difficulty === Difficulties.BEGINNER) {
-        return generateCodeWritingBeginnerPrompt();
-      }
-      return generateCodeWritingExperiencedPrompt();
+      return generateCodeWritingPrompt(activity.difficulty);
     }
 
     if (activityType === ActivityTypes.FREESTYLE) {
