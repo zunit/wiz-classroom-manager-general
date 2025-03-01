@@ -23,12 +23,7 @@ import { Button } from "@mui/material";
 import "@/styles/timetable-settings.css";
 
 function TimetableSettings(props) {
-  const { chunksSetup, setChunksSetup, ...invalidProps } = props;
-  for (let invalidProp in invalidProps) {
-    console.warn(
-      `TimetableSettings component does not accept the "${invalidProp}" prop`
-    );
-  }
+  const { chunksSetup, setChunksSetup } = props;
 
   const numOfChunks = React.useRef(chunksSetup.length);
   const [activeId, setActiveId] = React.useState(null);

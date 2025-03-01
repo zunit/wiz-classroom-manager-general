@@ -12,15 +12,8 @@ function ActivityCardEditable(props) {
     onChangeChunkActivity,
     onChangeChunkTime,
     onDelete,
-    style,
     disableHover,
-    ...invalidProps
   } = props;
-  for (let invalidProp in invalidProps) {
-    console.warn(
-      `ActivityCard component does not accept the "${invalidProp}" prop`
-    );
-  }
 
   const [isHovered, setIsHovered] = React.useState(false);
   const [menuAnchorEl, setMenuAnchorEl] = React.useState(null);

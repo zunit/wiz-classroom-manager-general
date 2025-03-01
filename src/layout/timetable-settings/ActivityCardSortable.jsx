@@ -12,13 +12,7 @@ function ActivityCardSortable(props) {
     onChangeChunkTime,
     onChangeChunkActivity,
     onDelete,
-    ...invalidProps
   } = props;
-  for (let invalidProp in invalidProps) {
-    console.warn(
-      `ActivityCardDraggable component does not accept the "${invalidProp}" prop`
-    );
-  }
 
   const {
     isDragging,
