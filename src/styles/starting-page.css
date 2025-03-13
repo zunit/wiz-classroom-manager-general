@@ -1,3 +1,14 @@
+#difficulty-select-container {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#difficulty-select-header {
+  margin: 0;
+}
+
 #starting-page-footer {
   position: sticky;
   width: 100vw;

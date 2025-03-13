@@ -11,3 +11,10 @@
   background-color: var(--mui-palette-background-inverse);
   color: var(--mui-palette-text-inverse);
 }
+
+#button-reset {
+  position: fixed;
+  bottom: 6.5rem;
+  right: 2rem;
+  z-index: 1000;
+}

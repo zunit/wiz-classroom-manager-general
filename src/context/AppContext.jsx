@@ -1,6 +1,4 @@
 import React from "react";
-import { TimeChunkModel } from "@/utils/TimeChunkModel";
-import ActivityTypes from "@/utils/ActivityTypes";
 
 export const AppContext = React.createContext();
 
@@ -9,6 +7,13 @@ export function AppProvider(props) {
   const [currentChunkIndex, setCurrentChunkIndex] = React.useState(0);
   const [isClassStarted, setIsClassStarted] = React.useState(false);
   const [isClassEnded, setIsClassEnded] = React.useState(false);
+
+  function resetAppContext() {
+    setChunks([]);
+    setCurrentChunkIndex(0);
+    setIsClassStarted(false);
+    setIsClassEnded(false);
+  }
 
   const appData = {
     chunks,
@@ -19,6 +24,7 @@ export function AppProvider(props) {
     setIsClassStarted,
     isClassEnded,
     setIsClassEnded,
+    resetAppContext,
   };
 
   return (

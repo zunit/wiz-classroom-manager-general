@@ -64,4 +64,23 @@ export const AppTheme = createTheme({
       },
     },
   },
+  components: {
+    MuiFab: {
+      styleOverrides: {
+        root: {
+          variants: [
+            {
+              props: { color: "default" },
+              style: ({ theme }) => ({
+                "&:hover": {
+                  backgroundColor: theme.palette["activity-card"]["pulse-2"],
+                },
+                backgroundColor: theme.palette["activity-card"]["pulse-1"],
+              }),
+            },
+          ],
+        },
+      },
+    },
+  },
 });

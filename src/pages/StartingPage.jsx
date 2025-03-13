@@ -7,29 +7,10 @@ import { Button, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { isPositiveInteger } from "@/utils/inputValidation";
 import "@/styles/starting-page.css";
 
-function StartingPage() {
+function StartingPage(props) {
   const { setChunks, setIsClassStarted } = React.useContext(AppContext);
-  const [difficulty, setDifficulty] = React.useState("EXPERIENCED");
 
-  const debug = false;
-
-  let defaultChunkActivityTypes = debug
-    ? ActivityTypes.getValidActivityTypes()
-    : [
-        ActivityTypes.RANDOM,
-        ActivityTypes.INDIVIDUAL,
-        ActivityTypes.RANDOM,
-        ActivityTypes.INDIVIDUAL,
-      ];
-
-  let defaultChunksSetup = defaultChunkActivityTypes.map((activityType) => {
-    let time = activityType === ActivityTypes.INDIVIDUAL ? "20" : "10";
-    let activityDifficulty = ActivityTypes.hasDifficulties(activityType)
-      ? difficulty
-      : null;
-    return new TimeChunkModel(time, activityType, activityDifficulty);
-  });
-  const [chunksSetup, setChunksSetup] = React.useState(defaultChunksSetup);
+  const { chunksSetup, setChunksSetup, difficulty, setDifficulty } = props;
 
   function changeDifficulty(event, newDifficulty) {
     setDifficulty(newDifficulty);
@@ -56,18 +37,21 @@ function StartingPage() {
     <>
       <h1>Class Setup</h1>
 
-      <ToggleButtonGroup
-        value={difficulty}
-        exclusive
-        onChange={changeDifficulty}
-      >
-        <ToggleButton value="BEGINNER" color="success">
-          Beginner
-        </ToggleButton>
-        <ToggleButton value="EXPERIENCED" color="info">
-          Experienced
-        </ToggleButton>
-      </ToggleButtonGroup>
+      <div id="difficulty-select-container">
+        <h2 id="difficulty-select-header">Difficulty: </h2>
+        <ToggleButtonGroup
+          value={difficulty}
+          exclusive
+          onChange={changeDifficulty}
+        >
+          <ToggleButton value={Difficulties.BEGINNER} color="success">
+            Beginner
+          </ToggleButton>
+          <ToggleButton value={Difficulties.EXPERIENCED} color="info">
+            Experienced
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </div>
 
       <TimetableSettings
         chunksSetup={chunksSetup}
