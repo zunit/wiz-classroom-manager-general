@@ -1,11 +1,56 @@
+/**
+ * A class that provides enum-like values and helper methods
+ * associated with the activity types.
+ */
 class ActivityTypes {
-  static NULL = "NULL";
-  static INDIVIDUAL = "INDIVIDUAL";
-  static DESIGN = "DESIGN";
-  static CODE_READING = "CODE_READING";
-  static CODE_WRITING = "CODE_WRITING";
-  static FREESTYLE = "FREESTYLE";
-  static RANDOM = "RANDOM";
+  /**
+   * Represents an invalid activity type in case something goes wrong.
+   */
+  static get NULL() {
+    return "NULL";
+  }
+
+  /**
+   * Represents individual activity.
+   */
+  static get INDIVIDUAL() {
+    return "INDIVIDUAL";
+  }
+
+  /**
+   * Represents the "Design" activity.
+   */
+  static get DESIGN() {
+    return "DESIGN";
+  }
+
+  /**
+   * Represents the "What Does This Code Do?" activity.
+   */
+  static get CODE_READING() {
+    return "CODE_READING";
+  }
+
+  /**
+   * Represents the "Make This Happen!" activity.
+   */
+  static get CODE_WRITING() {
+    return "CODE_WRITING";
+  }
+
+  /**
+   * Represents the "Freestyle!" activity.
+   */
+  static get FREESTYLE() {
+    return "FREESTYLE";
+  }
+
+  /**
+   * Represents random group activity.
+   */
+  static get RANDOM() {
+    return "RANDOM";
+  }
 
   static #activityNameMap = {
     [ActivityTypes.INDIVIDUAL]: "Individual Activity",
@@ -16,6 +61,10 @@ class ActivityTypes {
     [ActivityTypes.RANDOM]: "Random Group Activity",
   };
 
+  /**
+   * Returns all the valid activity types.
+   * @returns An array containing all the valid activity types.
+   */
   static getValidActivityTypes() {
     return [
       ActivityTypes.INDIVIDUAL,
@@ -27,6 +76,10 @@ class ActivityTypes {
     ];
   }
 
+  /**
+   * Returns all the valid group activity types.
+   * @returns An array containing all the valid group activity types.
+   */
   static getGroupActivityTypes() {
     return [
       ActivityTypes.DESIGN,
