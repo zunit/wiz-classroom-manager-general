@@ -45,6 +45,7 @@ function App() {
 
   function handleReset() {
     setChunksSetup(defaultChunksSetup);
+    setDifficulty(Difficulties.EXPERIENCED);
     resetAppContext();
   }
 
