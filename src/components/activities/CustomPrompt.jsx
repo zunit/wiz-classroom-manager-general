@@ -5,7 +5,7 @@ function CustomPrompt() {
   const [text, setText] = React.useState("");
 
   return (
-    <div style={{ marginTop: "2em", marginBottom: "2em" }}>
+    <div style={{ marginBlock: "2em" }}>
       <p>Enter your custom prompt here:</p>
       <TextField
         id="custom-prompt-field"

@@ -12,7 +12,7 @@ function ActivityCustomPrompt(props) {
         onChange={onChange}
         multiline
         minRows={2}
-        sx={{ width: "80%", minWidth: "400px", maxWidth: "700px" }}
+        sx={{ width: "clamp(400px, 80%, 700px)" }}
       />
     </>
   );

@@ -3,7 +3,6 @@ import ActivityPrompt from "@/activities/ActivityPrompt";
 import ActivityTypes from "@/utils/ActivityTypes";
 
 function CodeReadingActivity() {
-
   const [randomPrompt, setRandomPrompt] = React.useState(null);
   const [customPrompt, setCustomPrompt] = React.useState("");
 
