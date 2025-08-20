@@ -9,6 +9,11 @@ import ActivityEndDialog from "@/layout/activity-page/ActivityEndDialog";
 import Confetti from "@/components/confetti/Confetti";
 import "@/styles/activity-page.css";
 
+/**
+ * Renders the activity page.
+ * 
+ * Contains the timer, the current activity, the timetable drawer, and the activity preview.
+ */
 function ActivityPage() {
   const { currentChunkIndex, setCurrentChunkIndex } =
     React.useContext(AppContext);
@@ -20,7 +25,7 @@ function ActivityPage() {
 
   /*
    * The actual value of this state doesn't mean anything.
-   * This is purely here so that the ActivityEndDialog can extend the timer
+   * This is only here so that the ActivityEndDialog can extend the timer
    * and trigger a re-render in the Timer component.
    */
   const [timerExtensionTrigger, setTimerExtensionTrigger] = React.useState(0);

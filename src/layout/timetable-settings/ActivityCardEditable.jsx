@@ -5,6 +5,10 @@ import { isPositiveInteger } from "@/utils/inputValidation";
 import { Avatar, Fab, Menu, MenuItem, TextField, Tooltip } from "@mui/material";
 import "@/styles/activity-card-editable.css";
 
+/**
+ * The activity card component wrapper that contains all the logic.
+ * Used in the starting page.
+ */
 function ActivityCardEditable(props) {
   const {
     index,

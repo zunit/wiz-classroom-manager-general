@@ -9,6 +9,9 @@ import {
   DialogTitle,
 } from "@mui/material";
 
+/**
+ * Renders the modal dialog when you interact with the activity preview.
+ */
 function ActivityPreviewDialog(props) {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
   const { open, onClose, onConfirm } = props;

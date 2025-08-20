@@ -3,7 +3,10 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import "@/styles/activity-card-dnd.css";
 
-// Draggable container with dnd-kit functionality
+/**
+ * The draggable activity card used in the starting page.
+ * Dummy component; doesn't control the logic, only responsible for rendering the given data.
+ */
 function ActivityCardSortable(props) {
   const {
     id,

@@ -38,11 +38,20 @@ function App() {
 
   const { mode, setMode } = useColorScheme();
 
+  /**
+   * Toggles the theme between light and dark mode.
+   */
   function handleChangeTheme() {
     let newMode = mode === "light" ? "dark" : "light";
     setMode(newMode);
   }
 
+  /**
+   * Resets the page to its initial state.
+   *
+   * This can also be achieved by refreshing the page,
+   * but a page refresh can be annoying and slow.
+   */
   function handleReset() {
     setChunksSetup(defaultChunksSetup);
     setDifficulty(Difficulties.EXPERIENCED);
@@ -51,6 +60,7 @@ function App() {
 
   return (
     <>
+      {/* Main page content */}
       {!isClassStarted ? (
         <StartingPage
           {...{ chunksSetup, setChunksSetup, difficulty, setDifficulty }}
@@ -61,6 +71,7 @@ function App() {
         <EndingPage />
       )}
 
+      {/* Theme toggle */}
       <Tooltip
         title={`Change to ${mode === "light" ? "dark" : "light"} theme`}
         placement="left"
@@ -72,6 +83,7 @@ function App() {
         </Fab>
       </Tooltip>
 
+      {/* Reset button */}
       <Tooltip title="Reset" placement="left">
         <Fab id="button-reset" onClick={handleReset}>
           <span className="material-symbols-rounded">refresh</span>

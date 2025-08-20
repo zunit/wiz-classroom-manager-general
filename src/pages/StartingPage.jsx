@@ -7,6 +7,9 @@ import { Button, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { isPositiveInteger } from "@/utils/inputValidation";
 import "@/styles/starting-page.css";
 
+/**
+ * Renders the page that loads when the app is first opened.
+ */
 function StartingPage(props) {
   const { setChunks, setIsClassStarted } = React.useContext(AppContext);
 
@@ -16,10 +19,15 @@ function StartingPage(props) {
     setDifficulty(newDifficulty);
   }
 
+  /**
+   * Button click event handler for the START CLASS button at the bottom of the page.
+   */
   function handleClickStartClass() {
-    let renormalizedChunks = [];
-    for (let chunk of chunksSetup) {
-      renormalizedChunks.push(
+    // Renormalizes the chunks, as any changes to the timetable setup
+    // will have converted the TimeChunkModel objects to regular objects
+    // See TimetableSettings component for more details
+    let renormalizedChunks = chunksSetup.map(
+      (chunk) =>
         new TimeChunkModel(
           Number.parseInt(chunk.time, 10) * 60,
           chunk.activityType,
@@ -27,8 +35,7 @@ function StartingPage(props) {
             ? difficulty
             : Difficulties.NA
         )
-      );
-    }
+    );
     setChunks(renormalizedChunks);
     setIsClassStarted(true);
   }

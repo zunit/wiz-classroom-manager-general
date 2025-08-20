@@ -2,6 +2,9 @@ import Timetable from "@/layout/timetable-drawer/Timetable";
 import { Fab, Tooltip } from "@mui/material";
 import "@/styles/timetable-drawer.css";
 
+/**
+ * The timetable drawer seen in the activity page.
+ */
 function TimetableDrawer(props) {
   const { open, setOpen } = props;
 

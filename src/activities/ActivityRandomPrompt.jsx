@@ -7,6 +7,9 @@ import { generateCodeWritingPrompt } from "@/prompts/code-writing-prompts";
 import { generateFreestylePrompt } from "@/prompts/freestyle-prompts";
 import { Button } from "@mui/material";
 
+/**
+ * Parent component for random generated activity prompts.
+ */
 function ActivityRandomPrompt(props) {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
   const { activityType, randomPrompt, setRandomPrompt } = props;

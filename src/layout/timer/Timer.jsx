@@ -4,6 +4,9 @@ import { Fab, Tooltip } from "@mui/material";
 import formatTime from "@/utils/formatTime";
 import "@/styles/timer.css";
 
+/**
+ * Renders the timer bar at the top of the activity page.
+ */
 function Timer(props) {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
 
@@ -20,6 +23,9 @@ function Timer(props) {
   );
   const [isTimerRunning, setIsTimerRunning] = React.useState(false);
 
+  /**
+   * Event handler for the timer's play/pause button.
+   */
   function handleClickTimerToggle() {
     if (!isActivityStarted) {
       onTimerStart();
@@ -27,10 +33,16 @@ function Timer(props) {
     setIsTimerRunning((isTimerRunning) => !isTimerRunning);
   }
 
+  /**
+   * Event handler for the button that increments the timer by one minute.
+   */
   function handleClickTimerInc() {
     setTimeLeft((timeLeft) => timeLeft + 60);
   }
 
+  /**
+   * Event handler for the button that decrements the timer by one minute.
+   */
   function handleClickTimerDec() {
     setTimeLeft((timeLeft) => Math.max(timeLeft - 60, 0));
   }

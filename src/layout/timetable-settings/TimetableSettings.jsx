@@ -22,18 +22,23 @@ import {
 import { Button } from "@mui/material";
 import "@/styles/timetable-settings.css";
 
+/**
+ * The section in the starting page containing everything to do with the timetable.
+ */
 function TimetableSettings(props) {
   const { chunksSetup, setChunksSetup } = props;
 
   const numOfChunks = React.useRef(chunksSetup.length);
+
+  // Used to determine the correct card to render for the drag overlay
   const [activeId, setActiveId] = React.useState(null);
 
+  // Sensors used for dnd-kit
   const sensorOptions = {
     activationConstraint: {
       distance: 1,
     },
   };
-
   const sensors = useSensors(
     useSensor(MouseSensor, sensorOptions),
     useSensor(TouchSensor, sensorOptions)
@@ -50,7 +55,16 @@ function TimetableSettings(props) {
     numOfChunks.current = chunksSetup.length;
   }, [chunksSetup]);
 
+  /**
+   * Changes the duration of the given time chunk in the timetable setup.
+   * @param {number} index The index of the time chunk to change.
+   * @param {number} newTime The new duration of the time chunk in seconds.
+   */
   function handleChangeChunkTime(index, newTime) {
+    // The new time chunk object must be a regular object
+    // instead of an object created using the TimeChunkModel constructor
+    // because doing so would cause the entire thing to rerender for some reason,
+    // which causes many issues.
     setChunksSetup((chunksSetup) =>
       replaceInArray(chunksSetup, index, {
         ...chunksSetup[index],
@@ -59,7 +73,16 @@ function TimetableSettings(props) {
     );
   }
 
+  /**
+   * Changes the activity type of the given time chunk in the timetable setup.
+   * @param {number} index The index of the time chunk to change.
+   * @param {number} newTime The new activity type.
+   */
   function handleChangeChunkActivity(index, newActivityType) {
+    // The new time chunk object must be a regular object
+    // instead of an object created using the TimeChunkModel constructor
+    // because doing so would cause the entire thing to rerender for some reason,
+    // which causes many issues.
     setChunksSetup((chunksSetup) =>
       replaceInArray(chunksSetup, index, {
         ...chunksSetup[index],
@@ -68,6 +91,12 @@ function TimetableSettings(props) {
     );
   }
 
+  /**
+   * Adds an activity at the end of the timetable setup.
+   *
+   * Whether an individual activity or a random group activity is given
+   * depends on whether the activity is located at an even or odd index.
+   */
   function handleClickAddActivity() {
     let newChunk;
     if (chunksSetup.length % 2 == 0) {
@@ -78,11 +107,19 @@ function TimetableSettings(props) {
     setChunksSetup([...chunksSetup, newChunk]);
   }
 
+  /**
+   * Deletes an activity in the timetable setup.
+   * @param {number} index The index of the time chunk to be deleted.
+   */
   function handleClickDeleteActivity(index) {
     setChunksSetup((chunksSetup) => removeFromArray(chunksSetup, index));
   }
 
-  // Drag event handler
+  /**
+   * Changes the order of the time chunks in the timetable setup
+   * after a drag operation is finished.
+   * @param {DragEndEvent} event The drag end event passed by dnd-kit.
+   */
   function handleDragEnd(event) {
     const { active, over } = event;
     if (over === null) {
@@ -101,14 +138,28 @@ function TimetableSettings(props) {
     setActiveId(null);
   }
 
+  /**
+   * Causes the drag overlay to be rendered while a drag operation is ongoing.
+   * @param {DragStartEvent} event The drag start event passed by dnd-kit.
+   */
   function handleDragStart(event) {
     setActiveId(event.active.id);
   }
 
+  /**
+   * Helper function that returns the data of the time chunk with a given ID.
+   * @param {string} id The ID (of the DOM element) of the time chunk to search for.
+   * @returns The data (TimeChunkModel object) corresponding to the time chunk.
+   */
   function getChunkDataFromId(id) {
     return chunksSetup.find((chunk) => chunk.domId === id);
   }
 
+  /**
+   * 
+   * @param {string} id The ID (of the DOM element) of the time chunk to search for.
+   * @returns The index of the corresponding time chunk in the current timetable setup.
+   */
   function getChunkIndexFromId(id) {
     return chunksSetup.findIndex((chunk) => chunk.domId === id);
   }

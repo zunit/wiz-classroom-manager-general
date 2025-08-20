@@ -9,6 +9,9 @@ import CodeReadingActivity from "@/activities/code-reading/CodeReadingActivity";
 import CodeWritingActivity from "@/activities/code-writing/CodeWritingActivity";
 import FreestyleActivity from "@/activities/freestyle/FreestyleActivity";
 
+/**
+ * Entry point for all activities.
+ */
 function ActivityComponent() {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
 
@@ -23,6 +26,10 @@ function ActivityComponent() {
     setCurrentActivity(chunks[currentChunkIndex].activityType);
   }, [currentChunkIndex]);
 
+  /**
+   * Helper function to determine the correct activity component to render.
+   * @returns The correct activity component.
+   */
   function getCurrentActivity() {
     let activityComponent;
     switch (currentActivity) {

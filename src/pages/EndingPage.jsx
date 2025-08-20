@@ -2,6 +2,9 @@ import Confetti from "@/components/confetti/Confetti";
 import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import "@/styles/ending-page.css"
 
+/**
+ * Renders the page that loads after the last activity has finished.
+ */
 function EndingPage() {
   return (
     <>

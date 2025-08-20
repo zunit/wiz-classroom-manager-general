@@ -1,6 +1,10 @@
 import ActivityCustomPrompt from "@/activities/ActivityCustomPrompt";
 import ActivityRandomPrompt from "@/activities/ActivityRandomPrompt";
 
+/**
+ * Contains the activity content.
+ * Can be either a custom prompt, or a random prompt.
+ */
 function ActivityPrompt(props) {
   const {
     activityType,

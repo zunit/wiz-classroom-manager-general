@@ -1,11 +1,17 @@
 import ActivityTypes from "@/utils/ActivityTypes";
 
+/**
+ * An object that provides enum-like values for activity difficulties.
+ */
 export const Difficulties = {
   NA: "NA",
   BEGINNER: "BEGINNER",
   EXPERIENCED: "EXPERIENCED",
 };
 
+/**
+ * A class whose instances represent a time chunk of the class.
+ */
 export class TimeChunkModel {
   static #idCounter = 0;
 

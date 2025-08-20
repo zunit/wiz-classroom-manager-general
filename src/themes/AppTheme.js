@@ -1,5 +1,8 @@
 import { createTheme } from "@mui/material";
 
+/**
+ * The Mui theme object used for the app.
+ */
 export const AppTheme = createTheme({
   cssVariables: true,
   defaultColorScheme: "light",

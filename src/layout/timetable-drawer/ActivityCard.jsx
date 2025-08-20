@@ -2,6 +2,9 @@ import ActivityTypes from "@/utils/ActivityTypes";
 import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import "@/styles/activity-card.css";
 
+/**
+ * The activity card seen in the timetable drawer in the activity page.
+ */
 function ActivityCard(props) {
   const { chunk, progress } = props;
 

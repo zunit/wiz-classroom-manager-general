@@ -2,6 +2,9 @@ import React from "react";
 import ActivityWheel from "@/activities/random/ActivityWheel";
 import ActivityWheelDialog from "@/activities/random/ActivityWheelDialog";
 
+/**
+ * The container for the content in the random activity inside the activity page.
+ */
 function RandomActivity(props) {
   const [generatedActivity, setGeneratedActivity] = React.useState(null);
   const [isWheelDialogOpen, setIsWheelDialogOpen] = React.useState(false);

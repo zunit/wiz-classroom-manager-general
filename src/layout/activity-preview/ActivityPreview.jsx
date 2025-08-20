@@ -5,6 +5,9 @@ import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
 import { Button } from "@mui/material";
 import "@/styles/activity-preview.css";
 
+/**
+ * Renders the activity preview in the activity page.
+ */
 function ActivityPreview(props) {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
   const { isDrawerOpen, onButtonClick } = props;

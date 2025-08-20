@@ -2,7 +2,9 @@ import ActivityTypes from "@/utils/ActivityTypes";
 import { awsRootDir, joinPath } from "@/utils/pathUtils";
 import "@/styles/activity-icon.css";
 
-// Maps the icon type to its corresponding data
+/**
+ * Maps the icon type to its corresponding data.
+ */
 const iconTypeDataMap = {
   [ActivityTypes.NULL]: {
     iconPath: joinPath(awsRootDir, "activity-icons", "warning.png"),
@@ -38,6 +40,9 @@ const iconTypeDataMap = {
   },
 };
 
+/**
+ * The activity icons used throughout the app.
+ */
 function ActivityIcon(props) {
   const { activityType, size } = props;
 

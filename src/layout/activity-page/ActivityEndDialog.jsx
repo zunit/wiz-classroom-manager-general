@@ -8,6 +8,9 @@ import {
   Tooltip,
 } from "@mui/material";
 
+/**
+ * Renders the modal dialog that appears when the timer for the current activity reaches zero.
+ */
 function ActivityEndDialog(props) {
   const { open, onConfirm, onExtendTimer } = props;
   return (

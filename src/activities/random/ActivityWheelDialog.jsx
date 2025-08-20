@@ -9,6 +9,10 @@ import {
   DialogTitle,
 } from "@mui/material";
 
+/**
+ * Renders the modal dialog that appears when the wheel has finished spinning
+ * and the random activity has been generated.
+ */
 function ActivityWheelDialog(props) {
   const { open, activity, onClose, onConfirm } = props;
 
@@ -19,7 +23,7 @@ function ActivityWheelDialog(props) {
         <DialogContentText>
           You got the "{ActivityTypes.getActivityName(activity)}" activity!
         </DialogContentText>
-          <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+          <div style={{ marginBlock: "1rem" }}>
             <ActivityIcon activityType={activity} />
           </div>
         <DialogContentText>
