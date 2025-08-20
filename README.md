@@ -93,12 +93,12 @@ To set up the project:
    cd wiz-classroom-manager-general
    ```
 
-   > [!TIP]
-   > Using VS Code? Open the project after the `cd` command by running:
-   >
-   > ```
-   > code .
-   > ```
+> [!TIP]
+> Using VS Code? Open the project after the `cd` command by running:
+>
+> ```
+> code .
+> ```
 
 5. Install all the necessary dependencies by running:
 
