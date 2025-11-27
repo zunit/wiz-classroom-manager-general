@@ -1,0 +1,59 @@
+.activity-icon-container {
+  width: 100px;
+  height: 100px;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+
+.activity-icon-container.null-icon {
+  background-color: #ffaaaa;
+}
+
+.activity-icon-container.individual-icon {
+  background-color: #aba0ce;
+}
+
+.activity-icon-container.design-icon {
+  background-color: #d1e59d;
+}
+
+.activity-icon-container.code-reading-icon {
+  background-color: #7ec9f2;
+}
+
+.activity-icon-container.code-writing-icon {
+  background-color: #e7c380;
+}
+
+.activity-icon-container.freestyle-icon {
+  background-color: #7ef2df;
+}
+
+.activity-icon-container.random-icon {
+  background-color: #f29b7e;
+}
+
+.activity-icon-container.end-icon {
+  background-color: #c483a0;
+}
+
+.activity-icon {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
+}
+
+.activity-icon.null-icon {
+  transform: translateY(-5%);
+}
+
+.activity-icon.design-icon {
+  transform: translateY(-2%);
+}
+
+.activity-icon.code-writing-icon {
+  transform: translateY(-3%);
+}

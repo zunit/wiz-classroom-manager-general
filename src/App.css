@@ -1,0 +1,27 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#toggle-theme {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background-color: var(--mui-palette-background-inverse);
+  color: var(--mui-palette-text-inverse);
+}
+
+#button-reset {
+  position: fixed;
+  bottom: 6.5rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+#developer-links {
+  position: fixed;
+  bottom: 11rem;
+  right: 2rem;
+  z-index: 1000;
+}

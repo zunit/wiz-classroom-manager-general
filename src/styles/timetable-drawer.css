@@ -1,0 +1,80 @@
+#timetable-drawer-container {
+  z-index: 100;
+  position: fixed;
+  left: -360px;
+  top: 0;
+  width: 360px;
+  height: 100vh;
+  background-color: var(--background-color);
+  border-right: 1px solid var(--border-color);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  transition: left 0.3s ease;
+  overflow-y: scroll;
+
+  /* Moves scrollbar to the left to not interfere with the drawer toggle */
+  direction: rtl;
+}
+
+#timetable-drawer-container.open {
+  left: 0;
+}
+
+#timetable-drawer-toggle-padding {
+  position: fixed;
+  top: 0;
+  left: 2rem;
+  transform: translate(calc(-50%), calc(100% + 3px));
+  background-color: var(--background-color);
+  width: calc(56px + 1rem);
+  height: calc(56px + 1rem);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease;
+}
+
+#timetable-drawer-toggle-padding.open {
+  left: calc(360px + 2rem);
+}
+
+#timetable-drawer-toggle-border {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 2rem;
+  transform: translate(-50%, 100%);
+  width: calc(56px + 1rem);
+  height: calc(56px + 1rem);
+  border-radius: 9999px;
+  transition: left 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+#timetable-drawer-toggle-border.open {
+  left: calc(360px + 2rem);
+}
+
+#timetable-drawer-toggle {
+  z-index: 101;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease;
+  transform: translateZ(1000000px);
+  box-shadow: none;
+}
+
+#timetable-drawer-toggle-chevron {
+  transition: transform 0.3s ease;
+}
+
+#timetable-drawer-toggle-chevron.open {
+  transform: rotate(-180deg);
+}
+
+#timetable-drawer-bottom-spacer {
+  height: 3rem;
+}

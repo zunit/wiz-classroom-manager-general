@@ -1,0 +1,24 @@
+/* .activity-card-draggable-wrapper {
+  cursor: move;
+}
+
+.activity-card-draggable-wrapper.dragged {
+  opacity: 0.5;
+}
+
+.activity-card-droppable {
+  width: calc(400px + 4em);
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-card-droppable-indicator {
+  width: 100%;
+  height: 3px;
+}
+
+.activity-card-droppable-indicator.dragged-over {
+  background-color: var(--mui-palette-primary-main);
+} */

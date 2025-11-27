@@ -1,0 +1,44 @@
+@keyframes current-activity-background-pulse {
+  0% {
+    background-color: var(--mui-palette-activity-card-pulse-1);
+  }
+  50% {
+    background-color: var(--mui-palette-activity-card-pulse-2);
+  }
+  100% {
+    background-color: var(--mui-palette-activity-card-pulse-1);
+  }
+}
+
+.activity-card-container {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  direction: ltr;
+}
+
+.activity-card-header {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.75rem;
+}
+
+.activity-card-subheader {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.25rem;
+}
+
+.activity-card-container.current {
+  animation: current-activity-background-pulse 1.5s ease-in-out infinite;
+}
+
+.activity-card-container.finished > * {
+  opacity: 0.3;
+}

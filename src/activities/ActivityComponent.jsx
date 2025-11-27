@@ -1,0 +1,71 @@
+import React from "react";
+import { AppContext } from "@/context/AppContext";
+import ActivityTypes from "@/utils/ActivityTypes";
+import ActivityHeader from "@/activities/ActivityHeader";
+import IndividualActivity from "@/activities/individual/IndividualActivity";
+import RandomActivity from "@/activities/random/RandomActivity";
+import DesignActivity from "@/activities/code-randomizer/CodeRandomizerActivity";
+import CodeReadingActivity from "@/activities/code-relay/CodeRelayActivity";
+import CodeWritingActivity from "@/activities/secret-mission/SecretMissionActivity";
+import JeopardyActivity from "@/activities/jeopardy/JeopardyActivity";
+
+/**
+ * Entry point for all activities.
+ */
+function ActivityComponent() {
+  const { chunks, currentChunkIndex } = React.useContext(AppContext);
+
+  const [currentActivity, setCurrentActivity] = React.useState(
+    chunks[currentChunkIndex].activityType
+  );
+
+  React.useEffect(() => {
+    if (currentChunkIndex === 0) {
+      return;
+    }
+    setCurrentActivity(chunks[currentChunkIndex].activityType);
+  }, [currentChunkIndex]);
+
+  /**
+   * Helper function to determine the correct activity component to render.
+   * @returns The correct activity component.
+   */
+  function getCurrentActivity() {
+    let activityComponent;
+    switch (currentActivity) {
+      case ActivityTypes.INDIVIDUAL:
+        activityComponent = <IndividualActivity />;
+        break;
+      case ActivityTypes.CODE_RANDOMIZER:
+        activityComponent = <DesignActivity />;
+        break;
+      case ActivityTypes.CODE_RELAY:
+        activityComponent = <CodeReadingActivity />;
+        break;
+      case ActivityTypes.SECRET_MISSION:
+        activityComponent = <CodeWritingActivity />;
+        break;
+      case ActivityTypes.JEOPARDY:
+        activityComponent = <JeopardyActivity />;
+        break;
+      case ActivityTypes.RANDOM:
+        activityComponent = (
+          <RandomActivity setCurrentActivity={setCurrentActivity} />
+        );
+        break;
+      default:
+        console.warn(`Invalid activity type: ${currentActivity}`);
+        break;
+    }
+    return activityComponent;
+  }
+
+  return (
+    <div id="activity-container">
+      <ActivityHeader activityType={currentActivity} />
+      {getCurrentActivity()}
+    </div>
+  );
+}
+
+export default ActivityComponent;

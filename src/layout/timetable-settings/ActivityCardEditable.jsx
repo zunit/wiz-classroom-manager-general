@@ -1,0 +1,155 @@
+import React from "react";
+import ActivityTypes from "@/utils/ActivityTypes";
+import ActivityIcon from "@/layout/timetable-settings/ActivityIcon";
+import { isPositiveInteger } from "@/utils/inputValidation";
+import { Avatar, Fab, Menu, MenuItem, TextField, Tooltip } from "@mui/material";
+import "@/styles/activity-card-editable.css";
+
+/**
+ * The activity card component wrapper that contains all the logic.
+ * Used in the starting page.
+ */
+function ActivityCardEditable(props) {
+  const {
+    index,
+    chunk,
+    onChangeChunkActivity,
+    onChangeChunkTime,
+    onDelete,
+    disableHover,
+  } = props;
+
+  const [isHovered, setIsHovered] = React.useState(false);
+  const [menuAnchorEl, setMenuAnchorEl] = React.useState(null);
+
+  function getCardHeader() {
+    let cardHeader;
+    if (ActivityTypes.isIndividualActivity(chunk.activityType)) {
+      cardHeader = "Individual Activity";
+    } else if (ActivityTypes.isGroupActivity(chunk.activityType)) {
+      cardHeader = "Group Activity";
+    } else {
+      cardHeader = `Error: ${chunk.activityType}`;
+    }
+    return cardHeader;
+  }
+
+  function getCardSubheader() {
+    let cardSubheader;
+    if (chunk.activityType === ActivityTypes.RANDOM) {
+      cardSubheader = "Random";
+    } else if (ActivityTypes.isGroupActivity(chunk.activityType)) {
+      cardSubheader = ActivityTypes.getActivityName(chunk.activityType);
+    } else {
+      cardSubheader = `Error: ${chunk.activityType}`;
+    }
+    return cardSubheader;
+  }
+
+  function handleCloseMenu() {
+    setMenuAnchorEl(null);
+  }
+
+  function handleChangeChunkActivity(newActivityType) {
+    handleCloseMenu();
+    onChangeChunkActivity(index, newActivityType);
+  }
+
+  return (
+    <div
+      className={`activity-card-editable-container${
+        isHovered ? " hovered" : ""
+      }`}
+      onMouseEnter={disableHover ? undefined : () => setIsHovered(true)}
+      onMouseLeave={disableHover ? undefined : () => setIsHovered(false)}
+    >
+      <div className="activity-card-editable-index">
+        <p>{index + 1}</p>
+      </div>
+      <Tooltip title="Change activity">
+        <div
+          className="activity-card-editable-change-activity"
+          onClick={(event) => {
+            setIsHovered(false);
+            setMenuAnchorEl(event.currentTarget);
+          }}
+        >
+          <ActivityIcon activityType={chunk.activityType} />
+        </div>
+      </Tooltip>
+
+      <Menu
+        anchorEl={menuAnchorEl}
+        open={Boolean(menuAnchorEl)}
+        onClose={handleCloseMenu}
+        slotProps={{
+          paper: {
+            sx: {
+              "& .MuiAvatar-root": {
+                mr: 1.5,
+              },
+            },
+          },
+        }}
+        transformOrigin={{ horizontal: "center", vertical: "top" }}
+        anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
+      >
+        {ActivityTypes.getValidActivityTypes().map(
+          (activityType, activityIndex) => {
+            return (
+              <MenuItem
+                key={activityIndex}
+                onClick={() => handleChangeChunkActivity(activityType)}
+              >
+                <Avatar>
+                  <ActivityIcon activityType={activityType} />
+                </Avatar>
+                {ActivityTypes.getActivityName(activityType)}
+              </MenuItem>
+            );
+          }
+        )}
+      </Menu>
+
+      <div className="activity-card-editable-description">
+        <h1 className="activity-card-editable-header">{getCardHeader()}</h1>
+        <h2 className="activity-card-editable-subheader">
+          {ActivityTypes.isGroupActivity(chunk.activityType)
+            ? getCardSubheader()
+            : null}
+        </h2>
+        <div className="activity-card-editable-duration">
+          <span>Duration:</span>
+          <TextField
+            value={chunk.time}
+            variant="standard"
+            size="small"
+            sx={{ width: "50px" }}
+            slotProps={{
+              htmlInput: {
+                sx: { textAlign: "center" },
+              },
+            }}
+            error={!isPositiveInteger(chunk.time)}
+            onChange={(event) => onChangeChunkTime(index, event.target.value)}
+          />
+          <span>minute{chunk.time === "1" ? "" : "s"}</span>
+        </div>
+      </div>
+
+      <div
+        className={`activity-card-editable-delete${
+          isHovered ? " hovered" : ""
+        }`}
+      >
+        <Tooltip title="Delete activity">
+          <Fab color="error" size="small" onClick={onDelete}>
+            <span className="material-symbols-rounded">close</span>
+          </Fab>
+        </Tooltip>
+      </div>
+    </div>
+  );
+}
+
+export default ActivityCardEditable;

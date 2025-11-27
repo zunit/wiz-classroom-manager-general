@@ -1,0 +1,80 @@
+.activity-card-editable-container {
+  position: relative;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1em;
+  width: 450px;
+  height: calc(150px - 2rem);
+  transition: background-color 0.2s ease;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.activity-card-editable-container.hovered {
+  background-color: var(--mui-palette-action-hover);
+}
+
+.activity-card-editable-container:has(
+    .activity-card-editable-change-activity:hover
+  ) {
+  background-color: var(--background-color);
+}
+
+.activity-card-editable-index {
+  width: 1rem;
+}
+
+.activity-card-editable-change-activity {
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+  padding: 0.5rem;
+}
+
+.activity-card-editable-container.hovered
+  > .activity-card-editable-change-activity:hover {
+  cursor: pointer;
+  background-color: var(--hover-color);
+}
+
+.activity-card-editable-description {
+  height: calc(150px - 2rem);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.activity-card-editable-header {
+  margin: 0;
+  font-size: 2em;
+}
+
+.activity-card-editable-subheader {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.activity-card-editable-duration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  margin-top: 0em;
+}
+
+.activity-card-editable-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.activity-card-editable-delete.hovered {
+  opacity: 1;
+}

@@ -1,0 +1,21 @@
+.timetable-settings-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.timetable-cards {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.timetable-cards.empty {
+  margin: 0;
+}
+
+.timetable-cards.single-card {
+  display: block;
+}
