@@ -4,10 +4,10 @@ import ActivityTypes from "@/utils/ActivityTypes";
 import ActivityHeader from "@/activities/ActivityHeader";
 import IndividualActivity from "@/activities/individual/IndividualActivity";
 import RandomActivity from "@/activities/random/RandomActivity";
-import DesignActivity from "@/activities/design/DesignActivity";
-import CodeReadingActivity from "@/activities/code-reading/CodeReadingActivity";
-import CodeWritingActivity from "@/activities/code-writing/CodeWritingActivity";
-import FreestyleActivity from "@/activities/freestyle/FreestyleActivity";
+import StrategyAndProblemSolvingActivity from "@/activities/strategy-and-problem-solving/StrategyAndProblemSolvingActivity";
+import CodeAlongActivity from "@/activities/code-along/CodeAlongActivity";
+import BuildAlongActivity from "@/activities/build-along/BuildAlongActivity";
+import ChallengeRoundActivity from "@/activities/challenge-round/ChallengeRoundActivity";
 
 /**
  * Entry point for all activities.
@@ -36,17 +36,17 @@ function ActivityComponent() {
       case ActivityTypes.INDIVIDUAL:
         activityComponent = <IndividualActivity />;
         break;
-      case ActivityTypes.DESIGN:
-        activityComponent = <DesignActivity />;
+      case ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING:
+        activityComponent = <StrategyAndProblemSolvingActivity />;
         break;
-      case ActivityTypes.CODE_READING:
-        activityComponent = <CodeReadingActivity />;
+      case ActivityTypes.CODE_ALONG:
+        activityComponent = <CodeAlongActivity />;
         break;
-      case ActivityTypes.CODE_WRITING:
-        activityComponent = <CodeWritingActivity />;
+      case ActivityTypes.BUILD_ALONG:
+        activityComponent = <BuildAlongActivity />;
         break;
-      case ActivityTypes.FREESTYLE:
-        activityComponent = <FreestyleActivity />;
+      case ActivityTypes.CHALLENGE_ROUND:
+        activityComponent = <ChallengeRoundActivity />;
         break;
       case ActivityTypes.RANDOM:
         activityComponent = (

@@ -2,7 +2,7 @@ import React from "react";
 import ActivityPrompt from "@/activities/ActivityPrompt";
 import ActivityTypes from "@/utils/ActivityTypes";
 
-function CodeReadingActivity() {
+function CodeAlongActivity() {
   const [randomPrompt, setRandomPrompt] = React.useState(null);
   const [customPrompt, setCustomPrompt] = React.useState("");
 
@@ -13,12 +13,12 @@ function CodeReadingActivity() {
   return (
     <>
       <p>
-        In this activity, you will be given some code, and your task is to try
-        to figure out what it does!
+        In this code-along activity, you will be given some code, and your task
+        is to figure out what it does.
       </p>
 
       <ActivityPrompt
-        activityType={ActivityTypes.CODE_READING}
+        activityType={ActivityTypes.CODE_ALONG}
         promptMode={"random"}
         randomPrompt={randomPrompt}
         setRandomPrompt={setRandomPrompt}
@@ -31,4 +31,4 @@ function CodeReadingActivity() {
   );
 }
 
-export default CodeReadingActivity;
+export default CodeAlongActivity;

@@ -18,31 +18,31 @@ class ActivityTypes {
   }
 
   /**
-   * Represents the "Design" activity.
+   * Represents the "Strategy-and-Problem-Solving" activity.
    */
-  static get DESIGN() {
-    return "DESIGN";
+  static get STRATEGY_AND_PROBLEM_SOLVING() {
+    return "STRATEGY_AND_PROBLEM_SOLVING";
   }
 
   /**
-   * Represents the "What Does This Code Do?" activity.
+   * Represents the "Code-Along" activity.
    */
-  static get CODE_READING() {
-    return "CODE_READING";
+  static get CODE_ALONG() {
+    return "CODE_ALONG";
   }
 
   /**
-   * Represents the "Make This Happen!" activity.
+   * Represents the "Build-Along" activity.
    */
-  static get CODE_WRITING() {
-    return "CODE_WRITING";
+  static get BUILD_ALONG() {
+    return "BUILD_ALONG";
   }
 
   /**
-   * Represents the "Freestyle!" activity.
+   * Represents the "Challenge-Round" activity.
    */
-  static get FREESTYLE() {
-    return "FREESTYLE";
+  static get CHALLENGE_ROUND() {
+    return "CHALLENGE_ROUND";
   }
 
   /**
@@ -54,10 +54,11 @@ class ActivityTypes {
 
   static #activityNameMap = {
     [ActivityTypes.INDIVIDUAL]: "Individual Activity",
-    [ActivityTypes.DESIGN]: "Design",
-    [ActivityTypes.CODE_READING]: "What Does This Code Do?",
-    [ActivityTypes.CODE_WRITING]: "Make This Happen!",
-    [ActivityTypes.FREESTYLE]: "Freestyle!",
+    [ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING]:
+      "Strategy-and-Problem-Solving",
+    [ActivityTypes.CODE_ALONG]: "Code-Along",
+    [ActivityTypes.BUILD_ALONG]: "Build-Along",
+    [ActivityTypes.CHALLENGE_ROUND]: "Challenge-Round",
     [ActivityTypes.RANDOM]: "Random Group Activity",
   };
 
@@ -68,10 +69,10 @@ class ActivityTypes {
   static getValidActivityTypes() {
     return [
       ActivityTypes.INDIVIDUAL,
-      ActivityTypes.DESIGN,
-      ActivityTypes.CODE_READING,
-      ActivityTypes.CODE_WRITING,
-      ActivityTypes.FREESTYLE,
+      ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING,
+      ActivityTypes.CODE_ALONG,
+      ActivityTypes.BUILD_ALONG,
+      ActivityTypes.CHALLENGE_ROUND,
       ActivityTypes.RANDOM,
     ];
   }
@@ -82,10 +83,10 @@ class ActivityTypes {
    */
   static getGroupActivityTypes() {
     return [
-      ActivityTypes.DESIGN,
-      ActivityTypes.CODE_READING,
-      ActivityTypes.CODE_WRITING,
-      ActivityTypes.FREESTYLE,
+      ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING,
+      ActivityTypes.CODE_ALONG,
+      ActivityTypes.BUILD_ALONG,
+      ActivityTypes.CHALLENGE_ROUND,
       ActivityTypes.RANDOM,
     ];
   }
@@ -123,7 +124,7 @@ class ActivityTypes {
    * @returns {boolean} Whether the activity type has a difficulty associated with it.
    */
   static hasDifficulties(activityType) {
-    return [ActivityTypes.CODE_READING, ActivityTypes.CODE_WRITING].includes(
+    return [ActivityTypes.CODE_ALONG, ActivityTypes.BUILD_ALONG].includes(
       activityType
     );
   }

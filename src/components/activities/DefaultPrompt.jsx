@@ -1,12 +1,12 @@
 import React from "react";
-import DesignPrompts from "@/prompts/design-prompts";
+import StrategyAndProblemSolvingPrompts from "@/prompts/strategy-and-problem-solving-prompts";
 import Button from "@mui/material/Button";
 
 export const PromptType = {
-  DESIGN: "DESIGN",
-  FREESTYLE_LOCATION: "FREESTYLE_LOCATION",
-  FREESTYLE_CHARACTER: "FREESTYLE_CHARACTER",
-  FREESTYLE_OBJECT: "FREESTYLE_OBJECT",
+  STRATEGY_AND_PROBLEM_SOLVING: "STRATEGY_AND_PROBLEM_SOLVING",
+  CHALLENGE_ROUND_LOCATION: "CHALLENGE_ROUND_LOCATION",
+  CHALLENGE_ROUND_CHARACTER: "CHALLENGE_ROUND_CHARACTER",
+  CHALLENGE_ROUND_OBJECT: "CHALLENGE_ROUND_OBJECT",
 };
 
 function DefaultPrompt(props) {
@@ -15,14 +15,14 @@ function DefaultPrompt(props) {
   function generatePrompt() {
     let promptSource;
     switch (props.promptType) {
-      case PromptType.DESIGN:
-        promptSource = DesignPrompts;
+      case PromptType.STRATEGY_AND_PROBLEM_SOLVING:
+        promptSource = StrategyAndProblemSolvingPrompts;
         break;
       default:
         console.warn(
           `Given prompt source is invalid (was given ${props.promptType}`
         );
-        promptSource = DesignPrompts;
+        promptSource = StrategyAndProblemSolvingPrompts;
         break;
     }
 

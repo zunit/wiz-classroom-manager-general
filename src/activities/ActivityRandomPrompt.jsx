@@ -1,10 +1,10 @@
 import React from "react";
 import { AppContext } from "@/context/AppContext";
 import ActivityTypes from "@/utils/ActivityTypes";
-import { generateDesignPrompt } from "@/prompts/design-prompts";
-import { generateCodeReadingPrompt } from "@/prompts/code-reading-prompts";
-import { generateCodeWritingPrompt } from "@/prompts/code-writing-prompts";
-import { generateFreestylePrompt } from "@/prompts/freestyle-prompts";
+import { generateStrategyAndProblemSolvingPrompt } from "@/prompts/strategy-and-problem-solving-prompts";
+import { generateCodeAlongPrompt } from "@/prompts/code-along-prompts";
+import { generateBuildAlongPrompt } from "@/prompts/build-along-prompts";
+import { generateChallengeRoundPrompt } from "@/prompts/challenge-round-prompts";
 import { Button } from "@mui/material";
 
 /**
@@ -22,20 +22,20 @@ function ActivityRandomPrompt(props) {
   });
 
   const generatePrompt = React.useCallback(() => {
-    if (activityType === ActivityTypes.DESIGN) {
-      return generateDesignPrompt();
+    if (activityType === ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING) {
+      return generateStrategyAndProblemSolvingPrompt();
     }
 
-    if (activityType === ActivityTypes.CODE_READING) {
-      return generateCodeReadingPrompt(activity.difficulty);
+    if (activityType === ActivityTypes.CODE_ALONG) {
+      return generateCodeAlongPrompt(activity.difficulty);
     }
 
-    if (activityType === ActivityTypes.CODE_WRITING) {
-      return generateCodeWritingPrompt(activity.difficulty);
+    if (activityType === ActivityTypes.BUILD_ALONG) {
+      return generateBuildAlongPrompt(activity.difficulty);
     }
 
-    if (activityType === ActivityTypes.FREESTYLE) {
-      return generateFreestylePrompt();
+    if (activityType === ActivityTypes.CHALLENGE_ROUND) {
+      return generateChallengeRoundPrompt();
     }
   });
 

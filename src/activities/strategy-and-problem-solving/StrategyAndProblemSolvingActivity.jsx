@@ -3,7 +3,7 @@ import ActivityPrompt from "@/activities/ActivityPrompt";
 import ActivityTypes from "@/utils/ActivityTypes";
 import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 
-function FreestyleActivity() {
+function StrategyAndProblemSolvingActivity() {
   const [promptMode, setPromptMode] = React.useState("random");
 
   const [randomPrompt, setRandomPrompt] = React.useState(null);
@@ -19,13 +19,9 @@ function FreestyleActivity() {
 
   return (
     <>
-      <h2>It's time to get creative!</h2>
       <p>
-        For this activity, you will be a game that is related to the given
-        theme.
-      </p>
-      <p>
-        An example of a theme could be "a magical cat in an enchanted forest".
+        In this strategy-and-problem-solving activity, plan and solve how to
+        create a sprite/backdrop for the given theme within the time limit.
       </p>
 
       <ToggleButtonGroup
@@ -46,7 +42,7 @@ function FreestyleActivity() {
       </ToggleButtonGroup>
 
       <ActivityPrompt
-        activityType={ActivityTypes.FREESTYLE}
+        activityType={ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING}
         promptMode={promptMode}
         randomPrompt={randomPrompt}
         setRandomPrompt={setRandomPrompt}
@@ -59,4 +55,4 @@ function FreestyleActivity() {
   );
 }
 
-export default FreestyleActivity;
+export default StrategyAndProblemSolvingActivity;

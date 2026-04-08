@@ -16,19 +16,19 @@
   background-color: #aba0ce;
 }
 
-.activity-icon-container.design-icon {
+.activity-icon-container.strategy-and-problem-solving-icon {
   background-color: #d1e59d;
 }
 
-.activity-icon-container.code-reading-icon {
+.activity-icon-container.code-along-icon {
   background-color: #7ec9f2;
 }
 
-.activity-icon-container.code-writing-icon {
+.activity-icon-container.build-along-icon {
   background-color: #e7c380;
 }
 
-.activity-icon-container.freestyle-icon {
+.activity-icon-container.challenge-round-icon {
   background-color: #7ef2df;
 }
 
@@ -50,10 +50,10 @@
   transform: translateY(-5%);
 }
 
-.activity-icon.design-icon {
+.activity-icon.strategy-and-problem-solving-icon {
   transform: translateY(-2%);
 }
 
-.activity-icon.code-writing-icon {
+.activity-icon.build-along-icon {
   transform: translateY(-3%);
 }

@@ -32,13 +32,13 @@ const characters = [
   "wizard",
 ]
 
-export function generateDesignPromptText() {
+export function generateStrategyAndProblemSolvingPromptText() {
   const randomAdjective = getRandomElement(adjectives);
   const randomCharacter = getRandomElement(characters);
 
   return `${capitalize(randomAdjective)} ${randomCharacter}`
 }
 
-export function generateDesignPrompt() {
-  return <h1>{generateDesignPromptText()}</h1>
+export function generateStrategyAndProblemSolvingPrompt() {
+  return <h1>{generateStrategyAndProblemSolvingPromptText()}</h1>
 }

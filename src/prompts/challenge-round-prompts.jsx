@@ -1,4 +1,4 @@
-import { generateDesignPromptText } from "@/prompts/design-prompts";
+import { generateStrategyAndProblemSolvingPromptText } from "@/prompts/strategy-and-problem-solving-prompts";
 import { getRandomElement } from "@/utils/arrayUtils";
 import { isVowel } from "@/utils/stringUtils";
 
@@ -17,13 +17,13 @@ const locations = [
   "volcano",
 ];
 
-export function generateFreestylePrompt() {
-  const designPromptText = generateDesignPromptText();
+export function generateChallengeRoundPrompt() {
+  const strategyAndProblemSolvingPromptText = generateStrategyAndProblemSolvingPromptText();
   const randomLocation = getRandomElement(locations);
 
-  const freestylePromptText = `${designPromptText} in ${
+  const challengeRoundPromptText = `${strategyAndProblemSolvingPromptText} in ${
     isVowel(randomLocation.charAt(0)) ? "an" : "a"
   } ${randomLocation}`;
 
-  return <h2>{freestylePromptText}</h2>
+  return <h2>{challengeRoundPromptText}</h2>
 }

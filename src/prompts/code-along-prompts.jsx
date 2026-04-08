@@ -89,7 +89,7 @@ const experiencedCodeBlocks = [
   },
 ];
 
-export function generateCodeReadingPrompt(difficulty) {
+export function generateCodeAlongPrompt(difficulty) {
   const promptDataArray =
     difficulty === Difficulties.BEGINNER
       ? beginnerCodeBlocks
@@ -98,7 +98,7 @@ export function generateCodeReadingPrompt(difficulty) {
 
   const imgPath = joinPath(
     awsRootDir,
-    "code-reading",
+    "code-along",
     difficulty.toLowerCase(),
     `${promptData.imgName}.png`
   );

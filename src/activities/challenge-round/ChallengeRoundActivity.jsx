@@ -3,7 +3,7 @@ import ActivityPrompt from "@/activities/ActivityPrompt";
 import ActivityTypes from "@/utils/ActivityTypes";
 import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 
-function DesignActivity() {
+function ChallengeRoundActivity() {
   const [promptMode, setPromptMode] = React.useState("random");
 
   const [randomPrompt, setRandomPrompt] = React.useState(null);
@@ -19,9 +19,13 @@ function DesignActivity() {
 
   return (
     <>
+      <h2>Challenge-round time!</h2>
       <p>
-        Design a sprite/backdrop with the given theme within the given time
-        limit.
+        For this challenge-round activity, you will build a game related to the
+        given theme.
+      </p>
+      <p>
+        An example of a theme could be "a magical cat in an enchanted forest".
       </p>
 
       <ToggleButtonGroup
@@ -42,7 +46,7 @@ function DesignActivity() {
       </ToggleButtonGroup>
 
       <ActivityPrompt
-        activityType={ActivityTypes.DESIGN}
+        activityType={ActivityTypes.CHALLENGE_ROUND}
         promptMode={promptMode}
         randomPrompt={randomPrompt}
         setRandomPrompt={setRandomPrompt}
@@ -55,4 +59,4 @@ function DesignActivity() {
   );
 }
 
-export default DesignActivity;
+export default ChallengeRoundActivity;

@@ -3,7 +3,7 @@ import ActivityPrompt from "@/activities/ActivityPrompt";
 import ActivityTypes from "@/utils/ActivityTypes";
 import { ToggleButton, ToggleButtonGroup, Tooltip } from "@mui/material";
 
-function CodeWritingActivity() {
+function BuildAlongActivity() {
   const [promptMode, setPromptMode] = React.useState("random");
 
   const [randomPrompt, setRandomPrompt] = React.useState(null);
@@ -20,8 +20,8 @@ function CodeWritingActivity() {
   return (
     <>
       <p>
-        You will be given a prompt, and your goal is to make it happen using
-        code!
+        In this build-along activity, you will be given a prompt and your goal
+        is to build it using code.
       </p>
 
       <ToggleButtonGroup
@@ -42,7 +42,7 @@ function CodeWritingActivity() {
       </ToggleButtonGroup>
 
       <ActivityPrompt
-        activityType={ActivityTypes.CODE_WRITING}
+        activityType={ActivityTypes.BUILD_ALONG}
         promptMode={promptMode}
         randomPrompt={randomPrompt}
         setRandomPrompt={setRandomPrompt}
@@ -55,4 +55,4 @@ function CodeWritingActivity() {
   );
 }
 
-export default CodeWritingActivity;
+export default BuildAlongActivity;

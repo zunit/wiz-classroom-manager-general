@@ -14,21 +14,21 @@ const iconTypeDataMap = {
     iconPath: joinPath(awsRootDir, "activity-icons", "person.png"),
     iconClassName: "individual-icon",
   },
-  [ActivityTypes.DESIGN]: {
+  [ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING]: {
     iconPath: joinPath(awsRootDir, "activity-icons", "draw.png"),
-    iconClassName: "design-icon",
+    iconClassName: "strategy-and-problem-solving-icon",
   },
-  [ActivityTypes.CODE_READING]: {
+  [ActivityTypes.CODE_ALONG]: {
     iconPath: joinPath(awsRootDir, "activity-icons", "library.png"),
-    iconClassName: "code-reading-icon",
+    iconClassName: "code-along-icon",
   },
-  [ActivityTypes.CODE_WRITING]: {
+  [ActivityTypes.BUILD_ALONG]: {
     iconPath: joinPath(awsRootDir, "activity-icons", "edit-code.png"),
-    iconClassName: "code-writing-icon",
+    iconClassName: "build-along-icon",
   },
-  [ActivityTypes.FREESTYLE]: {
-    iconPath: joinPath(awsRootDir, "activity-icons", "freestyle.png"),
-    iconClassName: "freestyle-icon",
+  [ActivityTypes.CHALLENGE_ROUND]: {
+    iconPath: joinPath(awsRootDir, "activity-icons", "challenge-round.png"),
+    iconClassName: "challenge-round-icon",
   },
   [ActivityTypes.RANDOM]: {
     iconPath: joinPath(awsRootDir, "activity-icons", "dice.png"),
