@@ -1,114 +1,237 @@
+import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
-import { awsRootDir, joinPath } from "@/utils/pathUtils";
-import { Difficulties } from "@/utils/TimeChunkModel";
+import { joinPath } from "@/utils/pathUtils";
 
-const divStyle = {
-  width: "calc(500px)",
-  justifySelf: "center",
-  marginTop: "1rem",
-  marginBottom: "1rem",
-};
+// Change this to wherever your FTC assets will live.
+const ftcRoot = "https://your-cdn-or-s3-path/ftc-code-along";
 
-const globalImgStyle = {
-  width: "100%",
-  borderRadius: "8px",
-};
-
-const beginnerCodeBlocks = [
-  {
-    imgName: "move-to-center",
-    style: { width: "50%" },
-    description: (
-      <>
-        <h2>Translate!</h2>
-        <p>Describe what the following code will do:</p>
-      </>
-    ),
-  },
-  {
-    imgName: "spin-around-mouse",
-    style: { width: "90%" },
-    description: (
-      <>
-        <h2>Translate!</h2>
-        <p>Describe what the following code will do:</p>
-      </>
-    ),
-  },
-  {
-    imgName: "shake-around-mouse",
-    style: { width: "90%" },
-    description: (
-      <>
-        <h2>Debug!</h2>
-        <p>
-          The following code is supposed to make a sprite shake (near where it
-          started) when clicked.
-        </p>
-        <p>However, the code is currently not working.</p>
-        <p>Find all the errors!</p>
-      </>
-    ),
-  },
-];
-
-const experiencedCodeBlocks = [
-  {
-    imgName: "cat-chase-mouse",
-    description: (
-      <>
-        <h2>Translate!</h2>
-        <p>Describe what the following code will do:</p>
-      </>
-    ),
-  },
-  {
-    imgName: "max-jump-height",
-    style: { width: "50%" },
-    description: (
-      <>
-        <h2>Translate!</h2>
-        <p>Describe what the following code will do:</p>
-      </>
-    ),
-  },
-  {
-    imgName: "max-number",
-    style: { width: "90%" },
-    description: (
-      <>
-        <h2>Debug!</h2>
-        <p>
-          The following code is supposed to find the largest of a list of
-          numbers.
-        </p>
-        <p>However, the code is currently not working.</p>
-        <p>Find all the errors!</p>
-      </>
-    ),
-  },
-];
-
-export function generateCodeAlongPrompt(difficulty) {
-  const promptDataArray =
-    difficulty === Difficulties.BEGINNER
-      ? beginnerCodeBlocks
-      : experiencedCodeBlocks;
-  const promptData = getRandomElement(promptDataArray);
-
-  const imgPath = joinPath(
-    awsRootDir,
-    "code-along",
-    difficulty.toLowerCase(),
-    `${promptData.imgName}.png`
-  );
-
-  const imgStyle = { ...globalImgStyle, ...promptData.style };
-
-  return (
-    <div style={divStyle}>
-      {promptData.description}
-      <img src={imgPath} style={imgStyle} />
-    </div>
-  );
+function getFTCCodeAlongAsset(assetName) {
+  return joinPath(ftcRoot, assetName);
 }
+
+const promptsList = [
+  {
+    id: "basic-teleop",
+    element: (
+      <>
+        <h2>FTC Code Along: Basic TeleOp Drive</h2>
+
+        <video controls className="scaled-video">
+          <source
+            src={getFTCCodeAlongAsset("basic-teleop-demo.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <p>
+          Create a TeleOp OpMode that drives a 2-motor robot using the left stick
+          Y-axis for forward/backward and the right stick X-axis for turning.
+        </p>
+        <p>
+          Also show motor power on telemetry.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCCodeAlongAsset("basic-teleop-answer.png"),
+    referenceLink: "https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/onbot_java/creating_op_modes/Creating-and-Running-an-Op-Mode-(OnBot-Java).html",
+  },
+
+  {
+    id: "slow-mode",
+    element: (
+      <>
+        <h2>FTC Code Along: Driver Control Upgrade</h2>
+
+        <img
+          src={getFTCCodeAlongAsset("slow-mode-preview.png")}
+          className="scaled-img"
+          alt="FTC slow mode prompt preview"
+        />
+
+        <p>
+          Add a slow mode to TeleOp. When the driver holds the right bumper, all
+          drive power should be cut in half for precision driving.
+        </p>
+        <p>
+          Display on telemetry whether slow mode is ON or OFF.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCCodeAlongAsset("slow-mode-answer.png"),
+    referenceLink: "https://ftc-docs.firstinspires.org/",
+  },
+
+  {
+    id: "square-auto",
+    element: (
+      <>
+        <h2>FTC Code Along: Autonomous Path Challenge</h2>
+
+        <video controls className="scaled-video">
+          <source
+            src={getFTCCodeAlongAsset("square-auto-demo.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <p>
+          Write an Autonomous OpMode that makes the robot drive in a square:
+          forward, turn, forward, turn, forward, turn, forward, turn.
+        </p>
+        <p>
+          End with a telemetry message that says the path is complete.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCCodeAlongAsset("square-auto-answer.png"),
+    referenceLink: "https://github.com/FIRST-Tech-Challenge/FtcRobotController",
+  },
+
+  {
+    id: "encoder-drive",
+    element: (
+      <>
+        <h2>FTC Code Along: Encoder Drive</h2>
+
+        <img
+          src={getFTCCodeAlongAsset("encoder-drive-preview.png")}
+          className="scaled-img"
+          alt="FTC encoder drive prompt preview"
+        />
+
+        <p>
+          Program the robot to drive forward to a target encoder count, stop, then
+          drive backward to the starting point.
+        </p>
+        <p>
+          Show current encoder values in telemetry while the robot is moving.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCCodeAlongAsset("encoder-drive-answer.png"),
+    referenceLink: "https://github.com/FIRST-Tech-Challenge/FtcRobotController",
+  },
+
+  {
+    id: "servo-toggle",
+    element: (
+      <>
+        <h2>FTC Code Along: Servo Toggle</h2>
+
+        <video controls className="scaled-video">
+          <source
+            src={getFTCCodeAlongAsset("servo-toggle-demo.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <p>
+          Use gamepad buttons to open and close a claw servo.
+        </p>
+        <p>
+          Press Y to open the claw and A to close it. Show the servo position on telemetry.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCCodeAlongAsset("servo-toggle-answer.png"),
+    referenceLink: "https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/blocks/controlling_a_servo/Controlling-a-Servo-(Blocks).html",
+  },
+
+  {
+    id: "color-sensor",
+    element: (
+      <>
+        <h2>FTC Code Along: Sensor Detective</h2>
+
+        <img
+          src={getFTCCodeAlongAsset("color-sensor-preview.png")}
+          className="scaled-img"
+          alt="FTC color sensor prompt preview"
+        />
+
+        <p>
+          Write code that reads a color sensor and reacts differently depending on
+          whether red or blue is stronger.
+        </p>
+        <p>
+          Example: red = drive forward, blue = stop and report detection on telemetry.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCCodeAlongAsset("color-sensor-answer.png"),
+    referenceLink: "https://github.com/FIRST-Tech-Challenge/FtcRobotController",
+  },
+
+  {
+    id: "distance-sensor",
+    element: (
+      <>
+        <h2>FTC Code Along: Distance Sensor Safety Stop</h2>
+
+        <video controls className="scaled-video">
+          <source
+            src={getFTCCodeAlongAsset("distance-sensor-demo.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <p>
+          Drive forward slowly until a distance sensor detects an object closer than
+          10 cm, then stop immediately.
+        </p>
+        <p>
+          Show the live distance reading in telemetry.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCCodeAlongAsset("distance-sensor-answer.png"),
+    referenceLink: "https://github.com/FIRST-Tech-Challenge/FtcRobotController",
+  },
+
+  {
+    id: "imu-turn",
+    element: (
+      <>
+        <h2>FTC Code Along: IMU Turn Challenge</h2>
+
+        <img
+          src={getFTCCodeAlongAsset("imu-turn-preview.png")}
+          className="scaled-img"
+          alt="FTC IMU turn prompt preview"
+        />
+
+        <p>
+          Use the IMU heading to turn the robot to about 90 degrees, then stop.
+        </p>
+        <p>
+          Display heading data on telemetry while turning.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCCodeAlongAsset("imu-turn-answer.png"),
+    referenceLink: "https://ftc-docs.firstinspires.org/programming_resources/imu/imu.html",
+  },
+];
+
+export function generateFTCCodeAlongPrompt() {
+  const { element } = getRandomElement(promptsList);
+  return element;
+}
+
+export function generateCodeAlongPrompt() {
+  return generateFTCCodeAlongPrompt();
+}
+
+export { promptsList };

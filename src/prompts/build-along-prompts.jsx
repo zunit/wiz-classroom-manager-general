@@ -1,198 +1,244 @@
 import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
-import { awsRootDir, joinPath } from "@/utils/pathUtils";
-import { Difficulties } from "@/utils/TimeChunkModel";
+import { joinPath } from "@/utils/pathUtils";
 
-function getBuildAlongAsset(assetName) {
-  return joinPath(awsRootDir, "build-along", assetName);
+// Change this to your real FTC build asset location.
+const ftcBuildRoot = "https://your-cdn-or-s3-path/ftc-build-along";
+
+function getFTCBuildAsset(assetName) {
+  return joinPath(ftcBuildRoot, assetName);
 }
 
-function demoVarDisclaimer(...varNames) {
-  function grammarifyVarList(index) {
-    if (index === varNames.length - 2) {
-      return ", and ";
-    }
-    if (index === varNames.length - 1) {
-      return " ";
-    }
-    return ", ";
-  }
-  return (
-    <p>
-      The {varNames.length === 1 ? "variable " : "variables "}
-      {varNames.map((varName, index) => (
-        <React.Fragment key={index}>
-          <code>{varName}</code>
-          {grammarifyVarList(index)}
-        </React.Fragment>
-      ))}
-      {varNames.length === 1 ? "is" : "are"} shown for demonstration purposes,
-      and the {varNames.length === 1 ? "variable " : "variables "} may not be
-      necessary. However, you can use {varNames.length === 1 ? "it" : "them"} to
-      help you if you wish.
-    </p>
-  );
-}
+const promptsList = [
+  {
+    id: "fastest-attachment",
+    element: (
+      <>
+        <h2>FTC Build Along: Fastest Attachment Build</h2>
 
-const beginnerPrompts = [
-  <>
-    <h2>Animate the "Unicorn Running" sprite as shown below:</h2>
-    <video src={getBuildAlongAsset("unicorn-running.mov")} controls></video>
-    <p>
-      <b>Note:</b>
-    </p>
-    <p>
-      If you cannot find the "Unicorn Running" sprite, find another sprite that
-      has walking or running costumes.
-    </p>
-    <hr />
-    <p>
-      <b>Bonus challenge: </b>
-    </p>
-    <p>Make the unicorn face towards and follow the mouse pointer.</p>
-    <video src={getBuildAlongAsset("unicorn-following.mov")} controls></video>
-  </>,
-  <>
-    <h2>Make a sprite bounce around like a DVD screensaver.</h2>
-    <p>The sprite should be moving diagonally and bounce off of walls.</p>
-    <video src={getBuildAlongAsset("dvd-screensaver.mov")} controls></video>
-  </>,
-  <>
-    <h2>Code the "Dot" sprite to be moved around using arrow keys.</h2>
-    <video src={getBuildAlongAsset("arrow-movement.mov")} controls></video>
-    {demoVarDisclaimer(
-      "up pressed",
-      "down pressed",
-      "left pressed",
-      "right pressed"
-    )}
-    <hr />
-    <p>
-      <b>Bonus challenge: </b>
-    </p>
-    <p>
-      Animate Dot to walk when it is moving, and make Dot face left and right
-      when moving in those directions.
-    </p>
-    <video src={getBuildAlongAsset("arrow-movement-animated.mov")} controls></video>
-  </>,
-  <>
-    <h2>Make a player sprite that jumps up when the space bar is pressed.</h2>
-    <video src={getBuildAlongAsset("space-to-fly.mov")} controls></video>
-    {demoVarDisclaimer("space pressed")}
-    <hr />
-    <p>
-      <b>Bonus challenge: </b>
-    </p>
-    <p>
-      If you hold the jump button, your sprite will likely continuously fly
-      upwards as shown in the video above. Find a way to set a maximum jump
-      height so that if the button is held for too long, the sprite no longer
-      flies up.
-    </p>
-    <video src={getBuildAlongAsset("space-to-fly-max-hold.mov")} controls></video>
-  </>,
-  <>
-    <h2>
-      Make a player sprite that fires a laser in the direction of the mouse when
-      the left mouse button is pressed.
-    </h2>
-    <video src={getBuildAlongAsset("laser-shooting-auto.mov")} controls></video>
-    {demoVarDisclaimer("mouse pressed")}
-    <hr />
-    <p>
-      <b>Bonus challenge: </b>
-    </p>
-    <p>
-      See if you can make the laser fire only <b>once per click</b>.
-    </p>
-    <video src={getBuildAlongAsset("laser-shooting.mov")} controls></video>
-  </>,
+        <img
+          src={getFTCBuildAsset("fastest-attachment-preview.png")}
+          className="scaled-img"
+          alt="FTC fastest attachment build preview"
+        />
+
+        <p>
+          Build a simple robot attachment such as a scoop, pusher, or small arm
+          using a limited set of FTC parts.
+        </p>
+        <p>
+          Your attachment must connect securely to the robot and survive a quick shake test.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCBuildAsset("fastest-attachment-answer.png"),
+  },
+
+  {
+    id: "one-piece-upgrade",
+    element: (
+      <>
+        <h2>FTC Build Along: One Piece Upgrade</h2>
+
+        <img
+          src={getFTCBuildAsset("one-piece-upgrade-preview.png")}
+          className="scaled-img"
+          alt="FTC one piece upgrade preview"
+        />
+
+        <p>
+          Improve an existing robot by changing just one part.
+        </p>
+        <p>
+          Your goal is to make it stronger, more stable, easier to score with, or easier to drive.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCBuildAsset("one-piece-upgrade-answer.png"),
+  },
+
+  {
+    id: "stability-test",
+    element: (
+      <>
+        <h2>FTC Build Along: Stability Test</h2>
+
+        <video controls className="scaled-video">
+          <source
+            src={getFTCBuildAsset("stability-test-demo.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <p>
+          Build the tallest structure or attachment you can that stays upright for at least 10 seconds.
+        </p>
+        <p>
+          Bonus points if it also stays stable while mounted on a robot.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCBuildAsset("stability-test-answer.png"),
+  },
+
+  {
+    id: "mini-drivetrain-repair",
+    element: (
+      <>
+        <h2>FTC Build Along: Mini Drivetrain Repair</h2>
+
+        <img
+          src={getFTCBuildAsset("mini-drivetrain-repair-preview.png")}
+          className="scaled-img"
+          alt="FTC drivetrain repair preview"
+        />
+
+        <p>
+          Inspect a partially broken or incorrect drivetrain build and fix it.
+        </p>
+        <p>
+          Find what is wrong, rebuild it properly, and explain what you changed.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCBuildAsset("mini-drivetrain-repair-answer.png"),
+  },
+
+  {
+    id: "copycat-build",
+    element: (
+      <>
+        <h2>FTC Build Along: BrickLink Copycat</h2>
+
+        <img
+          src={getFTCBuildAsset("copycat-build-preview.png")}
+          className="scaled-img"
+          alt="FTC copycat build preview"
+        />
+
+        <p>
+          Study a simple reference mechanism for 20 seconds, then recreate it as closely as possible.
+        </p>
+        <p>
+          Focus on shape, function, and connection points.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCBuildAsset("copycat-build-answer.png"),
+  },
+
+  {
+    id: "shovel-build",
+    element: (
+      <>
+        <h2>FTC Build Along: Space Shovel Attachment</h2>
+
+        <img
+          src={getFTCBuildAsset("shovel-build-preview.png")}
+          className="scaled-img"
+          alt="FTC shovel attachment preview"
+        />
+
+        <p>
+          Build a shovel or scoop attachment that can collect an object and bring it back to base.
+        </p>
+        <p>
+          Try to make it wide enough to scoop easily, but sturdy enough not to bend.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCBuildAsset("shovel-build-answer.png"),
+  },
+
+  {
+    id: "launcher-build",
+    element: (
+      <>
+        <h2>FTC Build Along: Sports Launcher Build</h2>
+
+        <video controls className="scaled-video">
+          <source
+            src={getFTCBuildAsset("launcher-build-demo.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <p>
+          Build a simple launcher or bucket-style attachment that can hold and launch a game piece forward.
+        </p>
+        <p>
+          Your design should keep the object secure before launch.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCBuildAsset("launcher-build-answer.png"),
+  },
+
+  {
+    id: "grabber-build",
+    element: (
+      <>
+        <h2>FTC Build Along: Grabber Challenge</h2>
+
+        <img
+          src={getFTCBuildAsset("grabber-build-preview.png")}
+          className="scaled-img"
+          alt="FTC grabber build preview"
+        />
+
+        <p>
+          Build a grabber or claw that can pick up a small object and release it into a target zone.
+        </p>
+        <p>
+          Aim for a design that is easy to align and does not drop the object while moving.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCBuildAsset("grabber-build-answer.png"),
+  },
+
+  {
+    id: "virtual-4-bar",
+    element: (
+      <>
+        <h2>FTC Build Along: Virtual 4-Bar Mechanism</h2>
+
+        <img
+          src={getFTCBuildAsset("virtual-4-bar-preview.png")}
+          className="scaled-img"
+          alt="FTC virtual 4 bar preview"
+        />
+
+        <p>
+          Build a simple virtual 4-bar style lift that raises a grabber upward while keeping it level.
+        </p>
+        <p>
+          Explain how your design helps lift objects to a higher point.
+        </p>
+        <hr />
+      </>
+    ),
+    answerLink: getFTCBuildAsset("virtual-4-bar-answer.png"),
+  },
 ];
 
-const experiencedPrompts = [
-  <>
-    <h2>Make a balloon popping game as shown below.</h2>
-    <video src={getBuildAlongAsset("balloon-popping.mov")} controls></video>
-    <p>Spawn balloons at random locations.</p>
-    <p>When clicked, the balloon should disappear and add to the score.</p>
-    {demoVarDisclaimer("mouse pressed")}
-    <hr />
-    <p>
-      <b>Bonus challenge: </b>
-    </p>
-    <p>Let's try to make the game more fun!</p>
-    <video src={getBuildAlongAsset("balloon-popping-2.mov")} controls></video>
-    <p>Randomize the time it takes for the next balloon to spawn.</p>
-    <p>
-      Make the balloons turn different colours over time, and score a different
-      number of points depending on the colour of the balloon when clicked.
-    </p>
-  </>,
-  <>
-    <h2>Implement a sprint feature.</h2>
-    <p>
-      Create a script that allows a sprite to sprint in the direction they are
-      moving when pressing the space key.
-    </p>
-    <video src={getBuildAlongAsset("sprint.mov")} controls></video>
-    <p>
-      Note: You will need to create the code for making the player sprite move
-      with arrow keys first.
-    </p>
-    {demoVarDisclaimer(
-      "up pressed",
-      "down pressed",
-      "left pressed",
-      "right pressed",
-      "space pressed"
-    )}
-    <hr />
-    <p>
-      <b>Bonus challenge: </b>
-    </p>
-    <p>Instead than sprinting, let's make a dash feature!</p>
-    <video src={getBuildAlongAsset("dash.mov")} controls></video>
-    <p>
-      For sprinting, as long as the space bar is pressed, the player will move
-      faster. However, for dashing, no matter how long the spacebar is held, the
-      player will sprint forward for the same amount of time.
-    </p>
-    <p>
-      Also, see if you can set a cooldown for the sprint so that spamming
-      spacebar does not work.
-    </p>
-  </>,
-  <>
-    <h2>
-      Create a script that will let a sprite be dragged and dropped WITHOUT
-      using the "set drag mode" block.
-    </h2>
-    <video src={getBuildAlongAsset("manual-dnd.mov")} controls></video>
-    <p>
-      Make sure you click the "Full Screen Control" button on the top right to
-      test if your code works.
-    </p>
-    {demoVarDisclaimer("mouse pressed")}
-  </>,
-  <>
-    <h2>Use code blocks to create a watermelon that can be sliced.</h2>
-    <video src={getBuildAlongAsset("slice-watermelon.mov")} controls></video>
-    <p>
-      When the watermelon is clicked on directly, the watermelon should NOT be
-      sliced.
-    </p>
-    <p>
-      Make sure you click the "Full Screen Control" button on the top right to
-      test if your code works.
-    </p>
-    {demoVarDisclaimer("mouse pressed")}
-  </>,
-];
-
-export function generateBuildAlongPrompt(difficulty) {
-  if (difficulty === Difficulties.BEGINNER) {
-    return getRandomElement(beginnerPrompts);
-  }
-  return getRandomElement(experiencedPrompts);
+export function generateFTCBuildAlongPrompt() {
+  const { element } = getRandomElement(promptsList);
+  return element;
 }
+
+export function generateBuildAlongPrompt() {
+  return generateFTCBuildAlongPrompt();
+}
+
+export { promptsList };
