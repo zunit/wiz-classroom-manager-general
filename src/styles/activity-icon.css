@@ -46,6 +46,11 @@
   object-fit: contain;
 }
 
+.activity-icon-symbol {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .activity-icon.null-icon {
   transform: translateY(-5%);
 }
@@ -56,4 +61,8 @@
 
 .activity-icon.build-along-icon {
   transform: translateY(-3%);
+}
+
+.activity-icon-symbol.challenge-round-icon {
+  font-size: 3.4rem;
 }

@@ -27,7 +27,7 @@ const iconTypeDataMap = {
     iconClassName: "build-along-icon",
   },
   [ActivityTypes.CHALLENGE_ROUND]: {
-    iconPath: joinPath(awsRootDir, "activity-icons", "challenge-round.png"),
+    iconName: "emoji_events",
     iconClassName: "challenge-round-icon",
   },
   [ActivityTypes.RANDOM]: {
@@ -62,11 +62,20 @@ function ActivityIcon(props) {
       className={`activity-icon-container ${iconTypeDataMap[normalizedIconType].iconClassName}`}
       style={size > 0 ? { width: `${size}px`, height: `${size}px` } : undefined}
     >
-      <img
-        className={`activity-icon ${iconTypeDataMap[normalizedIconType].iconClassName}`}
-        src={iconTypeDataMap[normalizedIconType].iconPath}
-        alt="Activity Icon"
-      />
+      {iconTypeDataMap[normalizedIconType].iconName ? (
+        <span
+          className={`material-symbols-rounded activity-icon-symbol ${iconTypeDataMap[normalizedIconType].iconClassName}`}
+          aria-hidden="true"
+        >
+          {iconTypeDataMap[normalizedIconType].iconName}
+        </span>
+      ) : (
+        <img
+          className={`activity-icon ${iconTypeDataMap[normalizedIconType].iconClassName}`}
+          src={iconTypeDataMap[normalizedIconType].iconPath}
+          alt="Activity Icon"
+        />
+      )}
     </div>
   );
 }
