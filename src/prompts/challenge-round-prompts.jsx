@@ -2,294 +2,209 @@ import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
 import { joinPath } from "@/utils/pathUtils";
 
-const ftcChallengeRoot = "https://your-cdn-or-s3-path/ftc-challenge-round";
+const fllChallengeRoundRoot = "https://your-cdn-or-s3-path/fll-challenge-round";
 
-function getFTCChallengeAsset(assetName) {
-  return joinPath(ftcChallengeRoot, assetName);
+function getFLLChallengeRoundAsset(assetName) {
+  return joinPath(fllChallengeRoundRoot, assetName);
 }
 
 const promptsList = [
   {
-    id: "ftc-jeopardy-parts-and-sensors",
     element: (
       <>
-        <h2>FTC Challenge Round: FTC Jeopardy</h2>
-
+        <h2>FLL Challenge Round: FLL Jeopardy</h2>
         <img
-          src={getFTCChallengeAsset("ftc-jeopardy-parts-and-sensors.png")}
+          src={getFLLChallengeRoundAsset("fll-jeopardy-basics.png")}
           className="scaled-img"
-          alt="FTC Jeopardy parts and sensors"
+          alt="FLL Jeopardy basics"
         />
-
-        <p>
-          Answer these 5 FTC questions as fast as you can:
-        </p>
+        <p>Answer these 5 FLL questions as fast as you can:</p>
         <ol>
-          <li>What does a servo do that a normal motor does not?</li>
-          <li>Which sensor can tell how far away a wall is?</li>
-          <li>What is TeleOp used for?</li>
-          <li>What does an encoder help measure?</li>
-          <li>Why is neat wiring important on an FTC robot?</li>
+          <li>What is the difference between an attachment and the base robot?</li>
+          <li>What does a color sensor do?</li>
+          <li>Why do teams use a gyro sensor?</li>
+          <li>Why is it important for the robot to start in the same place every time?</li>
+          <li>What is one reason a mission run might fail even if the code is correct?</li>
         </ol>
-        <p>
-          The team with the most correct answers wins.
-        </p>
+        <p>The team with the most correct answers wins.</p>
         <hr />
       </>
     ),
-    answerLink: getFTCChallengeAsset("ftc-jeopardy-parts-and-sensors-answer.png"),
   },
 
   {
-    id: "code-relay-slow-mode",
     element: (
       <>
-        <h2>FTC Challenge Round: Code Relay</h2>
-
+        <h2>FLL Challenge Round: Code Relay</h2>
         <video controls className="scaled-video">
           <source
-            src={getFTCChallengeAsset("code-relay-slow-mode.mp4")}
+            src={getFLLChallengeRoundAsset("code-relay-drive-turn-stop.mp4")}
             type="video/mp4"
           />
           Your browser does not support the video tag.
         </video>
-
+        <p>Your team must build one short FLL program together.</p>
         <p>
-          Your class must build one TeleOp program together.
+          Student 1 adds a drive forward block. Student 2 adds a turn block.
+          Student 3 adds a second drive block. Student 4 adds the stop block.
         </p>
-        <p>
-          Student 1 adds the motor declarations. Student 2 adds hardwareMap code.
-          Student 3 adds drive control. Student 4 adds a slow mode button on right bumper.
-        </p>
-        <p>
-          First group to make the robot drive and switch into slow mode wins.
-        </p>
+        <p>First team to make the robot complete the path correctly wins.</p>
         <hr />
       </>
     ),
-    answerLink: getFTCChallengeAsset("code-relay-slow-mode-answer.png"),
   },
 
   {
-    id: "minute-to-win-it-push-block",
     element: (
       <>
-        <h2>FTC Challenge Round: Minute to Win It</h2>
-
+        <h2>FLL Challenge Round: Minute to Win It</h2>
         <video controls className="scaled-video">
           <source
-            src={getFTCChallengeAsset("minute-to-win-it-push-block.mp4")}
+            src={getFLLChallengeRoundAsset("minute-to-win-it-push-model.mp4")}
             type="video/mp4"
           />
           Your browser does not support the video tag.
         </video>
-
         <p>
-          You have 1 minute to drive your robot and push one foam block fully into the taped scoring zone.
+          You have 1 minute to drive your robot out of base and push one mission model into the target area.
         </p>
-        <p>
-          You may only touch the controller after the timer starts.
-        </p>
-        <p>
-          Fastest successful run wins.
-        </p>
+        <p>The robot must start fully in base before the timer begins.</p>
+        <p>Fastest successful run wins.</p>
         <hr />
       </>
     ),
-    answerLink: getFTCChallengeAsset("minute-to-win-it-push-block-answer.png"),
   },
 
   {
-    id: "mystery-theme-build-space-bot",
     element: (
       <>
-        <h2>FTC Challenge Round: Mystery Theme Build</h2>
-
+        <h2>FLL Challenge Round: Mystery Theme Build</h2>
         <img
-          src={getFTCChallengeAsset("mystery-theme-build-space-bot.png")}
+          src={getFLLChallengeRoundAsset("mystery-theme-build-rescue-bot.png")}
           className="scaled-img"
-          alt="Mystery theme build space bot"
+          alt="Mystery theme build rescue bot"
         />
-
+        <p><strong>Theme: Rescue Bot</strong></p>
         <p>
-          Theme: <strong>Space Bot</strong>
+          In 7 minutes, build or sketch an attachment that could rescue an object and bring it back to base.
         </p>
-        <p>
-          In 7 minutes, build or sketch a robot attachment that could collect a moon rock
-          and bring it back to base.
-        </p>
-        <p>
-          Best design explanation and most believable mechanism wins.
-        </p>
+        <p>Best design explanation and most believable idea wins.</p>
         <hr />
       </>
     ),
-    answerLink: getFTCChallengeAsset("mystery-theme-build-space-bot-answer.png"),
   },
 
   {
-    id: "teacher-boss-battle-auto-square",
     element: (
       <>
-        <h2>FTC Challenge Round: Teacher Boss Battle</h2>
-
+        <h2>FLL Challenge Round: Teacher Boss Battle</h2>
         <img
-          src={getFTCChallengeAsset("teacher-boss-battle-auto-square.png")}
+          src={getFLLChallengeRoundAsset("teacher-boss-battle-out-and-back.png")}
           className="scaled-img"
-          alt="Teacher boss battle autonomous square"
+          alt="Teacher boss battle out and back"
         />
-
+        <p>The teacher challenges the whole class:</p>
         <p>
-          The teacher challenges the whole class:
+          Make one robot leave base, touch the target line, and return fully back to base in a single run.
         </p>
-        <p>
-          Make one robot drive in a square autonomously using only timed movement commands.
-        </p>
-        <p>
-          The class must agree on the timing values before testing.
-        </p>
-        <p>
-          If the robot finishes close to its starting point, the class beats the boss.
-        </p>
+        <p>The class must agree on the final code before testing.</p>
+        <p>If the robot completes all 3 steps, the class beats the boss.</p>
         <hr />
       </>
     ),
-    answerLink: getFTCChallengeAsset("teacher-boss-battle-auto-square-answer.png"),
   },
 
   {
-    id: "debug-race-reversed-motor",
     element: (
       <>
-        <h2>FTC Challenge Round: Debug Race</h2>
-
+        <h2>FLL Challenge Round: Debug Race</h2>
         <img
-          src={getFTCChallengeAsset("debug-race-reversed-motor.png")}
+          src={getFLLChallengeRoundAsset("debug-race-turning-wrong-way.png")}
           className="scaled-img"
-          alt="Debug race reversed motor"
+          alt="Debug race turning wrong way"
         />
-
         <p>
-          Problem: when the driver pushes forward on the joystick, the robot spins instead of driving straight.
+          Problem: the robot is supposed to turn right, but it keeps turning left during the mission.
         </p>
-        <p>
-          Your team must figure out what is wrong and fix it.
-        </p>
-        <p>
-          Hint: one drivetrain motor is reversed incorrectly.
-        </p>
-        <p>
-          First team to explain the bug and correct the code wins.
-        </p>
+        <p>Your team must figure out what went wrong and explain how to fix it.</p>
+        <p>Hint: check the motor direction or the turn block settings.</p>
+        <p>First team to explain the bug and correct the program wins.</p>
         <hr />
       </>
     ),
-    answerLink: getFTCChallengeAsset("debug-race-reversed-motor-answer.png"),
   },
 
   {
-    id: "best-route-wins-launcher-field",
     element: (
       <>
-        <h2>FTC Challenge Round: Best Route Wins</h2>
-
+        <h2>FLL Challenge Round: Best Route Wins</h2>
         <img
-          src={getFTCChallengeAsset("best-route-wins-launcher-field.png")}
+          src={getFLLChallengeRoundAsset("best-route-wins-two-missions.png")}
           className="scaled-img"
-          alt="Best route wins launcher field"
+          alt="Best route wins two missions"
         />
-
-        <p>
-          A robot starts in the corner of the field. It must:
-        </p>
+        <p>A robot starts in base and must do these 2 tasks:</p>
         <ol>
-          <li>Drive to the launch line</li>
-          <li>Fire one game piece</li>
-          <li>Park in the taped zone</li>
+          <li>Push one mission model</li>
+          <li>Park in the finish area</li>
         </ol>
-        <p>
-          Draw the fastest route and explain why your route is better than the others.
-        </p>
-        <p>
-          Best route and explanation win.
-        </p>
+        <p>Draw the best route and explain why it is faster or safer than the others.</p>
+        <p>Best route and explanation win.</p>
         <hr />
       </>
     ),
-    answerLink: getFTCChallengeAsset("best-route-wins-launcher-field-answer.png"),
   },
 
   {
-    id: "what-does-this-code-do-servo",
     element: (
       <>
-        <h2>FTC Challenge Round: What Does This Code Do?</h2>
-
+        <h2>FLL Challenge Round: What Does This Code Do?</h2>
         <img
-          src={getFTCChallengeAsset("what-does-this-code-do-servo.png")}
+          src={getFLLChallengeRoundAsset("what-does-this-code-do-drive-turn.png")}
           className="scaled-img"
-          alt="What does this code do servo"
+          alt="What does this code do drive turn"
         />
-
-        <p>
-          Predict exactly what this code will do:
-        </p>
-        <pre>{`if (gamepad1.a) {
-  claw.setPosition(1.0);
-} else if (gamepad1.b) {
-  claw.setPosition(0.0);
-}`}</pre>
-        <p>
-          What happens when A is pressed? What happens when B is pressed?
-        </p>
-        <p>
-          Closest correct explanation wins.
-        </p>
+        <p>Predict exactly what this program will do:</p>
+        <pre>{`Drive forward 30 cm
+Turn right 90 degrees
+Drive forward 20 cm
+Stop`}</pre>
+        <p>Where will the robot end up? What direction will it be facing?</p>
+        <p>Closest correct explanation wins.</p>
         <hr />
       </>
     ),
-    answerLink: getFTCChallengeAsset("what-does-this-code-do-servo-answer.png"),
   },
 
   {
-    id: "edge-case-challenge-crooked-start",
     element: (
       <>
-        <h2>FTC Challenge Round: Edge Case Challenge</h2>
-
+        <h2>FLL Challenge Round: Edge Case Challenge</h2>
         <img
-          src={getFTCChallengeAsset("edge-case-challenge-crooked-start.png")}
+          src={getFLLChallengeRoundAsset("edge-case-challenge-bad-start-alignment.png")}
           className="scaled-img"
-          alt="Edge case challenge crooked start"
+          alt="Edge case challenge bad start alignment"
         />
-
         <p>
-          Your autonomous code was tested perfectly, but in the real match the robot starts slightly crooked.
+          Your robot worked perfectly in practice, but in the real round it starts a little crooked in base.
         </p>
+        <p>What could go wrong?</p>
         <p>
-          What could go wrong?
+          Give the best fix: straighten the launch setup, add slower speed, adjust the turn,
+          or use a wall alignment guide.
         </p>
-        <p>
-          Give the best fix: change timing, add a sensor check, slow the robot down,
-          or redesign the route.
-        </p>
-        <p>
-          Best backup plan wins.
-        </p>
+        <p>Best backup plan wins.</p>
         <hr />
       </>
     ),
-    answerLink: getFTCChallengeAsset("edge-case-challenge-crooked-start-answer.png"),
   },
 ];
 
-export function generateFTCChallengeRoundPrompt() {
+export function generateFLLChallengeRoundPrompt() {
   const { element } = getRandomElement(promptsList);
   return element;
 }
 
 export function generateChallengeRoundPrompt() {
-  return generateFTCChallengeRoundPrompt();
+  return generateFLLChallengeRoundPrompt();
 }
-
-export { promptsList };
