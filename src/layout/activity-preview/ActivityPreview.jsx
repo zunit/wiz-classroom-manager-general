@@ -58,7 +58,10 @@ function ActivityPreview(props) {
       className={isDrawerOpen ? " hide" : ""}
     >
       <h1 id="activity-preview-header">{previewContent.header}</h1>
-      <h2 id="activity-preview-activity-title">
+      <h2
+        id="activity-preview-activity-title"
+        className={`activity-title ${ActivityTypes.getActivityClassName(previewContent.activityIcon)}`}
+      >
         {previewContent.activityTitle}
       </h2>
       <div id="activity-preview-icon">

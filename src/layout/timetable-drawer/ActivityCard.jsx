@@ -38,7 +38,11 @@ function ActivityCard(props) {
     <div className={`activity-card-container ${progress}`}>
       <h1 className="activity-card-header">{getCardHeader()}</h1>
       {ActivityTypes.isGroupActivity(chunk.activityType) ? (
-        <h2 className="activity-card-subheader">{getCardSubheader()}</h2>
+        <h2
+          className={`activity-card-subheader activity-title ${ActivityTypes.getActivityClassName(chunk.activityType)}`}
+        >
+          {getCardSubheader()}
+        </h2>
       ) : null}
       <ActivityIcon activityType={chunk.activityType} size={80} />
       <div>

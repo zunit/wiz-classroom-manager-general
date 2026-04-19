@@ -104,7 +104,11 @@ function ActivityCardEditable(props) {
                 <Avatar>
                   <ActivityIcon activityType={activityType} />
                 </Avatar>
-                {ActivityTypes.getActivityName(activityType)}
+                <span
+                  className={`activity-title ${ActivityTypes.getActivityClassName(activityType)}`}
+                >
+                  {ActivityTypes.getActivityName(activityType)}
+                </span>
               </MenuItem>
             );
           }
@@ -113,7 +117,9 @@ function ActivityCardEditable(props) {
 
       <div className="activity-card-editable-description">
         <h1 className="activity-card-editable-header">{getCardHeader()}</h1>
-        <h2 className="activity-card-editable-subheader">
+        <h2
+          className={`activity-card-editable-subheader activity-title ${ActivityTypes.getActivityClassName(chunk.activityType)}`}
+        >
           {ActivityTypes.isGroupActivity(chunk.activityType)
             ? getCardSubheader()
             : null}

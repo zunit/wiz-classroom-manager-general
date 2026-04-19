@@ -143,6 +143,19 @@ class ActivityTypes {
     }
     return activityName;
   }
+
+  /**
+   * Returns a CSS-friendly class name for a given activity type.
+   * @param {any} activityType The activity type.
+   * @returns {string} The normalized class name.
+   */
+  static getActivityClassName(activityType) {
+    if (!ActivityTypes.isValidActivityType(activityType)) {
+      return "invalid-activity";
+    }
+
+    return activityType.toLowerCase().replaceAll("_", "-");
+  }
 }
 
 export default ActivityTypes;
