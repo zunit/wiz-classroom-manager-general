@@ -83,3 +83,19 @@ code {
 .MuiButton-root {
   gap: 0.3rem;
 }
+
+.activity-title.strategy-and-problem-solving {
+  color: #7aa33a;
+}
+
+.activity-title.code-along {
+  color: #d95c5c;
+}
+
+.activity-title.build-along {
+  color: #3498db;
+}
+
+.activity-title.challenge-round {
+  color: #d4ac0d;
+}

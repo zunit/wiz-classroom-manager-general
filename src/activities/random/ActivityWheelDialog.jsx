@@ -21,7 +21,13 @@ function ActivityWheelDialog(props) {
       <DialogTitle>Spin Result</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          You got the "{ActivityTypes.getActivityName(activity)}" activity!
+          You got the{" "}
+          <span
+            className={`activity-title ${ActivityTypes.getActivityClassName(activity)}`}
+          >
+            "{ActivityTypes.getActivityName(activity)}"
+          </span>{" "}
+          activity!
         </DialogContentText>
           <div style={{ marginBlock: "1rem" }}>
             <ActivityIcon activityType={activity} />

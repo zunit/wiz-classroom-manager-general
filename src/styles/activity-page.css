@@ -27,3 +27,19 @@
 .activity-header > h1 {
   margin: 0;
 }
+
+.activity-random-prompt.strategy-and-problem-solving h2 {
+  color: #7aa33a;
+}
+
+.activity-random-prompt.code-along h2 {
+  color: #d95c5c;
+}
+
+.activity-random-prompt.build-along h2 {
+  color: #3498db;
+}
+
+.activity-random-prompt.challenge-round h2 {
+  color: #d4ac0d;
+}

@@ -6,6 +6,7 @@ import { generateCodeAlongPrompt } from "@/prompts/code-along-prompts";
 import { generateBuildAlongPrompt } from "@/prompts/build-along-prompts";
 import { generateChallengeRoundPrompt } from "@/prompts/challenge-round-prompts";
 import { Button } from "@mui/material";
+import "@/styles/activity-page.css";
 
 /**
  * Parent component for random generated activity prompts.
@@ -41,6 +42,7 @@ function ActivityRandomPrompt(props) {
 
   return (
     <div
+      className={`activity-random-prompt ${activityType.toLowerCase().replaceAll("_", "-")}`}
       style={{
         width: "calc(700px - 2rem)",
         justifySelf: "center",
