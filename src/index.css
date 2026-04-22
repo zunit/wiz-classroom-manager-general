@@ -80,6 +80,29 @@ code {
   white-space: nowrap;
 }
 
+.code-block {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  margin: 0 auto 1rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--mui-palette-background-code);
+  color: var(--foreground-color);
+  text-align: left;
+  white-space: pre;
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .MuiButton-root {
   gap: 0.3rem;
 }

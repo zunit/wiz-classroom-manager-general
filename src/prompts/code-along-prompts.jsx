@@ -1,58 +1,71 @@
 import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
-import { joinPath } from "@/utils/pathUtils";
-
-// Change this to wherever your FTC assets will live.
-const ftcRoot = "https://your-cdn-or-s3-path/ftc-code-along";
-
-function getFTCCodeAlongAsset(assetName) {
-  return joinPath(ftcRoot, assetName);
-}
 
 const promptsList = [
   {
     id: "basic-teleop",
+    title: "FTC Code Along: Basic TeleOp Drive",
     element: (
       <>
         <h2>FTC Code Along: Basic TeleOp Drive</h2>
-
-        <video controls className="scaled-video">
-          <source
-            src={getFTCCodeAlongAsset("basic-teleop-demo.mp4")}
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-
         <p>
           Create a TeleOp OpMode that drives a 2-motor robot using the left stick
-          Y-axis for forward/backward and the right stick X-axis for turning.
+          Y-axis for forward/backward movement and the right stick X-axis for turning.
         </p>
         <p>
-          Also show motor power on telemetry.
+          Also show the left and right motor power on telemetry.
         </p>
         <hr />
       </>
     ),
-    answerLink: getFTCCodeAlongAsset("basic-teleop-answer.png"),
-    referenceLink: "https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/onbot_java/creating_op_modes/Creating-and-Running-an-Op-Mode-(OnBot-Java).html",
+    answerCode: `package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.Range;
+
+@TeleOp(name = "Basic TeleOp Drive")
+public class BasicTeleOpDrive extends LinearOpMode {
+    private DcMotor leftMotor;
+    private DcMotor rightMotor;
+
+    @Override
+    public void runOpMode() {
+        leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
+        rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
+
+        rightMotor.setDirection(DcMotor.Direction.REVERSE);
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            double drive = -gamepad1.left_stick_y;
+            double turn = gamepad1.right_stick_x;
+
+            double leftPower = Range.clip(drive + turn, -1.0, 1.0);
+            double rightPower = Range.clip(drive - turn, -1.0, 1.0);
+
+            leftMotor.setPower(leftPower);
+            rightMotor.setPower(rightPower);
+
+            telemetry.addData("Left Power", leftPower);
+            telemetry.addData("Right Power", rightPower);
+            telemetry.update();
+        }
+    }
+}`,
   },
 
   {
     id: "slow-mode",
+    title: "FTC Code Along: Driver Control Upgrade",
     element: (
       <>
         <h2>FTC Code Along: Driver Control Upgrade</h2>
-
-        <img
-          src={getFTCCodeAlongAsset("slow-mode-preview.png")}
-          className="scaled-img"
-          alt="FTC slow mode prompt preview"
-        />
-
         <p>
-          Add a slow mode to TeleOp. When the driver holds the right bumper, all
-          drive power should be cut in half for precision driving.
+          Add a slow mode to TeleOp. When the driver holds the right bumper,
+          all drive power should be cut in half for precision driving.
         </p>
         <p>
           Display on telemetry whether slow mode is ON or OFF.
@@ -60,78 +73,55 @@ const promptsList = [
         <hr />
       </>
     ),
-    answerLink: getFTCCodeAlongAsset("slow-mode-answer.png"),
-    referenceLink: "https://ftc-docs.firstinspires.org/",
-  },
+    answerCode: `package org.firstinspires.ftc.teamcode;
 
-  {
-    id: "square-auto",
-    element: (
-      <>
-        <h2>FTC Code Along: Autonomous Path Challenge</h2>
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.Range;
 
-        <video controls className="scaled-video">
-          <source
-            src={getFTCCodeAlongAsset("square-auto-demo.mp4")}
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
+@TeleOp(name = "Driver Control Upgrade")
+public class DriverControlUpgrade extends LinearOpMode {
+    private DcMotor leftMotor;
+    private DcMotor rightMotor;
 
-        <p>
-          Write an Autonomous OpMode that makes the robot drive in a square:
-          forward, turn, forward, turn, forward, turn, forward, turn.
-        </p>
-        <p>
-          End with a telemetry message that says the path is complete.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCCodeAlongAsset("square-auto-answer.png"),
-    referenceLink: "https://github.com/FIRST-Tech-Challenge/FtcRobotController",
-  },
+    @Override
+    public void runOpMode() {
+        leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
+        rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
 
-  {
-    id: "encoder-drive",
-    element: (
-      <>
-        <h2>FTC Code Along: Encoder Drive</h2>
+        rightMotor.setDirection(DcMotor.Direction.REVERSE);
 
-        <img
-          src={getFTCCodeAlongAsset("encoder-drive-preview.png")}
-          className="scaled-img"
-          alt="FTC encoder drive prompt preview"
-        />
+        waitForStart();
 
-        <p>
-          Program the robot to drive forward to a target encoder count, stop, then
-          drive backward to the starting point.
-        </p>
-        <p>
-          Show current encoder values in telemetry while the robot is moving.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCCodeAlongAsset("encoder-drive-answer.png"),
-    referenceLink: "https://github.com/FIRST-Tech-Challenge/FtcRobotController",
+        while (opModeIsActive()) {
+            double drive = -gamepad1.left_stick_y;
+            double turn = gamepad1.right_stick_x;
+
+            boolean slowMode = gamepad1.right_bumper;
+            double speedMultiplier = slowMode ? 0.5 : 1.0;
+
+            double leftPower = Range.clip((drive + turn) * speedMultiplier, -1.0, 1.0);
+            double rightPower = Range.clip((drive - turn) * speedMultiplier, -1.0, 1.0);
+
+            leftMotor.setPower(leftPower);
+            rightMotor.setPower(rightPower);
+
+            telemetry.addData("Slow Mode", slowMode ? "ON" : "OFF");
+            telemetry.addData("Left Power", leftPower);
+            telemetry.addData("Right Power", rightPower);
+            telemetry.update();
+        }
+    }
+}`,
   },
 
   {
     id: "servo-toggle",
+    title: "FTC Code Along: Servo Toggle",
     element: (
       <>
         <h2>FTC Code Along: Servo Toggle</h2>
-
-        <video controls className="scaled-video">
-          <source
-            src={getFTCCodeAlongAsset("servo-toggle-demo.mp4")}
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-
         <p>
           Use gamepad buttons to open and close a claw servo.
         </p>
@@ -141,50 +131,46 @@ const promptsList = [
         <hr />
       </>
     ),
-    answerLink: getFTCCodeAlongAsset("servo-toggle-answer.png"),
-    referenceLink: "https://ftc-docs.firstinspires.org/en/latest/programming_resources/tutorial_specific/blocks/controlling_a_servo/Controlling-a-Servo-(Blocks).html",
-  },
+    answerCode: `package org.firstinspires.ftc.teamcode;
 
-  {
-    id: "color-sensor",
-    element: (
-      <>
-        <h2>FTC Code Along: Sensor Detective</h2>
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.Servo;
 
-        <img
-          src={getFTCCodeAlongAsset("color-sensor-preview.png")}
-          className="scaled-img"
-          alt="FTC color sensor prompt preview"
-        />
+@TeleOp(name = "Servo Toggle")
+public class ServoToggle extends LinearOpMode {
+    private Servo clawServo;
 
-        <p>
-          Write code that reads a color sensor and reacts differently depending on
-          whether red or blue is stronger.
-        </p>
-        <p>
-          Example: red = drive forward, blue = stop and report detection on telemetry.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCCodeAlongAsset("color-sensor-answer.png"),
-    referenceLink: "https://github.com/FIRST-Tech-Challenge/FtcRobotController",
+    private static final double OPEN_POSITION = 0.8;
+    private static final double CLOSED_POSITION = 0.2;
+
+    @Override
+    public void runOpMode() {
+        clawServo = hardwareMap.get(Servo.class, "clawServo");
+        clawServo.setPosition(CLOSED_POSITION);
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            if (gamepad1.y) {
+                clawServo.setPosition(OPEN_POSITION);
+            } else if (gamepad1.a) {
+                clawServo.setPosition(CLOSED_POSITION);
+            }
+
+            telemetry.addData("Claw Position", clawServo.getPosition());
+            telemetry.update();
+        }
+    }
+}`,
   },
 
   {
     id: "distance-sensor",
+    title: "FTC Code Along: Distance Sensor Safety Stop",
     element: (
       <>
         <h2>FTC Code Along: Distance Sensor Safety Stop</h2>
-
-        <video controls className="scaled-video">
-          <source
-            src={getFTCCodeAlongAsset("distance-sensor-demo.mp4")}
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-
         <p>
           Drive forward slowly until a distance sensor detects an object closer than
           10 cm, then stop immediately.
@@ -195,43 +181,88 @@ const promptsList = [
         <hr />
       </>
     ),
-    answerLink: getFTCCodeAlongAsset("distance-sensor-answer.png"),
-    referenceLink: "https://github.com/FIRST-Tech-Challenge/FtcRobotController",
-  },
+    answerCode: `package org.firstinspires.ftc.teamcode;
 
-  {
-    id: "imu-turn",
-    element: (
-      <>
-        <h2>FTC Code Along: IMU Turn Challenge</h2>
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-        <img
-          src={getFTCCodeAlongAsset("imu-turn-preview.png")}
-          className="scaled-img"
-          alt="FTC IMU turn prompt preview"
-        />
+@Autonomous(name = "Distance Sensor Safety Stop")
+public class DistanceSensorSafetyStop extends LinearOpMode {
+    private DcMotor leftMotor;
+    private DcMotor rightMotor;
+    private DistanceSensor distanceSensor;
 
-        <p>
-          Use the IMU heading to turn the robot to about 90 degrees, then stop.
-        </p>
-        <p>
-          Display heading data on telemetry while turning.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCCodeAlongAsset("imu-turn-answer.png"),
-    referenceLink: "https://ftc-docs.firstinspires.org/programming_resources/imu/imu.html",
+    @Override
+    public void runOpMode() {
+        leftMotor = hardwareMap.get(DcMotor.class, "leftMotor");
+        rightMotor = hardwareMap.get(DcMotor.class, "rightMotor");
+        distanceSensor = hardwareMap.get(DistanceSensor.class, "distanceSensor");
+
+        rightMotor.setDirection(DcMotor.Direction.REVERSE);
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            double distanceCm = distanceSensor.getDistance(DistanceUnit.CM);
+
+            if (distanceCm > 10.0) {
+                leftMotor.setPower(0.25);
+                rightMotor.setPower(0.25);
+            } else {
+                leftMotor.setPower(0.0);
+                rightMotor.setPower(0.0);
+                telemetry.addLine("Object detected - stopping");
+                telemetry.addData("Distance (cm)", distanceCm);
+                telemetry.update();
+                break;
+            }
+
+            telemetry.addData("Distance (cm)", distanceCm);
+            telemetry.update();
+        }
+
+        leftMotor.setPower(0.0);
+        rightMotor.setPower(0.0);
+    }
+}`,
   },
 ];
 
+function buildAnswerElement(prompt) {
+  if (!prompt) return null;
+
+  return (
+    <>
+      <h2>{prompt.title} - Answer</h2>
+      <pre className="code-block">{prompt.answerCode}</pre>
+      <hr />
+    </>
+  );
+}
+
+export function generateFTCCodeAlongPromptData() {
+  return getRandomElement(promptsList);
+}
+
 export function generateFTCCodeAlongPrompt() {
-  const { element } = getRandomElement(promptsList);
-  return element;
+  return generateFTCCodeAlongPromptData().element;
 }
 
 export function generateCodeAlongPrompt() {
-  return generateFTCCodeAlongPrompt();
+  return generateFTCCodeAlongPromptData();
+}
+
+export function getFTCCodeAlongPromptById(promptId) {
+  const prompt = promptsList.find((item) => item.id === promptId);
+  return prompt ? prompt.element : null;
+}
+
+export function getFTCCodeAlongAnswer(promptId) {
+  const prompt = promptsList.find((item) => item.id === promptId);
+  return buildAnswerElement(prompt);
 }
 
 export { promptsList };

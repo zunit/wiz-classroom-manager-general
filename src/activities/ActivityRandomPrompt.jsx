@@ -14,12 +14,14 @@ import "@/styles/activity-page.css";
 function ActivityRandomPrompt(props) {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
   const { activityType, randomPrompt, setRandomPrompt } = props;
+  const [isAnswerVisible, setIsAnswerVisible] = React.useState(false);
 
   const activity = chunks[currentChunkIndex];
 
   const handleGeneratePrompt = React.useCallback(() => {
     const prompt = generatePrompt();
     setRandomPrompt(prompt);
+    setIsAnswerVisible(false);
   });
 
   const generatePrompt = React.useCallback(() => {
@@ -56,7 +58,27 @@ function ActivityRandomPrompt(props) {
       {randomPrompt === null ? (
         <p>Click the button below to generate the prompt!</p>
       ) : (
-        randomPrompt
+        <>
+          {randomPrompt.element ?? randomPrompt}
+          {activityType === ActivityTypes.CODE_ALONG && randomPrompt.answerCode ? (
+            <>
+              <Button
+                variant="outlined"
+                onClick={() => setIsAnswerVisible((currentValue) => !currentValue)}
+                sx={{ marginBottom: "1rem" }}
+              >
+                {isAnswerVisible ? "Hide Answer" : "Reveal Answer"}
+              </Button>
+              {isAnswerVisible ? (
+                <>
+                  <h2>{randomPrompt.title} - Answer</h2>
+                  <pre className="code-block">{randomPrompt.answerCode}</pre>
+                  <hr />
+                </>
+              ) : null}
+            </>
+          ) : null}
+        </>
       )}
       <Button
         variant="contained"
