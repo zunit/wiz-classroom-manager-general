@@ -2,7 +2,7 @@ import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
 import { joinPath } from "@/utils/pathUtils";
 
-const fllBuildAlongRoot = "https://your-cdn-or-s3-path/fll-build-along";
+const fllBuildAlongRoot = "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Wiz-Camp/FLL-Camp/Summer-Camp/Level-5-Classroom-Manager/build-along";
 
 function getFLLBuildAlongAsset(assetName) {
   return joinPath(fllBuildAlongRoot, assetName);

@@ -2,7 +2,7 @@ import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
 import { joinPath } from "@/utils/pathUtils";
 
-const fllCodeAlongRoot = "s3://wizroboticsintro/Wiz-Camp/FLL-Camp/Summer-Camp/Level-5-Classroom-Manager/";
+const fllCodeAlongRoot = "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Wiz-Camp/FLL-Camp/Summer-Camp/Level-5-Classroom-Manager/code-along";
 
 function getFLLCodeAlongAsset(assetName) {
   return joinPath(fllCodeAlongRoot, assetName);
@@ -37,11 +37,13 @@ const promptsList = [
     element: (
       <>
         <h2>FLL Code Along: Forward, Spin, and Play Notes</h2>
-        <img
-          src={getFLLCodeAlongAsset("forward-spin-play-notes.png")}
-          className="scaled-img"
-          alt="FLL forward spin and play notes"
-        />
+        <video controls className="scaled-video">
+          <source
+            src={getFLLCodeAlongAsset("forward-spin-play-notes.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
         <p>
           Code the robot to drive forward, do one full rotation, and play 3
           different music notes during the program.
@@ -60,7 +62,7 @@ const promptsList = [
       <>
         <h2>FLL Code Along: Move an Arm Motor</h2>
         <img
-          src={getFLLCodeAlongAsset("move-arm-motor.png")}
+          src={getFLLCodeAlongAsset("move-arm-motor.gif")}
           className="scaled-img"
           alt="FLL move arm motor"
         />
@@ -83,7 +85,7 @@ const promptsList = [
         <h2>FLL Code Along: 3-Point Turn with Signals</h2>
         <video controls className="scaled-video">
           <source
-            src={getFLLCodeAlongAsset("three-point-turn-signals.mp4")}
+            src={getFLLCodeAlongAsset("three-point-turn.mp4")}
             type="video/mp4"
           />
           Your browser does not support the video tag.

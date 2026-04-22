@@ -2,7 +2,8 @@ import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
 import { joinPath } from "@/utils/pathUtils";
 
-const fllChallengeRoundRoot = "https://your-cdn-or-s3-path/fll-challenge-round";
+const fllChallengeRoundRoot =
+  "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Wiz-Camp/FLL-Camp/Summer-Camp/Level-5-Classroom-Manager/challenge-round";
 
 function getFLLChallengeRoundAsset(assetName) {
   return joinPath(fllChallengeRoundRoot, assetName);
@@ -13,13 +14,11 @@ const promptsList = [
     element: (
       <>
         <h2>FLL Challenge Round: One-Minute Arm Build</h2>
-        <video controls className="scaled-video">
-          <source
-            src={getFLLChallengeRoundAsset("one-minute-arm-build.mp4")}
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
+        <img
+          src={getFLLChallengeRoundAsset("one-minute-arm.png")}
+          className="scaled-img"
+          alt="One-minute arm build challenge"
+        />
         <p>Your team has 1 minute to build a simple arm attachment for the robot.</p>
         <p>
           Then the robot must use the arm to do one task, like pushing an object,
@@ -40,12 +39,8 @@ const promptsList = [
           className="scaled-img"
           alt="SPIKE hub count up challenge"
         />
-        <p>
-          Code the SPIKE hub to count from 1 to 10 on the hub display.
-        </p>
-        <p>
-          Bonus: after reaching 10, make it count back down from 10 to 1.
-        </p>
+        <p>Code the SPIKE hub to count from 1 to 10 on the hub display.</p>
+        <p>Bonus: after reaching 10, make it count back down from 10 to 1.</p>
         <p>The first team to make it work correctly wins.</p>
         <hr />
       </>
@@ -56,11 +51,13 @@ const promptsList = [
     element: (
       <>
         <h2>FLL Challenge Round: Build and Do</h2>
-        <img
-          src={getFLLChallengeRoundAsset("build-and-do-attachment.png")}
-          className="scaled-img"
-          alt="Build and do attachment challenge"
-        />
+        <video controls className="scaled-video">
+          <source
+            src={getFLLChallengeRoundAsset("build-and-do.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
         <p>Build one quick robot attachment that can complete a simple action.</p>
         <p>
           Example actions: push a block, pull an object closer, flip a lever, or
@@ -76,11 +73,13 @@ const promptsList = [
     element: (
       <>
         <h2>FLL Challenge Round: Quick Code Fix</h2>
-        <img
-          src={getFLLChallengeRoundAsset("quick-code-fix-spike.png")}
-          className="scaled-img"
-          alt="Quick code fix SPIKE challenge"
-        />
+        <video controls className="scaled-video">
+          <source
+            src={getFLLChallengeRoundAsset("quick-code-fix-spike.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
         <p>
           The robot code is almost correct, but one small problem is stopping it
           from doing the task.

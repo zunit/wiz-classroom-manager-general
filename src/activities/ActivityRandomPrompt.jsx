@@ -14,12 +14,14 @@ import "@/styles/activity-page.css";
 function ActivityRandomPrompt(props) {
   const { chunks, currentChunkIndex } = React.useContext(AppContext);
   const { activityType, randomPrompt, setRandomPrompt } = props;
+  const [promptRenderKey, setPromptRenderKey] = React.useState(0);
 
   const activity = chunks[currentChunkIndex];
 
   const handleGeneratePrompt = React.useCallback(() => {
     const prompt = generatePrompt();
     setRandomPrompt(prompt);
+    setPromptRenderKey((currentKey) => currentKey + 1);
   });
 
   const generatePrompt = React.useCallback(() => {
@@ -56,7 +58,7 @@ function ActivityRandomPrompt(props) {
       {randomPrompt === null ? (
         <p>Click the button below to generate the prompt!</p>
       ) : (
-        randomPrompt
+        <div key={promptRenderKey}>{randomPrompt}</div>
       )}
       <Button
         variant="contained"

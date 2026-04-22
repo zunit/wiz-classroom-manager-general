@@ -3,7 +3,7 @@ import { getRandomElement } from "@/utils/arrayUtils";
 import { joinPath } from "@/utils/pathUtils";
 
 const fllStrategyRoot =
-  "https://your-cdn-or-s3-path/fll-strategy-and-problem-solving";
+  "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Wiz-Camp/FLL-Camp/Summer-Camp/Level-5-Classroom-Manager/strategy-and-problem-solving";
 
 function getFLLStrategyAsset(assetName) {
   return joinPath(fllStrategyRoot, assetName);
@@ -15,7 +15,7 @@ const promptsList = [
       <>
         <h2>FLL Strategy & Problem Solving: Cruise Control</h2>
         <img
-          src={getFLLStrategyAsset("mission-cruise-control.png")}
+          src={getFLLStrategyAsset("cruise-control.png")}
           className="scaled-img"
           alt="Mission cruise control"
         />
@@ -40,7 +40,7 @@ const promptsList = [
       <>
         <h2>FLL Strategy & Problem Solving: Stop Sign Detection</h2>
         <img
-          src={getFLLStrategyAsset("mission-stop-sign-detection.png")}
+          src={getFLLStrategyAsset("stop-sign-detection.png")}
           className="scaled-img"
           alt="Mission stop sign detection"
         />
@@ -93,7 +93,7 @@ const promptsList = [
       <>
         <h2>FLL Strategy & Problem Solving: Judge’s Design Choice</h2>
         <img
-          src={getFLLStrategyAsset("judges-design-choice-reference.png")}
+          src={getFLLStrategyAsset("design-choice.gif")}
           className="scaled-img"
           alt="Judge's design choice reference attachment"
         />
