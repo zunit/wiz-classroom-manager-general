@@ -2,7 +2,15 @@ import React from "react";
 import ActivityCustomPrompt from "@/activities/ActivityCustomPrompt";
 import ActivityRandomPrompt from "@/activities/ActivityRandomPrompt";
 import ActivityTypes from "@/utils/ActivityTypes";
-import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Tab,
+  Tabs,
+} from "@mui/material";
 import { generateStrategyAndProblemSolvingRules } from "@/prompts/strategy-and-problem-solving-rules";
 import { generateCodeAlongRules } from "@/prompts/code-along-rules";
 import { generateBuildAlongRules } from "@/prompts/build-along-rules";
@@ -14,6 +22,7 @@ import { generateChallengeRoundRules } from "@/prompts/challenge-round-rules";
  */
 function ActivityPrompt(props) {
   const [isRulesOpen, setIsRulesOpen] = React.useState(false);
+  const [rulesTab, setRulesTab] = React.useState("rules");
   const {
     activityType,
     promptMode,
@@ -39,53 +48,60 @@ function ActivityPrompt(props) {
   }
 
   const rulesContent = getRulesContent();
+  const activeRulesContent = rulesContent ? rulesContent[rulesTab] : null;
+
+  function handleOpenRules() {
+    setRulesTab("rules");
+    setIsRulesOpen(true);
+  }
+
+  function renderRulesDialog() {
+    if (!rulesContent) {
+      return null;
+    }
+
+    return (
+      <>
+        <Button
+          variant="outlined"
+          onClick={handleOpenRules}
+          sx={{ marginTop: "1rem", marginBottom: "1rem" }}
+        >
+          Rules
+        </Button>
+        <Dialog
+          open={isRulesOpen}
+          onClose={() => setIsRulesOpen(false)}
+          fullWidth
+          maxWidth="md"
+        >
+          <DialogTitle>Activity Rules</DialogTitle>
+          <DialogContent>
+            <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 2 }}>
+              <Tabs
+                value={rulesTab}
+                onChange={(_, newValue) => setRulesTab(newValue)}
+              >
+                <Tab label="Rules" value="rules" />
+                <Tab label="Beginner" value="beginner" />
+                <Tab label="Advanced" value="advanced" />
+              </Tabs>
+            </Box>
+            {activeRulesContent}
+          </DialogContent>
+        </Dialog>
+      </>
+    );
+  }
 
   return promptMode === "random" ? (
     <>
-      {rulesContent ? (
-        <>
-          <Button
-            variant="outlined"
-            onClick={() => setIsRulesOpen(true)}
-            sx={{ marginTop: "1rem", marginBottom: "1rem" }}
-          >
-            Rules
-          </Button>
-          <Dialog
-            open={isRulesOpen}
-            onClose={() => setIsRulesOpen(false)}
-            fullWidth
-            maxWidth="md"
-          >
-            <DialogTitle>Activity Rules</DialogTitle>
-            <DialogContent>{rulesContent}</DialogContent>
-          </Dialog>
-        </>
-      ) : null}
+      {renderRulesDialog()}
       <ActivityRandomPrompt {...{ activityType, randomPrompt, setRandomPrompt }} />
     </>
   ) : (
     <>
-      {rulesContent ? (
-        <>
-          <Button
-            variant="outlined"
-            onClick={() => setIsRulesOpen(true)}
-            sx={{ marginTop: "1rem", marginBottom: "1rem" }}
-          >
-            Rules
-          </Button>
-          <Dialog
-            open={isRulesOpen}
-            onClose={() => setIsRulesOpen(false)}
-            fullWidth
-            maxWidth="md"
-          >
-            <DialogTitle>Activity Rules</DialogTitle>
-            <DialogContent>{rulesContent}</DialogContent>
-          </Dialog>
-        </>
-      ) : null}
+      {renderRulesDialog()}
       <ActivityCustomPrompt
         customPrompt={customPrompt}
         onChange={handleChangePrompt}
