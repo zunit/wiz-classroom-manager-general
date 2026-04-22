@@ -39,7 +39,7 @@ const promptsList = [
         <h2>FLL Code Along: Forward, Spin, and Play Notes</h2>
         <video controls className="scaled-video">
           <source
-            src={getFLLCodeAlongAsset("forward-spin-play-notes.mp4")}
+            src={getFLLCodeAlongAsset("foward-spin-play-notes.mp4")}
             type="video/mp4"
           />
           Your browser does not support the video tag.
