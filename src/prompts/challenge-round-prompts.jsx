@@ -77,14 +77,6 @@ const promptsList = [
       <>
         <h2>FTC Challenge Round: Minute to Win It</h2>
 
-        <video controls className="scaled-video">
-          <source
-            src={getFTCChallengeAsset("minute-to-win-it-push-block.gif")}
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-
         <p>
           You have 1 minute to drive your robot and push one foam block fully
           into the taped scoring zone. *Determine the scoring zone with tape on the floor.*

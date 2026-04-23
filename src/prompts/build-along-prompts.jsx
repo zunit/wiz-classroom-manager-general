@@ -3,7 +3,7 @@ import { getRandomElement } from "@/utils/arrayUtils";
 import { joinPath } from "@/utils/pathUtils";
 
 // Change this to your real FTC build asset location.
-const ftcBuildRoot = "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Wiz-Camp/FTC-Camp/Level-5-Classroom-Manager-ftc/build-along/";
+const ftcBuildRoot = "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Wiz-Camp/FTC-Camp/Level-5-Classroom-Manager-ftc/build-along";
 
 function getFTCBuildAsset(assetName) {
   return joinPath(ftcBuildRoot, assetName);
@@ -147,7 +147,7 @@ const promptsList = [
 
         <video controls className="scaled-video">
           <source
-            src={getFTCBuildAsset("linear-slide-build-demo.mp4")}
+            src={getFTCBuildAsset("cascade-lift.mp4")}
             type="video/mp4"
           />
           Your browser does not support the video tag.
