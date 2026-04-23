@@ -64,8 +64,30 @@ svg {
 
 video {
   border-radius: 0.5rem;
-  width: 600px;
   justify-self: center;
+}
+
+.scaled-img,
+.scaled-video {
+  display: block;
+  width: min(100%, 600px);
+  max-width: 100%;
+  height: auto;
+  max-height: 40vh;
+  margin: 0 auto 1rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+}
+
+img.scaled-img,
+video.scaled-video {
+  object-fit: contain;
+}
+
+iframe.scaled-video {
+  aspect-ratio: 16 / 9;
+  min-height: 320px;
+  border: 0;
 }
 
 hr {
