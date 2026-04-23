@@ -3,7 +3,7 @@ import { getRandomElement } from "@/utils/arrayUtils";
 import { joinPath } from "@/utils/pathUtils";
 
 // Change this to your real FTC build asset location.
-const ftcBuildRoot = "https://your-cdn-or-s3-path/ftc-build-along";
+const ftcBuildRoot = "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Wiz-Camp/FTC-Camp/Level-5-Classroom-Manager-ftc/build-along/";
 
 function getFTCBuildAsset(assetName) {
   return joinPath(ftcBuildRoot, assetName);
@@ -16,229 +16,177 @@ const promptsList = [
       <>
         <h2>FTC Build Along: Fastest Attachment Build</h2>
 
-        <img
-          src={getFTCBuildAsset("fastest-attachment-preview.png")}
-          className="scaled-img"
-          alt="FTC fastest attachment build preview"
-        />
-
         <p>
           Build a simple robot attachment such as a scoop, pusher, or small arm
           using a limited set of FTC parts.
         </p>
         <p>
-          Your attachment must connect securely to the robot and survive a quick shake test.
+          Your attachment must connect securely to the robot and survive a quick
+          shake test.
         </p>
         <hr />
       </>
     ),
-    answerLink: getFTCBuildAsset("fastest-attachment-answer.png"),
   },
 
   {
-    id: "one-piece-upgrade",
+    id: "onshape-copycat-part",
     element: (
       <>
-        <h2>FTC Build Along: One Piece Upgrade</h2>
+        <h2>FTC Build Along: Onshape Copycat Part</h2>
 
         <img
-          src={getFTCBuildAsset("one-piece-upgrade-preview.png")}
+          src={getFTCBuildAsset("onshape-copycat-part-preview.png")}
           className="scaled-img"
-          alt="FTC one piece upgrade preview"
+          alt="FTC Onshape copycat part preview"
         />
 
         <p>
-          Improve an existing robot by changing just one part.
+          Study the sample CAD part shown above, then recreate it in Onshape as
+          closely as possible.
         </p>
         <p>
-          Your goal is to make it stronger, more stable, easier to score with, or easier to drive.
+          Focus on matching the overall shape, hole placement, proportions, and
+          main features of the part.
         </p>
         <hr />
       </>
     ),
-    answerLink: getFTCBuildAsset("one-piece-upgrade-answer.png"),
+    answerElement: (
+      <>
+        <h2>FTC Build Along Answer: Onshape Copycat Part</h2>
+        <p>
+          Watch the tutorial below for a guided part replication walkthrough.
+        </p>
+        <p>
+          If the embedded video does not load, copy and paste this link into your browser:
+        </p>
+        <pre className="code-block">https://www.youtube.com/watch?v=Td-QwZgVN9k</pre>
+        <p>
+          <a
+            href="https://www.youtube.com/watch?v=Td-QwZgVN9k"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open tutorial in YouTube
+          </a>
+        </p>
+        <iframe
+          className="scaled-video"
+          src="https://www.youtube.com/watch?v=Td-QwZgVN9k"
+          title="Onshape Copycat Part Tutorial"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+        <hr />
+      </>
+    ),
   },
 
   {
-    id: "stability-test",
+    id: "onshape-copycat-assembly",
     element: (
       <>
-        <h2>FTC Build Along: Stability Test</h2>
+        <h2>FTC Build Along: Onshape Copycat Assembly</h2>
+
+        <img
+          src={getFTCBuildAsset("onshape-copycat-assembly-preview.png")}
+          className="scaled-img"
+          alt="FTC Onshape copycat assembly preview"
+        />
+
+        <p>
+          Study the sample CAD assembly shown above, then recreate it in Onshape
+          as closely as possible.
+        </p>
+        <p>
+          Focus on how the parts connect, the spacing between pieces, and the
+          overall structure of the build.
+        </p>
+        <hr />
+      </>
+    ),
+    answerElement: (
+      <>
+        <h2>FTC Build Along Answer: Onshape Copycat Assembly</h2>
+        <p>
+          Watch the tutorial below for a guided assembly replication walkthrough.
+        </p>
+        <p>
+          If the embedded video does not load, copy and paste this link into your browser:
+        </p>
+        <pre className="code-block">https://www.youtube.com/watch?v=k8u_Dl11xnQ</pre>
+        <p>
+          <a
+            href="https://www.youtube.com/watch?v=k8u_Dl11xnQ"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open tutorial in YouTube
+          </a>
+        </p>
+        <iframe
+          className="scaled-video"
+          src="https://www.youtube.com/watch?v=k8u_Dl11xnQ"
+          title="Onshape Copycat Assembly Tutorial"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+        <hr />
+      </>
+    ),
+  },
+
+  {
+    id: "linear-slide-build",
+    element: (
+      <>
+        <h2>FTC Build Along: Linear Slide Lift Build</h2>
 
         <video controls className="scaled-video">
           <source
-            src={getFTCBuildAsset("stability-test-demo.mp4")}
+            src={getFTCBuildAsset("linear-slide-build-demo.mp4")}
             type="video/mp4"
           />
           Your browser does not support the video tag.
         </video>
 
         <p>
-          Build the tallest structure or attachment you can that stays upright for at least 10 seconds.
+          Build a linear slide style lift inspired by the reference video.
         </p>
         <p>
-          Bonus points if it also stays stable while mounted on a robot.
+          Your lift should raise smoothly, stay supported while extended, and
+          mount cleanly to the robot chassis.
         </p>
         <hr />
       </>
     ),
-    answerLink: getFTCBuildAsset("stability-test-answer.png"),
-  },
-
-  {
-    id: "mini-drivetrain-repair",
-    element: (
-      <>
-        <h2>FTC Build Along: Mini Drivetrain Repair</h2>
-
-        <img
-          src={getFTCBuildAsset("mini-drivetrain-repair-preview.png")}
-          className="scaled-img"
-          alt="FTC drivetrain repair preview"
-        />
-
-        <p>
-          Inspect a partially broken or incorrect drivetrain build and fix it.
-        </p>
-        <p>
-          Find what is wrong, rebuild it properly, and explain what you changed.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCBuildAsset("mini-drivetrain-repair-answer.png"),
-  },
-
-  {
-    id: "copycat-build",
-    element: (
-      <>
-        <h2>FTC Build Along: BrickLink Copycat</h2>
-
-        <img
-          src={getFTCBuildAsset("copycat-build-preview.png")}
-          className="scaled-img"
-          alt="FTC copycat build preview"
-        />
-
-        <p>
-          Study a simple reference mechanism for 20 seconds, then recreate it as closely as possible.
-        </p>
-        <p>
-          Focus on shape, function, and connection points.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCBuildAsset("copycat-build-answer.png"),
-  },
-
-  {
-    id: "shovel-build",
-    element: (
-      <>
-        <h2>FTC Build Along: Space Shovel Attachment</h2>
-
-        <img
-          src={getFTCBuildAsset("shovel-build-preview.png")}
-          className="scaled-img"
-          alt="FTC shovel attachment preview"
-        />
-
-        <p>
-          Build a shovel or scoop attachment that can collect an object and bring it back to base.
-        </p>
-        <p>
-          Try to make it wide enough to scoop easily, but sturdy enough not to bend.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCBuildAsset("shovel-build-answer.png"),
-  },
-
-  {
-    id: "launcher-build",
-    element: (
-      <>
-        <h2>FTC Build Along: Sports Launcher Build</h2>
-
-        <video controls className="scaled-video">
-          <source
-            src={getFTCBuildAsset("launcher-build-demo.mp4")}
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-
-        <p>
-          Build a simple launcher or bucket-style attachment that can hold and launch a game piece forward.
-        </p>
-        <p>
-          Your design should keep the object secure before launch.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCBuildAsset("launcher-build-answer.png"),
-  },
-
-  {
-    id: "grabber-build",
-    element: (
-      <>
-        <h2>FTC Build Along: Grabber Challenge</h2>
-
-        <img
-          src={getFTCBuildAsset("grabber-build-preview.png")}
-          className="scaled-img"
-          alt="FTC grabber build preview"
-        />
-
-        <p>
-          Build a grabber or claw that can pick up a small object and release it into a target zone.
-        </p>
-        <p>
-          Aim for a design that is easy to align and does not drop the object while moving.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCBuildAsset("grabber-build-answer.png"),
-  },
-
-  {
-    id: "virtual-4-bar",
-    element: (
-      <>
-        <h2>FTC Build Along: Virtual 4-Bar Mechanism</h2>
-
-        <img
-          src={getFTCBuildAsset("virtual-4-bar-preview.png")}
-          className="scaled-img"
-          alt="FTC virtual 4 bar preview"
-        />
-
-        <p>
-          Build a simple virtual 4-bar style lift that raises a grabber upward while keeping it level.
-        </p>
-        <p>
-          Explain how your design helps lift objects to a higher point.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCBuildAsset("virtual-4-bar-answer.png"),
   },
 ];
 
+function buildAnswerElement(prompt) {
+  if (!prompt?.answerElement) return null;
+  return prompt.answerElement;
+}
+
 export function generateFTCBuildAlongPrompt() {
-  const { element } = getRandomElement(promptsList);
-  return element;
+  return getRandomElement(promptsList).element;
 }
 
 export function generateBuildAlongPrompt() {
-  return generateFTCBuildAlongPrompt();
+  return getRandomElement(promptsList);
+}
+
+export function getFTCBuildAlongPromptById(promptId) {
+  const prompt = promptsList.find((item) => item.id === promptId);
+  return prompt ? prompt.element : null;
+}
+
+export function getFTCBuildAlongAnswer(promptId) {
+  const prompt = promptsList.find((item) => item.id === promptId);
+  return buildAnswerElement(prompt);
 }
 
 export { promptsList };

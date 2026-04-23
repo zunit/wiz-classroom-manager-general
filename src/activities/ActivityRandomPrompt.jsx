@@ -78,6 +78,18 @@ function ActivityRandomPrompt(props) {
               ) : null}
             </>
           ) : null}
+          {activityType === ActivityTypes.BUILD_ALONG && randomPrompt.answerElement ? (
+            <>
+              <Button
+                variant="outlined"
+                onClick={() => setIsAnswerVisible((currentValue) => !currentValue)}
+                sx={{ marginBottom: "1rem" }}
+              >
+                {isAnswerVisible ? "Hide Answer" : "Reveal Answer"}
+              </Button>
+              {isAnswerVisible ? randomPrompt.answerElement : null}
+            </>
+          ) : null}
         </>
       )}
       <Button

@@ -3,7 +3,7 @@ import { getRandomElement } from "@/utils/arrayUtils";
 import { joinPath } from "@/utils/pathUtils";
 
 // Change this to your real FTC strategy asset location.
-const ftcStrategyRoot = "https://your-cdn-or-s3-path/ftc-strategy";
+const ftcStrategyRoot = "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Wiz-Camp/FTC-Camp/Level-5-Classroom-Manager-ftc/strategy-and-problem-solving";
 
 function getFTCStrategyAsset(assetName) {
   return joinPath(ftcStrategyRoot, assetName);
@@ -16,22 +16,76 @@ const promptsList = [
       <>
         <h2>FTC Strategy & Problem Solving: What Does This Code Do?</h2>
 
-        <img
-          src={getFTCStrategyAsset("what-does-this-code-do-preview.png")}
-          className="scaled-img"
-          alt="FTC code prediction preview"
-        />
-
         <p>
-          Look at a short FTC Java snippet and predict exactly how the robot will move or behave.
+          Read each FTC Java snippet and predict exactly what the robot or mechanism
+          will do.
         </p>
+
+        <p><strong>Example 1</strong></p>
+        <pre>{`leftMotor.setPower(0.5);
+rightMotor.setPower(0.5);
+sleep(1000);
+leftMotor.setPower(0.0);
+rightMotor.setPower(0.0);`}</pre>
+
+        <p><strong>Example 2</strong></p>
+        <pre>{`leftMotor.setPower(0.4);
+rightMotor.setPower(-0.4);
+sleep(700);
+leftMotor.setPower(0.0);
+rightMotor.setPower(0.0);`}</pre>
+
+        <p><strong>Example 3</strong></p>
+        <pre>{`if (gamepad1.a) {
+    clawServo.setPosition(1.0);
+} else if (gamepad1.b) {
+    clawServo.setPosition(0.0);
+}`}</pre>
+
+        <p><strong>Example 4</strong></p>
+        <pre>{`if (distanceSensor.getDistance(DistanceUnit.CM) < 10) {
+    leftMotor.setPower(0.0);
+    rightMotor.setPower(0.0);
+} else {
+    leftMotor.setPower(0.3);
+    rightMotor.setPower(0.3);
+}`}</pre>
+
+        <p>Explain what happens in each case and why.</p>
+        <hr />
+      </>
+    ),
+    answerElement: (
+      <>
+        <h2>FTC Strategy & Problem Solving Answer: What Does This Code Do?</h2>
+
+        <p><strong>Example 1 Answer:</strong></p>
         <p>
-          Explain your reasoning using the code structure, motor powers, timing, or sensor logic.
+          Both drive motors run forward at half power for 1 second, so the robot
+          drives straight forward for a short time and then stops.
+        </p>
+
+        <p><strong>Example 2 Answer:</strong></p>
+        <p>
+          The left motor goes forward while the right motor goes backward, so the
+          robot turns in place for about 700 milliseconds and then stops.
+        </p>
+
+        <p><strong>Example 3 Answer:</strong></p>
+        <p>
+          Pressing A moves the claw servo to position 1.0, and pressing B moves it
+          to position 0.0. In most setups, that means one button opens the claw and
+          the other closes it.
+        </p>
+
+        <p><strong>Example 4 Answer:</strong></p>
+        <p>
+          If the distance sensor sees an object closer than 10 cm, the robot stops.
+          Otherwise, it drives forward slowly at 0.3 power on both motors.
         </p>
         <hr />
       </>
     ),
-    answerLink: getFTCStrategyAsset("what-does-this-code-do-answer.png"),
   },
 
   {
@@ -40,17 +94,16 @@ const promptsList = [
       <>
         <h2>FTC Strategy & Problem Solving: Best Route Wins</h2>
 
-        <img
-          src={getFTCStrategyAsset("best-route-wins-preview.png")}
-          className="scaled-img"
-          alt="FTC route planning preview"
-        />
-
         <p>
-          You are given a mock FTC field and a scoring objective.
+          You are given a mock FTC field and a scoring objective decided by your
+          camp counsellor.
         </p>
         <p>
-          Plan the best autonomous route to score the most points or finish the fastest.
+          Plan the best autonomous route to score the most points or finish the
+          fastest.
+        </p>
+        <p>
+          Defend your route using speed, simplicity, consistency, and lower risk.
         </p>
         <hr />
       </>
@@ -59,52 +112,28 @@ const promptsList = [
   },
 
   {
-    id: "debug-race",
+    id: "design-research-debate",
     element: (
       <>
-        <h2>FTC Strategy & Problem Solving: Debug Race</h2>
-
-        <img
-          src={getFTCStrategyAsset("debug-race-preview.png")}
-          className="scaled-img"
-          alt="FTC debug race preview"
-        />
+        <h2>FTC Strategy & Problem Solving: Design Research Debate</h2>
 
         <p>
-          A robot has a specific issue such as drifting, a reversed motor, bad wheel mapping,
-          or a sensor that is not reacting correctly.
+          Pair up and research 2 different robot designs that teams could use for
+          the current FTC season’s game.
+        </p>
+        <p>Compare the two designs and decide which one is better.</p>
+        <p>
+          Defend each design using scoring ability, speed, stability, simplicity,
+          consistency, and how hard it would be to build and drive well.
         </p>
         <p>
-          Identify the most likely cause and explain how you would fix it.
+          Be ready to argue why your final choice is the best overall design for
+          the game.
         </p>
         <hr />
       </>
     ),
-    answerLink: getFTCStrategyAsset("debug-race-answer.png"),
-  },
-
-  {
-    id: "judges-design-choice",
-    element: (
-      <>
-        <h2>FTC Strategy & Problem Solving: Judge’s Design Choice</h2>
-
-        <img
-          src={getFTCStrategyAsset("judges-design-choice-preview.png")}
-          className="scaled-img"
-          alt="FTC design comparison preview"
-        />
-
-        <p>
-          Compare two robot designs and decide which one is better for a given game task.
-        </p>
-        <p>
-          Defend your answer using strength, stability, speed, simplicity, or scoring consistency.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCStrategyAsset("judges-design-choice-answer.png"),
+    answerLink: getFTCStrategyAsset("design-research-debate-answer.png"),
   },
 
   {
@@ -113,124 +142,28 @@ const promptsList = [
       <>
         <h2>FTC Strategy & Problem Solving: Edge Case Challenge</h2>
 
-        <img
-          src={getFTCStrategyAsset("edge-case-challenge-preview.png")}
-          className="scaled-img"
-          alt="FTC edge case challenge preview"
-        />
-
+        <p>Explain the best response to each of these 4 FTC edge cases:</p>
+        <ol>
+          <li>The robot starts slightly crooked before autonomous begins.</li>
+          <li>The claw misses the game piece on the first attempt.</li>
+          <li>The distance sensor does not give the expected reading.</li>
+          <li>The robot overshoots the parking zone at the end of the match.</li>
+        </ol>
         <p>
-          Solve a tricky FTC situation such as:
-          the robot starts crooked,
-          the claw misses the object,
-          the sensor fails,
-          or the robot overshoots the parking zone.
-        </p>
-        <p>
-          Explain the best fix or backup strategy.
+          For each one, explain what could go wrong and what the smartest fix or
+          backup strategy would be.
         </p>
         <hr />
       </>
     ),
     answerLink: getFTCStrategyAsset("edge-case-challenge-answer.png"),
   },
-
-  {
-    id: "sensor-choice",
-    element: (
-      <>
-        <h2>FTC Strategy & Problem Solving: Choose the Best Sensor</h2>
-
-        <img
-          src={getFTCStrategyAsset("sensor-choice-preview.png")}
-          className="scaled-img"
-          alt="FTC sensor choice preview"
-        />
-
-        <p>
-          You must solve a robot task using one sensor.
-        </p>
-        <p>
-          Choose between a color sensor, distance sensor, touch sensor, or IMU and explain which is best and why.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCStrategyAsset("sensor-choice-answer.png"),
-  },
-
-  {
-    id: "autonomous-or-teleop",
-    element: (
-      <>
-        <h2>FTC Strategy & Problem Solving: Autonomous or TeleOp?</h2>
-
-        <img
-          src={getFTCStrategyAsset("autonomous-or-teleop-preview.png")}
-          className="scaled-img"
-          alt="FTC autonomous or teleop preview"
-        />
-
-        <p>
-          A game task is shown on screen.
-        </p>
-        <p>
-          Decide whether the task is better solved in autonomous, in teleop, or with a combination of both.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCStrategyAsset("autonomous-or-teleop-answer.png"),
-  },
-
-  {
-    id: "mechanism-matchup",
-    element: (
-      <>
-        <h2>FTC Strategy & Problem Solving: Mechanism Matchup</h2>
-
-        <img
-          src={getFTCStrategyAsset("mechanism-matchup-preview.png")}
-          className="scaled-img"
-          alt="FTC mechanism matchup preview"
-        />
-
-        <p>
-          Pick the best mechanism for the task: scoop, claw, launcher, pusher, or lift.
-        </p>
-        <p>
-          Explain which design fits the challenge best and what tradeoffs come with that choice.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCStrategyAsset("mechanism-matchup-answer.png"),
-  },
-
-  {
-    id: "driver-strategy",
-    element: (
-      <>
-        <h2>FTC Strategy & Problem Solving: Driver Strategy Call</h2>
-
-        <img
-          src={getFTCStrategyAsset("driver-strategy-preview.png")}
-          className="scaled-img"
-          alt="FTC driver strategy preview"
-        />
-
-        <p>
-          Imagine your team is in the final 30 seconds of a match.
-        </p>
-        <p>
-          Choose the safest and smartest driver strategy based on score, robot condition, and time remaining.
-        </p>
-        <hr />
-      </>
-    ),
-    answerLink: getFTCStrategyAsset("driver-strategy-answer.png"),
-  },
 ];
+
+function buildAnswerElement(prompt) {
+  if (!prompt?.answerElement) return null;
+  return prompt.answerElement;
+}
 
 export function generateFTCStrategyPrompt() {
   const { element } = getRandomElement(promptsList);
@@ -239,6 +172,16 @@ export function generateFTCStrategyPrompt() {
 
 export function generateStrategyAndProblemSolvingPrompt() {
   return generateFTCStrategyPrompt();
+}
+
+export function getFTCStrategyPromptById(promptId) {
+  const prompt = promptsList.find((item) => item.id === promptId);
+  return prompt ? prompt.element : null;
+}
+
+export function getFTCStrategyAnswer(promptId) {
+  const prompt = promptsList.find((item) => item.id === promptId);
+  return buildAnswerElement(prompt);
 }
 
 export { promptsList };

@@ -1,5 +1,6 @@
 import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
+const ftcChallengeRoot = "https://wizroboticsintro.s3.us-east-2.amazonaws.com/Wiz-Camp/FTC-Camp/Level-5-Classroom-Manager-ftc/code-along";
 
 const promptsList = [
   {
