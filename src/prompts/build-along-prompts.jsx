@@ -103,6 +103,31 @@ const buildAlongPrompts = [
       </>
     ),
   },
+  {
+  element: (
+    <>
+      <h2>FLL Build Along: Side Hook Attachment</h2>
+      <img
+        src={getFLLBuildAlongAsset("side-attatchment.png")}
+        style={imageStyle}
+        alt="FLL side hook attachment"
+      />
+      <p>
+        Build a side-mounted attachment that can swing out and help the robot
+        hook, guide, or move a mission model from the side.
+      </p>
+      <p>
+        Focus on how the attachment is supported, how far it reaches away from
+        the robot, and how smoothly it can rotate without wobbling.
+      </p>
+      <p>
+        Think about gear placement, attachment strength, and how the hook shape
+        helps the robot control an object during the motion.
+      </p>
+      <hr />
+    </>
+  ),
+},
 ];
 
 export function generateBuildAlongPrompt() {
