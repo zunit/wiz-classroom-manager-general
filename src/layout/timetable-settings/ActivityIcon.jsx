@@ -10,10 +10,6 @@ const iconTypeDataMap = {
     iconPath: joinPath(awsRootDir, "activity-icons", "warning.png"),
     iconClassName: "null-icon",
   },
-  [ActivityTypes.INDIVIDUAL]: {
-    iconPath: joinPath(awsRootDir, "activity-icons", "person.png"),
-    iconClassName: "individual-icon",
-  },
   [ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING]: {
     iconPath: joinPath(awsRootDir, "activity-icons", "draw.png"),
     iconClassName: "strategy-and-problem-solving-icon",

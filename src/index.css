@@ -67,7 +67,15 @@ video {
   justify-self: center;
 }
 
-.scaled-img,
+.scaled-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 0.5rem;
+}
+
 .scaled-video {
   display: block;
   width: 100%;

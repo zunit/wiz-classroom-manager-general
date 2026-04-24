@@ -93,17 +93,9 @@ function TimetableSettings(props) {
 
   /**
    * Adds an activity at the end of the timetable setup.
-   *
-   * Whether an individual activity or a random group activity is given
-   * depends on whether the activity is located at an even or odd index.
    */
   function handleClickAddActivity() {
-    let newChunk;
-    if (chunksSetup.length % 2 == 0) {
-      newChunk = new TimeChunkModel("10", ActivityTypes.RANDOM);
-    } else {
-      newChunk = new TimeChunkModel("20", ActivityTypes.INDIVIDUAL);
-    }
+    const newChunk = new TimeChunkModel("10", ActivityTypes.RANDOM);
     setChunksSetup([...chunksSetup, newChunk]);
   }
 

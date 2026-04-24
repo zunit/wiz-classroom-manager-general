@@ -1,4 +1,3 @@
-import React from "react";
 import { getRandomElement } from "@/utils/arrayUtils";
 import { joinPath } from "@/utils/pathUtils";
 
@@ -8,13 +7,6 @@ function getFLLBuildAlongAsset(assetName) {
   return joinPath(fllBuildAlongRoot, assetName);
 }
 
-const imageStyle = {
-  width: "220px",
-  height: "auto",
-  display: "block",
-  margin: "0 auto 12px",
-};
-
 const buildAlongPrompts = [
   {
     element: (
@@ -22,7 +14,7 @@ const buildAlongPrompts = [
         <h2>FLL Build Along: Front Pusher Attachment</h2>
         <img
           src={getFLLBuildAlongAsset("front-pusher.jpeg")}
-          style={imageStyle}
+          className="scaled-img"
           alt="FLL front pusher attachment"
         />
         <p>
@@ -44,7 +36,7 @@ const buildAlongPrompts = [
         <h2>FLL Build Along: Scoop Collector</h2>
         <img
           src={getFLLBuildAlongAsset("scoop-collector.jpeg")}
-          style={imageStyle}
+          className="scaled-img"
           alt="FLL scoop collector attachment"
         />
         <p>
@@ -66,7 +58,7 @@ const buildAlongPrompts = [
         <h2>FLL Build Along: Lift Arm</h2>
         <img
           src={getFLLBuildAlongAsset("lift-arm.jpeg")}
-          style={imageStyle}
+          className="scaled-img"
           alt="FLL lift arm attachment"
         />
         <p>
@@ -88,7 +80,7 @@ const buildAlongPrompts = [
         <h2>FLL Build Along: Grabber Claw</h2>
         <img
           src={getFLLBuildAlongAsset("grabber-claw.jpeg")}
-          style={imageStyle}
+          className="scaled-img"
           alt="FLL grabber claw attachment"
         />
         <p>
@@ -104,30 +96,30 @@ const buildAlongPrompts = [
     ),
   },
   {
-  element: (
-    <>
-      <h2>FLL Build Along: Side Hook Attachment</h2>
-      <img
-        src={getFLLBuildAlongAsset("side-attatchment.png")}
-        style={imageStyle}
-        alt="FLL side hook attachment"
-      />
-      <p>
-        Build a side-mounted attachment that can swing out and help the robot
-        hook, guide, or move a mission model from the side.
-      </p>
-      <p>
-        Focus on how the attachment is supported, how far it reaches away from
-        the robot, and how smoothly it can rotate without wobbling.
-      </p>
-      <p>
-        Think about gear placement, attachment strength, and how the hook shape
-        helps the robot control an object during the motion.
-      </p>
-      <hr />
-    </>
-  ),
-},
+    element: (
+      <>
+        <h2>FLL Build Along: Side Hook Attachment</h2>
+        <img
+          src={getFLLBuildAlongAsset("side-attatchment.png")}
+          className="scaled-img"
+          alt="FLL side hook attachment"
+        />
+        <p>
+          Build a side-mounted attachment that can swing out and help the robot
+          hook, guide, or move a mission model from the side.
+        </p>
+        <p>
+          Focus on how the attachment is supported, how far it reaches away from
+          the robot, and how smoothly it can rotate without wobbling.
+        </p>
+        <p>
+          Think about gear placement, attachment strength, and how the hook
+          shape helps the robot control an object during the motion.
+        </p>
+        <hr />
+      </>
+    ),
+  },
 ];
 
 export function generateBuildAlongPrompt() {

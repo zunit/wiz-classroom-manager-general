@@ -11,15 +11,9 @@ function ActivityCard(props) {
   const chunkTime = Number(chunk.time) / 60;
 
   function getCardHeader() {
-    let cardHeader;
-    if (ActivityTypes.isIndividualActivity(chunk.activityType)) {
-      cardHeader = "Individual Activity";
-    } else if (ActivityTypes.isGroupActivity(chunk.activityType)) {
-      cardHeader = "Group Activity";
-    } else {
-      cardHeader = `Error: ${chunk.activityType}`;
-    }
-    return cardHeader;
+    return ActivityTypes.isGroupActivity(chunk.activityType)
+      ? "Group Activity"
+      : `Error: ${chunk.activityType}`;
   }
 
   function getCardSubheader() {

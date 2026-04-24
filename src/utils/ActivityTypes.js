@@ -11,13 +11,6 @@ class ActivityTypes {
   }
 
   /**
-   * Represents individual activity.
-   */
-  static get INDIVIDUAL() {
-    return "INDIVIDUAL";
-  }
-
-  /**
    * Represents the "Strategy-and-Problem-Solving" activity.
    */
   static get STRATEGY_AND_PROBLEM_SOLVING() {
@@ -53,7 +46,6 @@ class ActivityTypes {
   }
 
   static #activityNameMap = {
-    [ActivityTypes.INDIVIDUAL]: "Individual Activity",
     [ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING]:
       "Strategy-and-Problem-Solving",
     [ActivityTypes.CODE_ALONG]: "Code-Along",
@@ -68,7 +60,6 @@ class ActivityTypes {
    */
   static getValidActivityTypes() {
     return [
-      ActivityTypes.INDIVIDUAL,
       ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING,
       ActivityTypes.CODE_ALONG,
       ActivityTypes.BUILD_ALONG,
@@ -98,15 +89,6 @@ class ActivityTypes {
    */
   static isValidActivityType(activityType) {
     return ActivityTypes.getValidActivityTypes().includes(activityType);
-  }
-
-  /**
-   * Returns whether a given activity type represents an individual activity.
-   * @param {any} activityType The activity type.
-   * @returns {boolean} Whether the activity type represents an individual activity.
-   */
-  static isIndividualActivity(activityType) {
-    return activityType === ActivityTypes.INDIVIDUAL;
   }
 
   /**

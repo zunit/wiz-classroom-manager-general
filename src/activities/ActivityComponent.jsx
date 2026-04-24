@@ -2,7 +2,6 @@ import React from "react";
 import { AppContext } from "@/context/AppContext";
 import ActivityTypes from "@/utils/ActivityTypes";
 import ActivityHeader from "@/activities/ActivityHeader";
-import IndividualActivity from "@/activities/individual/IndividualActivity";
 import RandomActivity from "@/activities/random/RandomActivity";
 import StrategyAndProblemSolvingActivity from "@/activities/strategy-and-problem-solving/StrategyAndProblemSolvingActivity";
 import CodeAlongActivity from "@/activities/code-along/CodeAlongActivity";
@@ -33,9 +32,6 @@ function ActivityComponent() {
   function getCurrentActivity() {
     let activityComponent;
     switch (currentActivity) {
-      case ActivityTypes.INDIVIDUAL:
-        activityComponent = <IndividualActivity />;
-        break;
       case ActivityTypes.STRATEGY_AND_PROBLEM_SOLVING:
         activityComponent = <StrategyAndProblemSolvingActivity />;
         break;

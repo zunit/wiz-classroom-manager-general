@@ -20,16 +20,11 @@ function App() {
   // so the reset button can work when the user is still in the starting page
   const defaultChunkActivityTypes = debug
     ? ActivityTypes.getValidActivityTypes()
-    : [
-        ActivityTypes.RANDOM,
-        ActivityTypes.INDIVIDUAL,
-        ActivityTypes.RANDOM,
-        ActivityTypes.INDIVIDUAL,
-      ];
+    : [ActivityTypes.RANDOM];
   const defaultChunksSetup = defaultChunkActivityTypes.map((activityType) => {
-    let time = activityType === ActivityTypes.INDIVIDUAL ? "20" : "10";
+    let time = "10";
     let activityDifficulty = ActivityTypes.hasDifficulties(activityType)
-      ? difficulty
+      ? Difficulties.EXPERIENCED
       : null;
     return new TimeChunkModel(time, activityType, activityDifficulty);
   });
