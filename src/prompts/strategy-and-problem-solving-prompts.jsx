@@ -158,6 +158,58 @@ rightMotor.setPower(0.0);`}</pre>
     ),
     answerLink: getFTCStrategyAsset("edge-case-challenge-answer.png"),
   },
+  {
+  id: "mechanism-matchup",
+  element: (
+    <>
+      <h2>FTC Strategy & Problem Solving: Mechanism Matchup</h2>
+
+      <video controls className="scaled-video">
+        <source
+          src={getFTCStrategyAsset("mechanism-matchup-preview.mp4")}
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+
+      <p>
+        A team needs to pick up a game piece reliably, move quickly, and score
+        with good control.
+      </p>
+      <p>
+        Which mechanism is the best choice: a claw, a scoop, or a pusher?
+      </p>
+      <p>
+        Choose one and explain why it is the best balance of speed, simplicity,
+        consistency, and driver control.
+      </p>
+      <p>
+        Also explain one weakness of your choice and one reason another team
+        might choose a different design.
+      </p>
+      <hr />
+    </>
+  ),
+  answerElement: (
+    <>
+      <h2>FTC Strategy & Problem Solving Answer: Mechanism Matchup</h2>
+
+      <p>
+        <strong>Sample answer:</strong> A claw is often the best choice when the
+        team needs reliable pickup and controlled scoring. It usually holds a
+        game piece more securely than a scoop or pusher, which helps with
+        consistency. A scoop may be faster for collecting objects from the floor,
+        but it can be less precise when the robot has to place or carry
+        something carefully. A pusher is the simplest design, but it is only a
+        strong option if the game mainly rewards pushing rather than controlled
+        pickup. The weakness of a claw is that it can be slower and more complex
+        to build. Another team might choose a scoop if speed matters more than
+        precise holding.
+      </p>
+      <hr />
+    </>
+  ),
+},
 ];
 
 function buildAnswerElement(prompt) {
