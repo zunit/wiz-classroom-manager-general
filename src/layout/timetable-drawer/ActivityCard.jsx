@@ -12,9 +12,7 @@ function ActivityCard(props) {
 
   function getCardHeader() {
     let cardHeader;
-    if (ActivityTypes.isIndividualActivity(chunk.activityType)) {
-      cardHeader = "Individual Activity";
-    } else if (ActivityTypes.isGroupActivity(chunk.activityType)) {
+    if (ActivityTypes.isGroupActivity(chunk.activityType)) {
       cardHeader = "Group Activity";
     } else {
       cardHeader = `Error: ${chunk.activityType}`;
